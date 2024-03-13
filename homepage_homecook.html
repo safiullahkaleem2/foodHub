@@ -1,42 +1,198 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="homepage_homecook.css">
-    <title>Home</title>
-    <h2>Home</h2>
-</head>
-<body>
 
-        <div class = listofchefs>
-            <h3>Recommended Chefs</h3>
+    <!-- CDN for daisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--Navigation bar -->
+        <!--Base-->
+        <div class="navbar bg-base-100 bg-neutral text-neutral-content">
+
+            <!--Dropdown With Avatar-->
+            <div class="navbar-start">
+                
+                <!--Photo-->
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar online">
+                        <div class="w-10 rounded-full"> 
+                            <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"/>
+                         </div>    
+                    </div>
+                    
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 bg-neutral">
+                    <li><a>Profile</a></li>
+                    <li><a>Browrse Recipes</a></li>
+                    <li><a>Events</a></li>
+                    <li><a>Leaderboard</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <!--Title-->
+            <div class="navbar-center">
+                <a class="btn btn-ghost text-xl" style="pointer-events: none;">FoodHub</a>
+                </div>
+
+            <!--Search Icon-->
+            <div class="navbar-end">
+                <label class="input input-bordered flex items-center gap-2 input-xs bg-base-content">
+                    <input type="text" class="grow" placeholder="Search" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+                  </label>
+
+              <!--Notifications-->
+              <button class="btn btn-ghost btn-circle">
+                <div class="indicator">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                  <span class="badge badge-xs badge-primary indicator-item"></span>
+                </div>
+              </button>
+            </div>
+        </div>
+    
+</head>
+<body class="bg-base-content text-neutral-content">
+
+    <h3 class="text-3xl font-bold text-start text-primary-500 mb-4">Recommended Chefs</h3>
+    <div class="join">
+        <div class = chef1>
             <ul>
                 <img src="https://parade.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1240/MTkwNTc4MTE4NTMyMDE1OTk2/gordonramsay_kitchenmaster-ftr.webp" alt="Italian Trulli" style="width:150px;height:150px;">
-                <span>Gordan Ramsey</span>
-           
-                <img src="https://upload.wikimedia.org/wikipedia/en/7/7d/Lenna_%28test_image%29.png" alt="Italian Trulli" style="width:150px;height:150;">
-                <span>Martha Stewart</span>
-             
+                <div class="text-sm font-bold text-start text-primary-500 mb-4">Gordan Ramsey</div>
             </ul>
         </div> 
 
-        <h3 class= leaderboard> Leaderboard </h3>
+        <div class = chef2>
+                <ul>
+                    <img src="https://upload.wikimedia.org/wikipedia/en/7/7d/Lenna_%28test_image%29.png" alt="Italian Trulli" style="width:150px;height:150;">
+                    <div class="text-sm font-bold text-start text-primary-500 mb-4">Martha Stewart</div>
+                </ul>
+        </div> 
+
+        <div class = chef2>
             <ul>
-                <li>
-                    <span>1</span>
-                    <span>Jacky</span>
-                    <span>200</span>
-                </li>
-                <li>
-                    <span>2</span>
-                    <span>Mohammed</span>
-                    <span>150</span>
-                </li>
-                <li>
-                    <span>3</span>
-                    <span>Saffiolah</span>
-                    <span>100</span>
-                </li>
-            </ul>  
+                <img src="https://www.tasteofhome.com/wp-content/uploads/2019/04/Robert-Irvine-8975167a.jpg?fit=700%2C700" alt="Italian Trulli" style="width:150px;height:150;">
+                <div class="text-sm font-bold text-start text-primary-500 mb-4">Jamie Oliver</div>
+            </ul>
+        </div> 
+
+        <div class = chef2>
+            <ul>
+                <img src="https://www.tasteofhome.com/wp-content/uploads/2018/10/tyler-florence.jpg?fit=700%2C700" alt="Italian Trulli" style="width:150px;height:150;">
+                <div class="text-sm font-bold text-start text-primary-500 mb-4">Gordan Ramsey</div>
+            </ul>
+        </div> 
+
+        <div class = chef2>
+            <ul>
+                <img src="https://pyxis.nymag.com/v1/imgs/da4/90a/0158bca38786c30147669f37a2326a1597-hells-kitchen-ramsay.rsquare.w700.jpg" alt="Italian Trulli" style="width:150px;height:150;">
+                <div class="text-sm font-bold text-start text-primary-500 mb-4">Gordan Ramsey</div>
+            </ul>
+        </div> 
+    </div>
+
+        <div class="overflow-x-auto container mx-auto px-4 py-8">
+            <h3 class="text-3xl font-bold text-start text-primary-500 mb-4">Global Leaderboard</h3>
+            <table class="table-md bg-neutral">
+                <thead>
+                    <tr class="text-success">
+                        <th>Position</th>
+                        <th>Name</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <!-- row 1 -->
+                    <tr>
+                        <th class="text-warning">1</th>
+                        <td class="flex items-center gap-3">
+                            <div class="avatar">
+                                <div class="mask mask-circle w-10 h-10">
+                                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-bold">Jacky Feng</div>
+                                <div class="text-sm opacity-50">Canada</div>
+                            </div>
+                        </td>
+                        <td>300</td>
+                    </tr>
+                    
+
+                    <!-- row 2 -->
+                    <tr>
+                        <th class="text-gray-400">2</th>
+                        <td class="flex items-center gap-3">
+                            <div class="avatar">
+                                <div class="mask mask-circle w-10 h-10">
+                                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-bold">Mohammed Fakhir</div>
+                                <div class="text-sm opacity-50">United Arab Emirates</div>
+                            </div>
+                        </td>
+                        <td>200</td>
+                    </tr>
+
+                    <!-- row 2 -->
+                    <tr>
+                        <th class="text-yellow-600">3</th>
+                        <td class="flex items-center gap-3">
+                            <div class="avatar">
+                                <div class="mask mask-circle w-10 h-10">
+                                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-bold">Safiullah Kaleem</div>
+                                <div class="text-sm opacity-50">Pakistan</div>
+                            </div>
+                        </td>
+                        <td>100</td>
+                    </tr>
+
+                    <!-- row 4 -->
+                    <tr>
+                        <th>4</th>
+                        <td class="flex items-center gap-3">
+                            <div class="avatar">
+                                <div class="mask mask-circle w-10 h-10">
+                                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-bold">Seva Lynov</div>
+                                <div class="text-sm opacity-50">Russia</div>
+                            </div>
+                        </td>
+                        <td>50</td>
+                    </tr>
+
+                    <!-- row 5 -->
+                    <tr>
+                        <th>5</th>
+                        <td class="flex items-center gap-3">
+                            <div class="avatar">
+                                <div class="mask mask-circle w-10 h-10">
+                                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-bold">Raymond Ng</div>
+                                <div class="text-sm opacity-50">United States</div>
+                            </div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+            </table>
+        </div>
 
         <h3 class ="fw-noraml">Recommended Recipes: </h3> 
         <ul>
