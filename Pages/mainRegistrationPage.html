@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - FoodHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-base-content flex items-center justify-center h-screen">
+    <div class= "card w-96 bg-neutral text-neutral-content shadow-xl">
+        <div class="card-body items-center text-center">
+            
+            <figure class="px-10 pt-10">
+                <img src="https://cdn.dribbble.com/userupload/3998399/file/original-9c55bbf2aa9c9cc167c188fa5bea8217.jpg?resize=752x" alt="FoodHub logo" class="rounded-xl">
+            </figure>
+            <h2 class="card-title text-white mb-2">Register to FoodHub</h2>
+            
+            <div class="flex flex-col gap-2">
+                <label class="label cursor-pointer">
+                  <span class="radio-label text-white">Register as Home Cook</span>
+                  <input type="radio" name="registrationType" class="radio radio-sm radio-primary" value="homeCook" checked>
+                </label>
+                <label class="label cursor-pointer">
+                  <span class="radio-label text-white">Register as Professional Chef</span>
+                  <input type="radio" name="registrationType" class="radio radio-sm radio-primary" value="professionalChef">
+                </label>
+            </div>
+            
+            <div class="form-control mt-6">
+                <button class="btn btn-primary" onclick="showRegistrationForm()">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // A function to redirect to the otheb pages
+        function showRegistrationForm() {
+            const selectedType = document.querySelector('input[name="registrationType"]:checked').value;
+            window.location.href = selectedType + 'Registration.html'; 
+        }
+    </script>
+</body>
+</html>

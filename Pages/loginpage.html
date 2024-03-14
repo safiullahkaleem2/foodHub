@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - FoodHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-base-content text-neutral-content flex items-center justify-center h-screen">
+    <div class="card w-96 bg-neutral text-neutral-content shadow-xl">
+        <figure class="px-10 pt-10">
+            <img src="https://cdn.dribbble.com/userupload/3998399/file/original-9c55bbf2aa9c9cc167c188fa5bea8217.jpg?resize=752x" alt="FoodHub logo" class="rounded-xl">
+        </figure>
+        <div class="card-body items-center text-center">
+            <h2 class="card-title">Login to FoodHub</h2>
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text text-white">Username</span>
+                </label>
+                <input type="text" placeholder="Username" class="input input-bordered">
+            </div>
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text text-white">Password</span>
+                </label>
+                <input type="password" placeholder="Password" class="input input-bordered">
+                <label class="label">
+                    <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
+                </label>
+            </div>
+            <div class="form-control mt-6">
+                <button class="btn btn-primary">Login</button>
+            </div>
+            <div class="text-xs mt-4">
+                Don't have an account? <a href="#" class="link link-primary">Register</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
