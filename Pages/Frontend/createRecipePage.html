@@ -9,8 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-base-content flex items-center justify-center h-screen">
-    <div class="card w-96 bg-neutral text-neutral-content shadow-xl">
+<body class="bg-base-content p-2.5 flex items-center justify-center h-full">
+    <div class="card w-96 bg-neutral text-neutral-content ">
         <div class="card-body items-center text-center">
             <h2 class="card-title text-white mb-4">Create Recipe</h2>
             <form>
@@ -19,6 +19,13 @@
                         <span class="label-text text-white">Recipe title</span>
                     </label>
                     <input type="text" placeholder="Enter recipe title" class="input input-bordered">
+                </div>
+
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-white">Recipe Video</span>
+                    </label>
+                    <input type="text" placeholder="Enter link to recipe video" class="input input-bordered">
                 </div>
 
                 <div class="form-control">
@@ -38,9 +45,9 @@
 
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text text-white">Location</span>
+                        <span class="label-text text-white">Culture</span>
                     </label>
-                    <input type="text" placeholder="Enter location" class="input input-bordered">
+                    <input type="text" placeholder="Enter culture" class="input input-bordered">
                 </div>
 
                 <div class="form-control">
@@ -53,10 +60,64 @@
 
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text text-white">Entry Fee</span>
+                        <span class="label-text text-white">Servings</span>
                     </label>
-                    <input type="text" placeholder="Enter entry fee" class="input input-bordered">
+                    <input type="number" placeholder="Enter total servings" class="input input-bordered">
                 </div>
+
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-white">Prep time</span>
+                    </label>
+                    <input type="number" placeholder="Enter estimated prep time" class="input input-bordered">
+                </div>
+
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-white">Cook time</span>
+                    </label>
+                    <input type="number" placeholder="Enter estimated cook time" class="input input-bordered">
+                </div>
+
+                <div class="form-control p-2.5">
+                    <button type="button" id="addIngredient" class="w-auto btn btn-secondary">Add
+                        Ingredient</button>
+                    <div id="ingredientList" class="mt-4">
+                        <!-- Ingredient list will be populated dynamically -->
+                    </div>
+                </div>
+
+                <script>
+                    document.getElementById('addIngredient').addEventListener('click', function () {
+                        const ingredientsList = document.getElementById('ingredientList');
+                        const ingredientInput = document.createElement('input');
+                        ingredientInput.type = 'text';
+                        ingredientInput.placeholder = 'Enter ingredient...';
+                        // ingredientInput.classList.add('mt-1', 'focus:ring-indigo-500', 'focus:border-indigo-500', 'block', 'w-full', 'shadow-sm', 'sm:text-sm', 'border-gray-300', 'rounded-md', 'mb-2');
+                        ingredientInput.classList.add('p-2.5', 'input', 'input-bordered');
+                        ingredientsList.appendChild(ingredientInput);
+                    });
+                </script>
+
+                <div class="form-control p-2.5">
+                    <button type="button" id="addEquipment" class="w-auto btn btn-secondary">Add
+                        Cooking Equipment</button>
+                    <div id="equipmentList" class="mt-4">
+                        <!-- Ingredient list will be populated dynamically -->
+                    </div>
+                </div>
+
+                <script>
+                    document.getElementById('addEquipment').addEventListener('click', function () {
+                        const equipmentsList = document.getElementById('equipmentList');
+                        const equipmentInput = document.createElement('input');
+                        equipmentInput.type = 'text';
+                        equipmentInput.placeholder = 'Enter ingredient...';
+                        // ingredientInput.classList.add('mt-1', 'focus:ring-indigo-500', 'focus:border-indigo-500', 'block', 'w-full', 'shadow-sm', 'sm:text-sm', 'border-gray-300', 'rounded-md', 'mb-2');
+                        equipmentInput.classList.add('p-2.5', 'input', 'input-bordered');
+                        equipmentsList.appendChild(equipmentInput);
+                    });
+                </script>
 
                 <div class="form-control mt-6">
                     <button type="submit" class="btn btn-primary">Create an Event</button>
