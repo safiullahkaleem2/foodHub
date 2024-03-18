@@ -12,117 +12,89 @@
 <body class="bg-base-content p-2.5 flex items-center justify-center h-full">
     <div class="card w-96 bg-neutral text-neutral-content ">
         <div class="card-body items-center text-center">
-            <h2 class="card-title text-white mb-4">Create Recipe</h2>
-            <form>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text text-white">Recipe title</span>
-                    </label>
-                    <input type="text" placeholder="Enter recipe title" class="input input-bordered">
+            <h2 class="card-title text-white mb-4">View Recipe</h2>
+
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Recipe title</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
                 </div>
+            </div>
 
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text text-white">Recipe Video</span>
-                    </label>
-                    <input type="text" placeholder="Enter link to recipe video" class="input input-bordered">
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Recipe video</h2>
+
+                    <iframe width="auto" height="auto" src="https://www.youtube.com/embed/6B5IQ3fJit0"
+                        title="Iss Ramzan ki Dhamaka Recipe Butter chicken Sliders by Cooking with Benazir #ramzanspecial"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+
                 </div>
+            </div>
 
-                <div class="form-control">
-                    <!-- <label class="label">
-                        <span class="label-text text-white">Difficulty Level</span>
-                    </label> -->
-                    <label class="label" for="difficulty-level">
-                        <span class="label-text text-white">Choose a difficulty level</span>
-                    </label>
-                    <select class="input input-bordered" name="difficulty-level" id="difficulty-level">
-                        <option value="expert">Expert</option>
-                        <option value="difficult">Difficult</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="easy">Beginner</option>
-                    </select>
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Difficulty level</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
                 </div>
+            </div>
 
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text text-white">Culture</span>
-                    </label>
-                    <input type="text" placeholder="Enter culture" class="input input-bordered">
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Culture</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
                 </div>
+            </div>
 
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text text-white">Category</span>
-                    </label>
-                    <input type="text" placeholder="Enter Category" class="input input-bordered">
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Category</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
                 </div>
+            </div>
 
-
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text text-white">Servings</span>
-                    </label>
-                    <input type="number" placeholder="Enter total servings" class="input input-bordered">
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Servings</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
                 </div>
+            </div>
 
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text text-white">Prep time</span>
-                    </label>
-                    <input type="number" placeholder="Enter estimated prep time" class="input input-bordered">
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Prep time</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
                 </div>
+            </div>
 
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text text-white">Cook time</span>
-                    </label>
-                    <input type="number" placeholder="Enter estimated cook time" class="input input-bordered">
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Cook time</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
                 </div>
+            </div>
 
-                <div class="form-control p-2.5">
-                    <button type="button" id="addIngredient" class="w-auto btn btn-secondary">Add
-                        Ingredient</button>
-                    <div id="ingredientList" class="mt-4">
-                        <!-- Ingredient list will be populated dynamically -->
-                    </div>
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Ingredients</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
                 </div>
+            </div>
 
-                <script>
-                    document.getElementById('addIngredient').addEventListener('click', function () {
-                        const ingredientsList = document.getElementById('ingredientList');
-                        const ingredientInput = document.createElement('input');
-                        ingredientInput.type = 'text';
-                        ingredientInput.placeholder = 'Enter ingredient...';
-                        // ingredientInput.classList.add('mt-1', 'focus:ring-indigo-500', 'focus:border-indigo-500', 'block', 'w-full', 'shadow-sm', 'sm:text-sm', 'border-gray-300', 'rounded-md', 'mb-2');
-                        ingredientInput.classList.add('p-2.5', 'input', 'input-bordered');
-                        ingredientsList.appendChild(ingredientInput);
-                    });
-                </script>
-
-                <div class="form-control p-2.5">
-                    <button type="button" id="addEquipment" class="w-auto btn btn-secondary">Add
-                        Cooking Equipment</button>
-                    <div id="equipmentList" class="mt-4">
-                        <!-- Ingredient list will be populated dynamically -->
-                    </div>
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Cooking equipment</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
                 </div>
+            </div>
 
-                <script>
-                    document.getElementById('addEquipment').addEventListener('click', function () {
-                        const equipmentsList = document.getElementById('equipmentList');
-                        const equipmentInput = document.createElement('input');
-                        equipmentInput.type = 'text';
-                        equipmentInput.placeholder = 'Enter ingredient...';
-                        // ingredientInput.classList.add('mt-1', 'focus:ring-indigo-500', 'focus:border-indigo-500', 'block', 'w-full', 'shadow-sm', 'sm:text-sm', 'border-gray-300', 'rounded-md', 'mb-2');
-                        equipmentInput.classList.add('p-2.5', 'input', 'input-bordered');
-                        equipmentsList.appendChild(equipmentInput);
-                    });
-                </script>
-
-                <div class="form-control mt-6">
-                    <button type="submit" class="btn btn-primary">Create an Event</button>
-                </div>
-            </form>
+            <div class="form-control mt-6">
+                <a href="./Pages/Frontend/homepage_homecook.html"><button type="button" class="btn btn-primary">Home
+                        page</button></a>
+            </div>
         </div>
     </div>
 </body>
