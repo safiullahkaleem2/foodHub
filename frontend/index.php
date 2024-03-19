@@ -18,7 +18,7 @@ $connection_string = "host=" . $_ENV['DB_HOST'] .
 $db = pg_connect($connection_string);
 if ($db) {
     echo "Successfully connected to PostgreSQL.\n";
-     // SQL to drop the table if it exists and create a new one
+
      $createQuery = "DROP TABLE IF EXISTS Users; 
      CREATE TABLE Users (
          userid SERIAL,
@@ -28,7 +28,7 @@ if ($db) {
          PRIMARY KEY (userid)
      );";
 
-// Execute the query
+
 $result = pg_query($db, $createQuery);
 
 if ($result) {
