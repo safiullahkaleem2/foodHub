@@ -11,8 +11,7 @@ $dotenv->load();
 $connection_string = "host=" . $_ENV['DB_HOST'] .
                      " dbname=" . $_ENV['DB_NAME'] .
                      " user=" . $_ENV['DB_USER'] .
-                     " password='" . $_ENV['DB_PASS'] . "'";
-
+                     " password=" . $_ENV['DB_PASS'];
 
 
 $db = pg_connect($connection_string);
