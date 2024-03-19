@@ -1,0 +1,11 @@
+{
+    "name": "crick/project_i2r8j_k4a1k_s9r9w",
+    "autoload": {
+        "psr-4": {
+            "Crick\\ProjectI2r8jK4a1kS9r9w\\": "src/"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
