@@ -3,7 +3,7 @@
 
 function createTables($connection){
 $createQuery = "BEGIN;
-DROP TABLE IF EXISTS UserDetails;
+DROP TABLE IF EXISTS UserDetails CASCADE;
 
 CREATE TABLE UserDetails (
      NumberOfFollowers INTEGER DEFAULT 0,
@@ -14,7 +14,7 @@ CREATE TABLE UserDetails (
      PRIMARY KEY (Username, Password)
   );
   
-DROP TABLE IF EXISTS AppUser;
+DROP TABLE IF EXISTS AppUser CASCADE;
 CREATE TABLE AppUser (
     Username VARCHAR (30) NOT NULL UNIQUE,
     Password VARCHAR (30)  NOT NULL,
@@ -22,10 +22,11 @@ CREATE TABLE AppUser (
     PRIMARY KEY (UserID),
     FOREIGN KEY (UserName, Password) REFERENCES UserDetails(UserName, Password)
 ON DELETE CASCADE
+ ON UPDATE CASCADE
 
 );
 
-DROP TABLE IF EXISTS HomeCookSkill;
+DROP TABLE IF EXISTS HomeCookSkill CASCADE;
 
 
 CREATE TABLE HomeCookSkill (
@@ -34,7 +35,7 @@ CREATE TABLE HomeCookSkill (
      PRIMARY KEY (NumberofFollowers)
  );
   
-DROP TABLE IF EXISTS HomeCookDetails;
+DROP TABLE IF EXISTS HomeCookDetails CASCADE;
 
 CREATE TABLE HomeCookDetails (
     FavouriteCuisine VARCHAR (30),
@@ -49,7 +50,7 @@ ON DELETE CASCADE
 );
 
 
-DROP TABLE IF EXISTS HomeCook;
+DROP TABLE IF EXISTS HomeCook CASCADE;
 
 CREATE TABLE HomeCook (
     UserID INTEGER,
@@ -58,7 +59,7 @@ CREATE TABLE HomeCook (
 	ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS ProfessionalChefSkill;
+DROP TABLE IF EXISTS ProfessionalChefSkill CASCADE;
 
 CREATE TABLE ProfessionalChefSkill (
    RestaurantAffiliation VARCHAR (30),
@@ -69,7 +70,7 @@ CREATE TABLE ProfessionalChefSkill (
 
 
 
-DROP TABLE IF EXISTS ProfessionalChefDetails;
+DROP TABLE IF EXISTS ProfessionalChefDetails CASCADE;
 
 CREATE TABLE ProfessionalChefDetails (
     RestaurantAffiliation VARCHAR (30),
@@ -84,7 +85,7 @@ CREATE TABLE ProfessionalChefDetails (
     ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS ProfessionalChef;
+DROP TABLE IF EXISTS ProfessionalChef CASCADE;
 CREATE TABLE ProfessionalChef (
     Username VARCHAR (30) NOT NULL UNIQUE,
     Password VARCHAR (30) NOT NULL,
@@ -96,14 +97,14 @@ ON DELETE CASCADE,
     ON DELETE CASCADE
 );
 
-     DROP TABLE IF EXISTS Leaderboard;
+     DROP TABLE IF EXISTS Leaderboard CASCADE;
      CREATE TABLE Leaderboard (
         LeaderboardCategory VARCHAR (30) NOT NULL UNIQUE,
         Prize VARCHAR (30),
         PRIMARY KEY (LeaderboardCategory)
    );
    
-   DROP TABLE IF EXISTS EventLocation;
+   DROP TABLE IF EXISTS EventLocation CASCADE;
    CREATE TABLE EventLocation (
         Category VARCHAR (30),
         EntryFee INTEGER,
@@ -111,7 +112,7 @@ ON DELETE CASCADE,
         PRIMARY KEY (Category, EntryFee)
    );
    
-   DROP TABLE IF EXISTS EventDetails;
+   DROP TABLE IF EXISTS EventDetails CASCADE;
 
    CREATE TABLE EventDetails (
         Category VARCHAR (30) NOT NULL,
@@ -123,7 +124,7 @@ ON DELETE CASCADE,
    );
    
 
-   DROP TABLE IF EXISTS ReviewDetails;
+   DROP TABLE IF EXISTS ReviewDetails CASCADE;
 
 
    CREATE TABLE ReviewDetails (
@@ -133,7 +134,7 @@ ON DELETE CASCADE,
         PRIMARY KEY (TimePosted, Comment)
    );
    
-   DROP TABLE IF EXISTS Review;
+   DROP TABLE IF EXISTS Review CASCADE;
 
    CREATE TABLE Review (
         TimePosted DATE NOT NULL,
@@ -143,7 +144,7 @@ ON DELETE CASCADE,
         FOREIGN KEY (TimePosted, Comment) REFERENCES ReviewDetails
        ON DELETE CASCADE
    );
-   DROP TABLE IF EXISTS CookingEquipment;
+   DROP TABLE IF EXISTS CookingEquipment CASCADE;
    
    CREATE TABLE CookingEquipment (
         Price INTEGER ,
@@ -155,7 +156,7 @@ ON DELETE CASCADE,
    );
    
 
-   DROP TABLE IF EXISTS CookingEquipmentName;
+   DROP TABLE IF EXISTS CookingEquipmentName CASCADE;
 
    CREATE TABLE CookingEquipmentName (
      Name VARCHAR (30),
@@ -169,7 +170,7 @@ ON DELETE CASCADE,
    );
    
    
-   DROP TABLE IF EXISTS RecipeDetails;
+   DROP TABLE IF EXISTS RecipeDetails CASCADE;
 
    CREATE TABLE RecipeDetails (
         PublishDate DATE,
@@ -180,7 +181,7 @@ ON DELETE CASCADE,
         PRIMARY KEY (PublishDate, Title)
    );
    
-   DROP TABLE IF EXISTS Recipe;
+   DROP TABLE IF EXISTS Recipe CASCADE;
 
    CREATE TABLE Recipe (
         RecipeID INTEGER ,
@@ -192,7 +193,7 @@ ON DELETE CASCADE,
        ON DELETE CASCADE
    );
    
-   DROP TABLE IF EXISTS Video;
+   DROP TABLE IF EXISTS Video CASCADE;
 
    CREATE TABLE Video (
         Name VARCHAR (30), 
@@ -206,7 +207,7 @@ ON DELETE CASCADE,
    );
    
 
-   DROP TABLE IF EXISTS Ingredient;
+   DROP TABLE IF EXISTS Ingredient CASCADE;
 
    CREATE TABLE Ingredient (
         Name VARCHAR (30),
@@ -215,6 +216,7 @@ ON DELETE CASCADE,
    );
    
 
+   DROP TABLE IF EXISTS Follows CASCADE;
    
    CREATE TABLE Follows (
         UserID1 INTEGER, 
@@ -228,7 +230,7 @@ ON DELETE CASCADE,
    );
    
 
-   DROP TABLE IF EXISTS Partcipates;
+   DROP TABLE IF EXISTS Participates;
 
    CREATE TABLE Participates (
         UserID INTEGER , 
@@ -240,7 +242,7 @@ ON DELETE CASCADE,
         ON DELETE CASCADE
    );
    
-   DROP TABLE IF EXISTS Ranking;
+   DROP TABLE IF EXISTS Ranking CASCADE;
 
    CREATE TABLE Ranking (
         Points INTEGER, 
@@ -276,7 +278,8 @@ ON DELETE CASCADE,
         FOREIGN KEY (RecipeID) REFERENCES Recipe
             ON DELETE CASCADE,
         FOREIGN KEY (Name,Price,Category,Quality) REFERENCES CookingEquipmentName
-            ON DELETE CASCADE
+            ON DELETE CASCADE ON UPDATE CASCADE
+
    );
    
    DROP TABLE IF EXISTS Posts;
