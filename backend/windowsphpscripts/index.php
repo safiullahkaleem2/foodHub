@@ -2,12 +2,12 @@
 <html>
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../src/scripts.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+require_once('../scripts/scripts.php');
 
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
 $dotenv->load();
+
 
 $connection_string = "host=" . $_ENV['DB_HOST'] .
                      " dbname=" . $_ENV['DB_NAME'] .
