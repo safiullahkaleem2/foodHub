@@ -19,11 +19,11 @@ $createTableQuery = "CREATE TABLE IF NOT EXISTS test_table (
 $db->exec($createTableQuery);
 
 // Insert dummy values into the table
-// $insertQuery = "INSERT INTO test_table (name, age) VALUES 
-//     ('John Doe', 25),
-//     ('Jane Smith', 30),
-//     ('Alice Johnson', 40)";
-// $db->exec($insertQuery);
+$insertQuery = "INSERT INTO test_table (name, age) VALUES 
+    ('John Doe', 25),
+    ('Jane Smith', 30),
+    ('Alice Johnson', 40)";
+$db->exec($insertQuery);
 
 // Display the contents of the dummy_table
 $statement = $db->prepare("SELECT * FROM test_table");
