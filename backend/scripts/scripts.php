@@ -297,7 +297,7 @@ ON DELETE CASCADE,
 
 COMMIT;";
 
-pg_query($connection, $createQuery);
+$connection->exec($createQuery);
 
 }
 
