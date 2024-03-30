@@ -301,4 +301,3 @@ $connection->exec($createQuery);
 
 }
 
-?>
