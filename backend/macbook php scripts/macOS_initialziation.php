@@ -35,12 +35,12 @@ $intilizetables =
         FavouriteCuisine VARCHAR (30),
         NumberofFollowers Integer DEFAULT 0,
         NumberofFollowing Integer DEFAULT 0,
-        Age Integer  NOT NULL,
+        Age Integer NOT NULL,
         Username VARCHAR (30),
         Password VARCHAR(30),
-        PRIMARY KEY (Username, Password),
-        FOREIGN KEY (NumberofFollowers) REFERENCES HomeCookSkill(NumberofFollowers)
-        ON DELETE CASCADE
+        PRIMARY KEY (Username, Password)
+     --    FOREIGN KEY (NumberofFollowers) REFERENCES HomeCookSkill(NumberofFollowers)
+     --    ON DELETE CASCADE
     );
     
     
@@ -63,14 +63,14 @@ $intilizetables =
     CREATE TABLE IF NOT EXISTS ProfessionalChefDetails (
         RestaurantAffiliation VARCHAR (30),
         RestaurantLocation VARCHAR (30),
-        NumberofFollowers Integer DEFAULT 0,
-        NumberofFollowing Integer DEFAULT 0,
-        Age Integer  NOT NULL,
+        NumberofFollowers INTEGER DEFAULT 0,
+        NumberofFollowing INTEGER DEFAULT 0,
+        Age INTEGER NOT NULL,
         Username VARCHAR (30),
         Password VARCHAR(30),
-        PRIMARY KEY (Username, Password),
-        FOREIGN KEY (RestaurantAffiliation, RestaurantLocation) REFERENCES ProfessionalChefSkill
-        ON DELETE CASCADE
+        PRIMARY KEY (Username, Password)
+     --    FOREIGN KEY (RestaurantAffiliation, RestaurantLocation) REFERENCES ProfessionalChefSkill
+     --    ON DELETE CASCADE
     );
     
     CREATE TABLE IF NOT EXISTS ProfessionalChef (
@@ -79,9 +79,9 @@ $intilizetables =
         UserID INTEGER,
         PRIMARY KEY (UserID),
         FOREIGN KEY (UserID) REFERENCES AppUser
-        ON DELETE CASCADE,
-        FOREIGN KEY (Password, UserName) REFERENCES ProfessionalChefDetails
         ON DELETE CASCADE
+     --    FOREIGN KEY (Password, UserName) REFERENCES ProfessionalChefDetails
+     --    ON DELETE CASCADE
     );
     
     CREATE TABLE IF NOT EXISTS Leaderboard (
@@ -306,8 +306,8 @@ VALUES
 
 $insertQuery8 = "INSERT INTO ProfessionalChefDetails (RestaurantAffiliation, RestaurantLocation, NumberofFollowers, NumberofFollowing, Age, Username, Password)
 VALUES 
-('Restaurant1', 'Location1', 120, 45, 'user4', 'password4'),
-('Restaurant2', 'Location2', 80, 35, 'user5', 'password5')";
+('Restaurant1', 'Location1', 120, 45, 22, 'user4', 'password4'),
+('Restaurant2', 'Location2', 80, 35, 27, 'user5', 'password5')";
 
 $insertQuery9 = "INSERT INTO Leaderboard (LeaderboardCategory, Prize)
 VALUES 
@@ -460,17 +460,17 @@ echo "<p>Inserted into HomeCook table.</p>\n";
 $db->exec($insertQuery4);
 echo "<p>Inserted into HomeCookSkill table.</p>\n";
 
-// $db->exec($insertQuery5);
-// echo "<p>Inserted into HomeCookDetails table.</p>\n";
+$db->exec($insertQuery5);
+echo "<p>Inserted into HomeCookDetails table.</p>\n";
 
-// $db->exec($insertQuery6);
-// echo "<p>Inserted into ProfessionalChef table.</p>\n";
+$db->exec($insertQuery6);
+echo "<p>Inserted into ProfessionalChef table.</p>\n";
 
 $db->exec($insertQuery7);
 echo "<p>Inserted into ProfessionalChefSkill table.</p>\n";
 
-// $db->exec($insertQuery8);
-// echo "<p>Inserted into ProfessionalChefDetails table.</p>\n";
+$db->exec($insertQuery8);
+echo "<p>Inserted into ProfessionalChefDetails table.</p>\n";
 
 $db->exec($insertQuery9);
 echo "<p>Inserted into Leaderboard table.</p>\n";
