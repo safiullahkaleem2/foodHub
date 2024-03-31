@@ -293,6 +293,11 @@ ON DELETE CASCADE,
         FOREIGN KEY (UserID) REFERENCES Appuser
             ON DELETE CASCADE
    );
+
+   INSERT INTO UserDetails (NumberOfFollowers, NumberOfFollowing, Age, Username, Password) VALUES (100, 50, 30, 'john_doe', 'password123');
+
+   INSERT INTO AppUser (Username, Password, UserID) VALUES ('john_doe', 'password123', 1);
+
    
 
 COMMIT;";
