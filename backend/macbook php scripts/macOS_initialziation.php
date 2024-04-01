@@ -527,4 +527,4 @@ $db->commit();
 echo "<p>All data inserted successfully.</p>\n";
 
 
-$db->commit();
+// $db->commit();
