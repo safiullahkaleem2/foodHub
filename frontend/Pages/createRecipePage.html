@@ -10,22 +10,26 @@
 </head>
 
 <body class="bg-base-content p-2.5 flex items-center justify-center h-full">
-    <div class="card w-96 bg-neutral text-neutral-content ">
+    <div class="card w-auto bg-neutral text-neutral-content ">
         <div class="card-body items-center text-center">
             <h2 class="card-title text-white mb-4">Create Recipe</h2>
-            <form>
+            <form action="createdRecipeForm.php" method="post">
+                <!-- <form action="/my-handling-form-page" method="post">…</form> -->
+
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text text-white">Recipe title</span>
                     </label>
-                    <input type="text" placeholder="Enter recipe title" class="input input-bordered">
+                    <input required type="text" name="recipe-title" placeholder="Enter recipe title"
+                        class="input input-bordered text-zinc-950">
                 </div>
 
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text text-white">Recipe Video</span>
                     </label>
-                    <input type="text" placeholder="Enter link to recipe video" class="input input-bordered">
+                    <input required type="url" name="video-url" placeholder="Enter link to recipe video"
+                        class="input input-bordered text-zinc-950">
                 </div>
 
                 <div class="form-control">
@@ -35,7 +39,7 @@
                     <label class="label" for="difficulty-level">
                         <span class="label-text text-white">Choose a difficulty level</span>
                     </label>
-                    <select class="input input-bordered" name="difficulty-level" id="difficulty-level">
+                    <select class="input input-bordered text-zinc-950" name="difficulty-level" id="difficulty-level">
                         <option value="expert">Expert</option>
                         <option value="difficult">Difficult</option>
                         <option value="intermediate">Intermediate</option>
@@ -47,14 +51,16 @@
                     <label class="label">
                         <span class="label-text text-white">Culture</span>
                     </label>
-                    <input type="text" placeholder="Enter culture" class="input input-bordered">
+                    <input required type="text" name="culture" placeholder="Enter culture"
+                        class="input input-bordered text-zinc-950">
                 </div>
 
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text text-white">Category</span>
                     </label>
-                    <input type="text" placeholder="Enter Category" class="input input-bordered">
+                    <input required type="text" name="category" placeholder="Enter Category"
+                        class="input input-bordered text-zinc-950">
                 </div>
 
 
@@ -62,21 +68,16 @@
                     <label class="label">
                         <span class="label-text text-white">Servings</span>
                     </label>
-                    <input type="number" placeholder="Enter total servings" class="input input-bordered">
+                    <input required type="number" name="servings" placeholder="Enter total servings"
+                        class="input input-bordered text-zinc-950">
                 </div>
 
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text text-white">Prep time</span>
+                        <span class="label-text text-white">Estimated time</span>
                     </label>
-                    <input type="number" placeholder="Enter estimated prep time" class="input input-bordered">
-                </div>
-
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text text-white">Cook time</span>
-                    </label>
-                    <input type="number" placeholder="Enter estimated cook time" class="input input-bordered">
+                    <input required type="number" name="cook-time" placeholder="Enter estimated cook time"
+                        class="input input-bordered text-zinc-950">
                 </div>
 
                 <div class="form-control p-2.5">
@@ -92,18 +93,19 @@
                         const ingredientsList = document.getElementById('ingredientList');
                         const ingredientInput = document.createElement('input');
                         ingredientInput.type = 'text';
+                        ingredientInput.name = 'ingredients'
                         ingredientInput.placeholder = 'Enter ingredient...';
                         // ingredientInput.classList.add('mt-1', 'focus:ring-indigo-500', 'focus:border-indigo-500', 'block', 'w-full', 'shadow-sm', 'sm:text-sm', 'border-gray-300', 'rounded-md', 'mb-2');
-                        ingredientInput.classList.add('p-2.5', 'input', 'input-bordered');
+                        ingredientInput.classList.add('p-2.5', 'input', 'input-bordered', 'text-zinc-950');
                         ingredientsList.appendChild(ingredientInput);
                     });
                 </script>
 
-                <div class="form-control p-2.5">
+                <!-- <div class="form-control p-2.5">
                     <button type="button" id="addEquipment" class="w-auto btn btn-secondary">Add
                         Cooking Equipment</button>
                     <div id="equipmentList" class="mt-4">
-                        <!-- Ingredient list will be populated dynamically -->
+                        <!-- Ingredient list will be populated dynamically
                     </div>
                 </div>
 
@@ -112,15 +114,69 @@
                         const equipmentsList = document.getElementById('equipmentList');
                         const equipmentInput = document.createElement('input');
                         equipmentInput.type = 'text';
+                        equipmentInput.name = 'equipments'
                         equipmentInput.placeholder = 'Enter equipment...';
                         // ingredientInput.classList.add('mt-1', 'focus:ring-indigo-500', 'focus:border-indigo-500', 'block', 'w-full', 'shadow-sm', 'sm:text-sm', 'border-gray-300', 'rounded-md', 'mb-2');
-                        equipmentInput.classList.add('p-2.5', 'input', 'input-bordered');
+                        equipmentInput.classList.add('p-2.5', 'input', 'input-bordered', 'text-zinc-950');
                         equipmentsList.appendChild(equipmentInput);
+                    });
+                </script> -->
+
+                <div class="form-control p-2.5">
+                    <button type="button" id="addEquipment" class="w-auto btn btn-secondary">Add Cooking
+                        Equipment</button>
+                    <div id="equipmentList" class="mt-4">
+                        <!-- Equipment list will be populated dynamically -->
+                    </div>
+                </div>
+
+                <style>
+                    .input-row {
+                        display: flex;
+                        /* Use Flexbox to layout the inputs in a row */
+                        margin-bottom: 10px;
+                        /* Add some space between the rows */
+                    }
+
+                    .input-container {
+                        margin-right: 10px;
+                        /* Add some space between the inputs */
+                    }
+                </style>
+
+                <script>
+                    document.getElementById('addEquipment').addEventListener('click', function () {
+                        const equipmentsList = document.getElementById('equipmentList');
+                        const inputRow = document.createElement('div');
+                        inputRow.classList.add('input-row');
+
+                        // Array of placeholders
+                        const placeholders = ['Enter name', 'Enter brand', 'Enter price', 'Enter category', 'Enter quality'];
+
+                        for (let i = 0; i < 5; i++) { // Loop to create 5 input boxes
+                            const inputContainer = document.createElement('div');
+                            inputContainer.classList.add('input-container');
+
+                            const equipmentInput = document.createElement('input');
+                            equipmentInput.type = 'text';
+                            equipmentInput.name = 'equipments';
+                            equipmentInput.placeholder = placeholders[i]; // Set placeholder from array
+                            equipmentInput.classList.add('p-2.5', 'input', 'input-bordered', 'text-zinc-950');
+
+                            inputContainer.appendChild(equipmentInput);
+                            inputRow.appendChild(inputContainer);
+                        }
+
+                        equipmentsList.appendChild(inputRow);
                     });
                 </script>
 
+
                 <div class="form-control mt-6">
                     <button type="submit" class="btn btn-primary">Publish new recipe</button>
+                </div>
+                <div class="form-control mt-6">
+                    <button type="reset" class="btn btn-primary">Reset form</button>
                 </div>
             </form>
         </div>
