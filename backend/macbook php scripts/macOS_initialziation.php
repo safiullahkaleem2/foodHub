@@ -251,7 +251,7 @@ $intilizetables =
        );
        ";
 
-$db = new PDO('pgsql:host=localhost');
+$db = new PDO('pgsql:host=localhost; dbname=cpsc304', 'postgres', '123');
 
 // Intilize tables
 $db->beginTransaction();
@@ -527,4 +527,4 @@ $db->commit();
 echo "<p>All data inserted successfully.</p>\n";
 
 
-$db->commit();
+// $db->commit();
