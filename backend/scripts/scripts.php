@@ -8,7 +8,6 @@ function createTables($connection){
           NumberOfFollowers INTEGER DEFAULT 0,
           NumberOfFollowing INTEGER DEFAULT 0,
           Age INTEGER NOT NULL,
-          ProfilePicURL VARCHAR (200),
           Username VARCHAR(30),
           Password VARCHAR(30),
           PRIMARY KEY (Username, Password)
@@ -253,14 +252,14 @@ $connection->commit();
 
 
 function sampleData($connection){
-$insertQuery = "INSERT INTO UserDetails (NumberOfFollowers, NumberOfFollowing, Age, ProfilePicURL, Username, Password)
+$insertQuery = "INSERT INTO UserDetails (NumberOfFollowers, NumberOfFollowing, Age, Username, Password)
 VALUES 
-(100, 50, 25,'https://randomuser.me/api/portraits/men/70.jpg' ,'user1', 'password1'),
-(200, 75, 30,'https://randomuser.me/api/portraits/men/70.jpg' ,'user2', 'password2'),
-(150, 60, 28,'https://randomuser.me/api/portraits/men/70.jpg' ,'user3', 'password3'),
-(120, 45, 22,'https://randomuser.me/api/portraits/men/70.jpg' ,'user4', 'password4'),
-(80, 35, 27,'https://randomuser.me/api/portraits/men/70.jpg' ,'user5', 'password5'),
-(231,23,321,'sda','rrr', 'rrr')";
+(100, 50, 25,'user1', 'password1'),
+(200, 75, 30,'user2', 'password2'),
+(150, 60, 28,'user3', 'password3'),
+(120, 45, 22,'user4', 'password4'),
+(80, 35, 27,'user5', 'password5'),
+(231,23,321,'rrr', 'rrr')";
 
 $insertQuery2 = "INSERT INTO AppUser (Username, Password, UserID)
 VALUES
