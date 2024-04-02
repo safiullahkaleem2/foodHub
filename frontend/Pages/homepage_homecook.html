@@ -46,13 +46,27 @@
         return array;
     }
 
-    fetch('homepage_homecook.php')
-        .then((response) => response.json())
-        .then((data) => {
-            data.users.forEach(user => {
-                UserList.push(user);
-            });
-        })
+fetch('homepage_homecook.php')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); // Parse the JSON response
+    })
+    .then(data => {
+        UserList = data; // Assuming username is the property you want to display
+        console.log(UserList[0]);
+        document.getElementById('chefname1').innerHTML = UserList[0].username;
+        document.getElementById('chefname2').innerHTML = UserList[1].username;
+        document.getElementById('chefname3').innerHTML = UserList[2].username;
+        document.getElementById('chefname4').innerHTML = UserList[3].username;
+        document.getElementById('chefname5').innerHTML = UserList[4].username;
+        document.getElementById('chefname6').innerHTML = UserList[5].username;
+
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
 
     </script>
     
@@ -114,7 +128,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef1" class="mask mask-circle" src=""  alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4"></div>
+                <div id = "chefname1" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -122,7 +136,7 @@
             <ul>
                 <a href="professionalChefprofilePage.html">
                 <img id = "chef2" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Martha Stewart</div>
+                <div id = "chefname2" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
                 </a>
             </ul>
         </div> 
@@ -132,7 +146,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef3" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Jamie Oliver</div>
+                <div id = "chefname3" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -141,7 +155,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef4" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Chris Johnson</div>
+                <div id = "chefname4" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -150,7 +164,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef5" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Gordan Ramsey</div>
+                <div id = "chefname5" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -159,7 +173,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef6" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Gordan Ramsey</div>
+                <div id = "chefname6" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -168,7 +182,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef7" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Gordan Ramsey</div>
+                <div id = "chefname7" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -177,7 +191,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef8" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Gordan Ramsey</div>
+                <div id = "chefname8" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -186,12 +200,13 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef9" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Gordan Ramsey</div>
+                <div id = "chefname9" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
     </div>
 
     <script>
+
         ProfilePictures = shuffleArray(ProfilePictures);
 
         document.getElementById("chef1").src = ProfilePictures[0];
@@ -203,6 +218,7 @@
         document.getElementById("chef7").src = ProfilePictures[6];
         document.getElementById("chef8").src = ProfilePictures[7];
         document.getElementById("chef9").src = ProfilePictures[8];
+
     </script>
 
     <!--Recommended Recipes-->
@@ -365,6 +381,7 @@
     </div>    
 
     <script>
+
     FoodPictures = shuffleArray(FoodPictures);
 
     // Assign unique pictures to HTML elements
