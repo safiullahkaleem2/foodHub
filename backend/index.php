@@ -4,6 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once('./scripts/scripts.php');
 require_once('./scripts/databaseconnection.php');
 
+session_start();
 
 try {
    
