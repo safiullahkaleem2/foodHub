@@ -2,7 +2,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = $_POST['password']; // User's plaintext password
     $favouriteCuisine = $_POST['favouriteCuisine'];
     $age = $_POST['Age'];
 
@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once __DIR__ . '/idgenerator.php';
 
     try {
-        // Check if username exists
+        // Check if the username already exists
         $checkUserSql = "SELECT * FROM AppUser WHERE Username = :username";
         $checkStmt = $connection->prepare($checkUserSql);
         $checkStmt->bindParam(':username', $username);
@@ -20,28 +20,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
 
+        // Hash the password before storing it
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        // Insert user details into UserDetails table
         $sql = "INSERT INTO UserDetails (NumberOfFollowers, NumberOfFollowing, Age, Username, Password) VALUES (0,0,:age,:username, :password)";
         $stmt = $connection->prepare($sql);
         $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':password', $hashedPassword); // Use the hashed password
         $stmt->bindParam(':age', $age);
         $stmt->execute();
 
+        // Generate a unique ID for the new user
         $id = generateID($connection);
+
+        // Insert user into AppUser table
         $sql = "INSERT INTO AppUser (Username, Password, UserID) VALUES (:username, :password, :UserID)";
         $stmt = $connection->prepare($sql);
         $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':password', $hashedPassword); // Use the hashed password again
         $stmt->bindParam(':UserID', $id);
         $stmt->execute();
 
+        // Insert user into HomeCook table
         $sql = "INSERT INTO HomeCook (FavouriteCuisine, HobbyistLevel, UserID) VALUES (:favouriteCuisine, 'Amateur', :UserID)";
         $stmt = $connection->prepare($sql);
         $stmt->bindParam(':favouriteCuisine', $favouriteCuisine);
         $stmt->bindParam(':UserID', $id);
         $stmt->execute();
 
-
+        // Redirect the user to the login page after successful registration
         echo "<script>alert('Registration successful. You will be redirected to the login page.'); window.location.href='/frontend/Pages/loginpage.html';</script>";
         exit;
     } catch (PDOException $e) {
@@ -51,128 +59,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Error: Form was not submitted correctly.";
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

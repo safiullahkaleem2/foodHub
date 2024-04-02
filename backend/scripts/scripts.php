@@ -9,13 +9,13 @@ function createTables($connection){
           NumberOfFollowing INTEGER DEFAULT 0,
           Age INTEGER NOT NULL,
           Username VARCHAR(30),
-          Password VARCHAR(30),
+          Password VARCHAR(255),
           PRIMARY KEY (Username, Password)
        );
        
        CREATE TABLE IF NOT EXISTS AppUser (
          Username VARCHAR (30) NOT NULL UNIQUE,
-         Password VARCHAR (30)  NOT NULL,
+         Password VARCHAR (255)  NOT NULL,
          UserID INTEGER,
          PRIMARY KEY (UserID),
          FOREIGN KEY (UserName, Password) REFERENCES UserDetails(UserName, Password)
