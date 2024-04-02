@@ -1,6 +1,7 @@
 <?php
 
 
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -19,11 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             $_SESSION['userid'] = $user['userid']; 
             $_SESSION['username'] = $username;
-<<<<<<< HEAD
-        
-=======
-            // echo $_SESSION[userid];
->>>>>>> b0450e7bd1a70ad753b227e8abaa81a32ad20ea5
         $stmtHomeCook = $connection->prepare("SELECT * FROM HomeCook WHERE UserID = ?");
         $stmtHomeCook->execute([$user['userid']]);
         $isHomeCook = $stmtHomeCook->fetch();
@@ -35,12 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if  ($isHomeCook) {
         $_SESSION['userType'] = 'HomeCook';
         
-       header("Location: /frontend/Pages/homepage_homecook.html");
+        header("Location: /frontend/Pages/homepage_homecook.html");
         exit();
         } elseif ($isProChef) {
         $_SESSION['userType'] = 'ProfessionalChef';
 
-       header("Location: /frontend/Pages/homepage_professionalcook.html");
+        header("Location: /frontend/Pages/homepage_professionalcook.html");
         exit();
 } 
     else {
