@@ -37,6 +37,7 @@
 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=1010&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=1049&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'];
 
         var UserList = [];
+        var Recipes = [];
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -46,13 +47,61 @@
         return array;
     }
 
-    fetch('homepage_homecook.php')
-        .then((response) => response.json())
-        .then((data) => {
-            data.users.forEach(user => {
-                UserList.push(user);
-            });
+    fetch('/../../backend/src/userdetails.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse the JSON response
         })
+        .then(data => {
+            UserList = data; // Assuming username is the property you want to display
+            shuffleArray(UserList);
+            document.getElementById('chefname1').innerHTML = UserList[0].username;
+            document.getElementById('chefname2').innerHTML = UserList[1].username;
+            document.getElementById('chefname3').innerHTML = UserList[2].username;
+            document.getElementById('chefname4').innerHTML = UserList[3].username;
+            document.getElementById('chefname5').innerHTML = UserList[4].username;
+            document.getElementById('chefname6').innerHTML = UserList[5].username;
+            document.getElementById('chefname7').innerHTML = UserList[6].username;
+            document.getElementById('chefname8').innerHTML = UserList[7].username;
+            document.getElementById('chefname9').innerHTML = UserList[8].username;
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+
+    fetch('/../../backend/src/recipedetails.php')
+    .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse the JSON response
+        })
+        .then(data => {
+            Recipes = data; 
+            shuffleArray(Recipes);
+            document.getElementById('recipename1').innerHTML = Recipes[0].title;
+            document.getElementById('recipename2').innerHTML = Recipes[1].title;
+            document.getElementById('recipename3').innerHTML = Recipes[2].title;
+            document.getElementById('recipename4').innerHTML = Recipes[3].title;
+            document.getElementById('recipename5').innerHTML = Recipes[4].title;
+            document.getElementById('recipename6').innerHTML = Recipes[5].title;
+            document.getElementById('recipename7').innerHTML = Recipes[6].title;
+            document.getElementById('recipename8').innerHTML = Recipes[7].title;
+
+            document.getElementById('recipedesc1').innerHTML = Recipes[0].description;
+            document.getElementById('recipedesc2').innerHTML = Recipes[1].description;
+            document.getElementById('recipedesc3').innerHTML = Recipes[2].description;
+            document.getElementById('recipedesc4').innerHTML = Recipes[3].description;
+            document.getElementById('recipedesc5').innerHTML = Recipes[4].description;
+            document.getElementById('recipedesc6').innerHTML = Recipes[5].description;
+            document.getElementById('recipedesc7').innerHTML = Recipes[6].description;
+            document.getElementById('recipedesc8').innerHTML = Recipes[7].description;
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
 
     </script>
     
@@ -114,7 +163,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef1" class="mask mask-circle" src=""  alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4"></div>
+                <div id = "chefname1" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -122,7 +171,7 @@
             <ul>
                 <a href="professionalChefprofilePage.html">
                 <img id = "chef2" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Martha Stewart</div>
+                <div id = "chefname2" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
                 </a>
             </ul>
         </div> 
@@ -132,7 +181,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef3" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Jamie Oliver</div>
+                <div id = "chefname3" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -141,7 +190,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef4" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Chris Johnson</div>
+                <div id = "chefname4" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -150,7 +199,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef5" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Gordan Ramsey</div>
+                <div id = "chefname5" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -159,7 +208,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef6" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Gordan Ramsey</div>
+                <div id = "chefname6" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -168,7 +217,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef7" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Gordan Ramsey</div>
+                <div id = "chefname7" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -177,7 +226,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef8" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Gordan Ramsey</div>
+                <div id = "chefname8" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -186,12 +235,13 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef9" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Gordan Ramsey</div>
+                <div id = "chefname9" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
     </div>
 
     <script>
+
         ProfilePictures = shuffleArray(ProfilePictures);
 
         document.getElementById("chef1").src = ProfilePictures[0];
@@ -203,6 +253,7 @@
         document.getElementById("chef7").src = ProfilePictures[6];
         document.getElementById("chef8").src = ProfilePictures[7];
         document.getElementById("chef9").src = ProfilePictures[8];
+
     </script>
 
     <!--Recommended Recipes-->
@@ -215,8 +266,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Speedy Sapore: Quick Italian Bites</div>
-              <p class="text-white">
+              <div id = "recipename1" class="font-bold text-xl mb-2">Speedy Sapore: Quick Italian Bites</div>
+              <p id = "recipedesc1" class="text-white">
                 Experience the essence of Italy with our Speedy Sapore recipes. From savory focaccia to cheesy arancini, enjoy the taste of Italy's culinary treasures in minutes.
               </p>
             </div>
@@ -234,8 +285,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Italian Quick Baking: Bella Dolci</div>
-              <p class="text-white">
+              <div id = "recipename2" class="font-bold text-xl mb-2">Italian Quick Baking: Bella Dolci</div>
+              <p id = "recipedesc2" class="text-white">
                 Indulge in the art of Italian baking with our Bella Dolci recipes. From classic cannoli to delicate sfogliatelle, experience the sweet side of Italy in minutes.
             </p>
             </div>
@@ -253,8 +304,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Italian Express: Speedy Baking Wonders</div>
-              <p class="text-white">
+              <div id = "recipename3" class="font-bold text-xl mb-2">Italian Express: Speedy Baking Wonders</div>
+              <p id = "recipedesc3" class="text-white">
                 Embark on a culinary journey with our Italian Express recipes. From zesty lemon ricotta cake to heavenly chocolate torte, delight in the flavors of Italy in no time.
               </p>
             </div>
@@ -272,8 +323,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Quick Italian Cravings: Bella Cucina Bakes</div>
-              <p class="text-white">
+              <div id = "recipename4" class="font-bold text-xl mb-2">Quick Italian Cravings: Bella Cucina Bakes</div>
+              <p id = "recipedesc4" class="text-white">
                 Satisfy your cravings with our Bella Cucina Bakes recipes. From pillowy gnocchi pie to rich Nutella-stuffed pastries, indulge in the flavors of Italy's finest bakes without the wait.
               </p>
             </div>
@@ -293,8 +344,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Speedy Sapore: Quick Italian Bites</div>
-              <p class="text-white">
+              <div id = "recipename5" class="font-bold text-xl mb-2">Speedy Sapore: Quick Italian Bites</div>
+              <p id = "recipedesc5" class="text-white">
                 Experience the essence of Italy with our Speedy Sapore recipes. From savory focaccia to cheesy arancini, enjoy the taste of Italy's culinary treasures in minutes.
               </p>
             </div>
@@ -312,8 +363,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Italian Quick Baking: Bella Dolci</div>
-              <p class="text-white">
+              <div id = "recipename6" class="font-bold text-xl mb-2">Italian Quick Baking: Bella Dolci</div>
+              <p id = "recipedesc6" class="text-white">
                 Indulge in the art of Italian baking with our Bella Dolci recipes. From classic cannoli to delicate sfogliatelle, experience the sweet side of Italy in minutes.
             </p>
             </div>
@@ -331,8 +382,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Italian Express: Speedy Baking Wonders</div>
-              <p class="text-white">
+              <div id = "recipename7" class="font-bold text-xl mb-2">Italian Express: Speedy Baking Wonders</div>
+              <p id = "recipedesc7" class="text-white">
                 Embark on a culinary journey with our Italian Express recipes. From zesty lemon ricotta cake to heavenly chocolate torte, delight in the flavors of Italy in no time.
               </p>
             </div>
@@ -350,8 +401,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Quick Italian Cravings: Bella Cucina Bakes</div>
-              <p class="text-white">
+              <div id = "recipename8" class="font-bold text-xl mb-2">Quick Italian Cravings: Bella Cucina Bakes</div>
+              <p id = "recipedesc8" class="text-white">
                 Satisfy your cravings with our Bella Cucina Bakes recipes. From pillowy gnocchi pie to rich Nutella-stuffed pastries, indulge in the flavors of Italy's finest bakes without the wait.
               </p>
             </div>
@@ -365,6 +416,7 @@
     </div>    
 
     <script>
+
     FoodPictures = shuffleArray(FoodPictures);
 
     // Assign unique pictures to HTML elements
