@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             $_SESSION['userid'] = $user['userid']; 
             $_SESSION['username'] = $username;
-    echo $_SESSION[userid];
+            // echo $_SESSION[userid];
         $stmtHomeCook = $connection->prepare("SELECT * FROM HomeCook WHERE UserID = ?");
         $stmtHomeCook->execute([$user['userid']]);
         $isHomeCook = $stmtHomeCook->fetch();

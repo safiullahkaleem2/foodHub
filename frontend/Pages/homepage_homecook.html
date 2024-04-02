@@ -37,6 +37,7 @@
 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=1010&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=1049&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'];
 
         var UserList = [];
+        var Recipes = [];
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -46,27 +47,45 @@
         return array;
     }
 
-fetch('homepage_homecook.php')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json(); // Parse the JSON response
-    })
-    .then(data => {
-        UserList = data; // Assuming username is the property you want to display
-        console.log(UserList[0]);
-        document.getElementById('chefname1').innerHTML = UserList[0].username;
-        document.getElementById('chefname2').innerHTML = UserList[1].username;
-        document.getElementById('chefname3').innerHTML = UserList[2].username;
-        document.getElementById('chefname4').innerHTML = UserList[3].username;
-        document.getElementById('chefname5').innerHTML = UserList[4].username;
-        document.getElementById('chefname6').innerHTML = UserList[5].username;
+    fetch('/../../backend/src/userdetails.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse the JSON response
+        })
+        .then(data => {
+            UserList = data; // Assuming username is the property you want to display
+            shuffleArray(UserList);
+            document.getElementById('chefname1').innerHTML = UserList[0].username;
+            document.getElementById('chefname2').innerHTML = UserList[1].username;
+            document.getElementById('chefname3').innerHTML = UserList[2].username;
+            document.getElementById('chefname4').innerHTML = UserList[3].username;
+            document.getElementById('chefname5').innerHTML = UserList[4].username;
+            document.getElementById('chefname6').innerHTML = UserList[5].username;
+            document.getElementById('chefname7').innerHTML = UserList[6].username;
+            document.getElementById('chefname8').innerHTML = UserList[7].username;
+            document.getElementById('chefname9').innerHTML = UserList[8].username;
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
 
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
-    });
+    fetch('/../../backend/src/recipedetails.php')
+    .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse the JSON response
+        })
+        .then(data => {
+            Recipes = data; 
+            shuffleArray(Recipes);
+           
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
 
     </script>
     

@@ -8,7 +8,6 @@ function createTables($connection){
           NumberOfFollowers INTEGER DEFAULT 0,
           NumberOfFollowing INTEGER DEFAULT 0,
           Age INTEGER NOT NULL,
-          ProfilePicURL VARCHAR (200),
           Username VARCHAR(30),
           Password VARCHAR(30),
           PRIMARY KEY (Username, Password)
@@ -17,7 +16,7 @@ function createTables($connection){
        CREATE TABLE IF NOT EXISTS AppUser (
          Username VARCHAR (30) NOT NULL UNIQUE,
          Password VARCHAR (30)  NOT NULL,
-          UserID INTEGER,
+         UserID INTEGER,
          PRIMARY KEY (UserID),
          FOREIGN KEY (UserName, Password) REFERENCES UserDetails(UserName, Password)
              ON DELETE CASCADE
@@ -25,8 +24,6 @@ function createTables($connection){
      
      );
      
- 
-       
       CREATE TABLE IF NOT EXISTS HomeCook (
          FavouriteCuisine VARCHAR (30),
          HobbyistLevel VARCHAR(30) DEFAULT 'Amateur',
@@ -36,8 +33,7 @@ function createTables($connection){
          ON DELETE CASCADE ON UPDATE CASCADE
      );
      
-     
-     
+        
      CREATE TABLE IF NOT EXISTS ProfessionalChefSkill (
         RestaurantAffiliation VARCHAR (30),
         RestaurantLocation VARCHAR (30), 
@@ -249,46 +245,87 @@ $connection->commit();
 
 }
 
-
-
 function sampleData($connection){
-$insertQuery = "INSERT INTO UserDetails (NumberOfFollowers, NumberOfFollowing, Age, ProfilePicURL, Username, Password)
+$insertQuery = "INSERT INTO UserDetails (NumberOfFollowers, NumberOfFollowing, Age, Username, Password)
 VALUES 
-(100, 50, 25,'https://randomuser.me/api/portraits/men/70.jpg' ,'user1', 'password1'),
-(200, 75, 30,'https://randomuser.me/api/portraits/men/70.jpg' ,'user2', 'password2'),
-(150, 60, 28,'https://randomuser.me/api/portraits/men/70.jpg' ,'user3', 'password3'),
-(120, 45, 22,'https://randomuser.me/api/portraits/men/70.jpg' ,'user4', 'password4'),
-(80, 35, 27,'https://randomuser.me/api/portraits/men/70.jpg' ,'user5', 'password5'),
-(231,23,321,'sda','rrr', 'rrr')";
+(100, 50, 25, 'jacky', '110'),
+(200, 75, 30, 'safiullah', '320'),
+(150, 60, 28, 'mohammad', '310'),
+(120, 45, 22, 'seva', '221'),
+(80, 35, 27, 'raymond', '304'),
+(145,90, 89,'nafis', '304'),
+(89,453, 43,'gregor', '110'),
+(57,329, 71,'clune', '340'),
+(67,78, 56,'feeley', '213'),
+(98,46, 32,'holmes', '310'),
+(87,20, 102,'pottinger', '304'),
+(68,198, 125,'wolfman', '313'),
+(56,980, 98,'jordon', '213'),
+(110,589, 75,'geoffrey', '121'),
+(120,437, 32,'bradley', '320'),
+(89,84938, 43,'cinda', '221'),
+(96,473827483, 87,'carter', '210'),
+(48,2490, 12,'patrice', '313'),
+(82,437843, 35,'ratna', '295'),
+(102,3848, 23,'anton', '999')";
 
 $insertQuery2 = "INSERT INTO AppUser (Username, Password, UserID)
 VALUES
-('user1', 'password1', 1),
-('user2', 'password2', 2),
-('user3', 'password3', 3),
-('user4', 'password4', 4),
-('user5', 'password5', 5),
-('rrr', 'rrr', 6)";
-
+('jacky', '110', 1),
+('safiullah', '320', 2),
+('mohammad', '310', 3),
+('seva', '221', 4),
+('raymond', '304', 5),
+('nafis', '304', 6),
+('gregor', '110', 7),
+('clune', '340', 8),
+('feeley', '213', 9),
+('holmes', '310', 10),
+('pottinger', '304', 11),
+('wolfman', '313', 12),
+('jordon', '213', 13),
+('geoffrey', '121', 14),
+('bradley', '320', 15),
+('cinda', '221', 16),
+('carter', '210', 17),
+('patrice', '313', 18),
+('ratna', '295', 19),
+('anton', '999', 20)";
 
 $insertQuery5 = "INSERT INTO HomeCook (FavouriteCuisine, HobbyistLevel, UserID)
 VALUES
 ('Italian', 'Amateur', 1),
 ('Mexican', 'Intermediate',2),
-('Japanese', 'Advanced', 3)";
+('Japanese', 'Advanced', 3),
+('Italian', 'Amateur', 4),
+('British', 'Advanced', 5)";
 
 $insertQuery7 = "INSERT INTO ProfessionalChefSkill (RestaurantAffiliation, RestaurantLocation, Certification)
 VALUES 
 ('Restaurant1', 'Location1', 'Chef Certification 1'),
-('Restaurant2', 'Location2', 'Chef Certification 2')";
+('Restaurant2', 'Location2', 'Chef Certification 2'),
+('Restaurant3', 'Location3', 'Chef Certification 3'),
+('Restaurant4', 'Location4', 'Chef Certification 4'),
+('Restaurant5', 'Location5', 'Chef Certification 5')";
 
 
 $insertQuery6 = "INSERT INTO ProfessionalChef (RestaurantAffiliation, RestaurantLocation, UserID)
 VALUES
-('Restaurant1', 'Location1', 4),
-('Restaurant2', 'Location2', 5)";
-
-
+('Restaurant1', 'Location1', 6),
+('Restaurant2', 'Location2', 7),
+('Restaurant3', 'Location3', 8),
+('Restaurant4', 'Location4', 9),
+('Restaurant5', 'Location5', 10),
+('Restaurant1', 'Location1', 11),
+('Restaurant2', 'Location2', 12),
+('Restaurant3', 'Location3', 13),
+('Restaurant4', 'Location4', 14),
+('Restaurant5', 'Location5', 15),
+('Restaurant1', 'Location1', 16),
+('Restaurant2', 'Location2', 17),
+('Restaurant3', 'Location3', 18),
+('Restaurant4', 'Location4', 19),
+('Restaurant5', 'Location5', 20)";
 
 $insertQuery9 = "INSERT INTO Leaderboard (LeaderboardCategory, Prize)
 VALUES 
@@ -353,7 +390,22 @@ VALUES
 ('2024-02-15', 'Recipe2', 'Simple and quick recipe for busy days.', 'Mexican', 'Beginner', 2),
 ('2024-03-20', 'Recipe3', 'Healthy and flavorful meal with fresh ingredients.', 'Japanese', 'Advanced', 6),
 ('2024-04-10', 'Recipe4', 'Classic recipe loved by all.', 'French', 'Intermediate', 4),
-('2024-05-05', 'Recipe5', 'Perfect dessert for any occasion.', 'Indian', 'Expert', 8)";
+('2024-05-05', 'Recipe5', 'Perfect dessert for any occasion.', 'Indian', 'Expert', 8),
+('2024-06-20', 'Recipe6', 'Savory and aromatic dish with a twist.', 'Chinese', 'Intermediate', 5),
+('2024-07-15', 'Recipe7', 'Light and refreshing salad for summer days.', 'Mediterranean', 'Beginner', 3),
+('2024-08-10', 'Recipe8', 'Hearty soup perfect for chilly evenings.', 'American', 'Intermediate', 6),
+('2024-09-05', 'Recipe9', 'Spicy and flavorful curry recipe.', 'Thai', 'Advanced', 7),
+('2024-10-01', 'Recipe10', 'Decadent chocolate cake for chocolate lovers.', 'Swiss', 'Expert', 10),
+('2024-11-10', 'Recipe11', 'Vegetarian delight packed with nutrients.', 'Indian', 'Intermediate', 4),
+('2024-12-05', 'Recipe12', 'Comfort food for a cozy night in.', 'Italian', 'Beginner', 3),
+('2025-01-20', 'Recipe13', 'Exotic seafood dish with a tropical flair.', 'Caribbean', 'Advanced', 6),
+('2025-02-15', 'Recipe14', 'Refreshing drink perfect for hot summer days.', 'Mexican', 'Beginner', 2),
+('2025-03-10', 'Recipe15', 'Fusion recipe blending flavors from East and West.', 'Asian Fusion', 'Intermediate', 5),
+('2025-04-05', 'Recipe16', 'Rich and creamy pasta dish.', 'Italian', 'Expert', 8),
+('2025-05-01', 'Recipe17', 'Light and healthy wrap for a quick meal.', 'Mediterranean', 'Beginner', 2),
+('2025-06-20', 'Recipe18', 'Grilled dish with smoky flavors.', 'American', 'Intermediate', 4),
+('2025-07-15', 'Recipe19', 'Zesty and tangy dish with a kick.', 'Mexican', 'Advanced', 7),
+('2025-08-10', 'Recipe20', 'Decadent dessert with a surprise element.', 'French', 'Expert', 9)";
 
 $insertQuery17 = "INSERT INTO Recipe (RecipeID, PublishDate, EstimatedTime, Title)
 VALUES 
@@ -361,7 +413,22 @@ VALUES
 (2, '2024-02-15', 30, 'Recipe2'),
 (3, '2024-03-20', 90, 'Recipe3'),
 (4, '2024-04-10', 45, 'Recipe4'),
-(5, '2024-05-05', 120, 'Recipe5')";
+(5, '2024-05-05', 120, 'Recipe5'),
+(6, '2024-06-20', 75, 'Recipe6'),
+(7, '2024-07-15', 20, 'Recipe7'),
+(8, '2024-08-10', 60, 'Recipe8'),
+(9, '2024-09-05', 90, 'Recipe9'),
+(10, '2024-10-01', 180, 'Recipe10'),
+(11, '2024-11-10', 40, 'Recipe11'),
+(12, '2024-12-05', 30, 'Recipe12'),
+(13, '2025-01-20', 120, 'Recipe13'),
+(14, '2025-02-15', 15, 'Recipe14'),
+(15, '2025-03-10', 60, 'Recipe15'),
+(16, '2025-04-05', 90, 'Recipe16'),
+(17, '2025-05-01', 25, 'Recipe17'),
+(18, '2025-06-20', 45, 'Recipe18'),
+(19, '2025-07-15', 75, 'Recipe19'),
+(20, '2025-08-10', 150, 'Recipe20')";
 
 $insertQuery18 = "INSERT INTO Video (Name, UploadTime, RecipeID, VideoURL, Duration, Views)
 VALUES 
@@ -385,7 +452,12 @@ VALUES
 (2, 3),
 (3, 4),
 (4, 5),
-(5, 1)";
+(5, 1),
+(6, 7),
+(7, 8),
+(8, 9),
+(9, 10),
+(10, 6)";
 
 $insertQuery21 = "INSERT INTO Participates (UserID, EventID)
 VALUES 

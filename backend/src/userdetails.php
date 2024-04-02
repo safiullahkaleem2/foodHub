@@ -1,9 +1,9 @@
 <?php
 header('Content-Type: application/json');
-require_once __DIR__ . '/../../backend/scripts/databaseconnection.php';
+require_once __DIR__ . '/../backend/scripts/databaseconnection.php';
+
 // Query to fetch data from the database
-$query = "SELECT username FROM userdetails";
-$statement = $connection->prepare($query);
+$statement = $connection->prepare("SELECT * FROM userdetails");
 $statement->execute();
 $userdetails = $statement->fetchAll(PDO::FETCH_ASSOC);
 

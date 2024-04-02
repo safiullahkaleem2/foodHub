@@ -60,4 +60,3 @@ foreach ($equipments as $equipment) {
 }
 
 
-?>
