@@ -1,33 +1,44 @@
 <?php
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../scripts/databaseconnection.php'; 
 
-$db = new PDO('pgsql:host=localhost; dbname=cpsc304', 'postgres', '123');
-
-$db->beginTransaction();
+$connection->beginTransaction();
 
 // The global $_POST variable allows you to access the data sent with the POST method by name
 // To access the data sent with the GET method, you can use $_GET
 $recipeTitle = $_POST['recipe-title'];
+$recipeDescription = $_POST['recipe-description'];
 $videoURL = $_POST['video-url'];
+$videoDuration = $_POST['video-duration'];
+$videoName = $_POST['video-name'];
 $difficultyLevel = $_POST['difficulty-level'];
+$ratingLevel = $_POST['rating-level'];
 $culture = $_POST['culture'];
 $category = $_POST['category'];
 $servings = $_POST['servings'];
-$estimatedTime = $_POST['cook-time'];
+$estimatedTime = $_POST['estimated-time'];
+$publishedDate = date('Y-m-d');
+
 
 $insertQueryRecipeDetails = "INSERT INTO RecipeDetails (PublishDate, Title, Description, VideoURL, Culture, Difficulty, Serving)
 VALUES 
-('2024-01-01', $recipeTitle, $recipeTitle, $videoURL, $culture, $difficultyLevel, $servings)";
+($publishedDate, $recipeTitle, $recipeTitle, $videoURL, $culture, $difficultyLevel, $servings)";
 
-$db->exec($insertQueryRecipeDetails);
+$connection->exec($insertQueryRecipeDetails);
 
+// TODO: use Safi's getID() function to get recipeID
 $insertQueryRecipe = "INSERT INTO Recipe (RecipeID, PublishDate, EstimatedTime, Title)
 VALUES
 (6, '2024-05-05', $estimatedTime, $recipeTitle)";
 
-$db->exec($insertQueryRecipe);
+$connection->exec($insertQueryRecipe);
 
+// TODO: use recipeID and global (session) variable to get userID
+//       and insert the tuple (recipeID, userID) to Posts relationship
+
+
+// todo: we are going to use a pre-defined list
+// todo: create a multi-select list showing the ingredients
 $ingredients = $_POST['ingredients'];
 // Insert each ingredient into the database
 foreach ($ingredients as $ingredient) {
@@ -39,9 +50,13 @@ foreach ($ingredients as $ingredient) {
   $query = "INSERT INTO Ingredient (Name, AllergenInfo) VALUES
      ($ingredient, 'none')";
 
-  $db->exec($query);
+  $connection->exec($query);
   echo "<p>Inserted into Ingredient table.</p>\n";
 }
+
+
+// todo: we are goign to use a pre-defined list.
+// todo: create a multi-select list showing the equipments
 
 $equipments = $_POST['equipments'];
 // Insert each ingredient into the database
@@ -55,7 +70,7 @@ foreach ($equipments as $equipment) {
   VALUES 
   (60, 'Mixers', 'Medium', 'Brand5')";
 
-  $db->exec($query);
+  $connection->exec($query);
   echo "<p>Inserted into Ingredient table.</p>\n";
 }
 
