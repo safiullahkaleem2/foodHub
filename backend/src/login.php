@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $connection->prepare("SELECT * FROM AppUser WHERE username = ?");
     $stmt->execute([$username]);
     $user = $stmt->fetch();
-    
+    // echo var_dump($user);
 
     if ($user) {
 
@@ -32,12 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if  ($isHomeCook) {
         $_SESSION['userType'] = 'HomeCook';
         
-        header("Location: /frontend/Pages/homepage_homecook.html");
+       header("Location: /frontend/Pages/homepage_homecook.html");
         exit();
         } elseif ($isProChef) {
         $_SESSION['userType'] = 'ProfessionalChef';
 
-        header("Location: /frontend/Pages/homepage_professionalcook.html");
+       header("Location: /frontend/Pages/homepage_professionalcook.html");
         exit();
 } 
     else {
