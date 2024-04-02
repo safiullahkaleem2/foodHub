@@ -13,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $stmt->fetch();
 
     if ($user) {
-        // Use password_verify() to check the hashed password.
         if (password_verify($password, $user['password'])) {
             
             $_SESSION['userid'] = $user['userid']; 
