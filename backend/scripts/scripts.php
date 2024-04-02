@@ -17,7 +17,7 @@ function createTables($connection){
        CREATE TABLE IF NOT EXISTS AppUser (
          Username VARCHAR (30) NOT NULL UNIQUE,
          Password VARCHAR (30)  NOT NULL,
-      UserID INTEGER,
+          UserID INTEGER,
          PRIMARY KEY (UserID),
          FOREIGN KEY (UserName, Password) REFERENCES UserDetails(UserName, Password)
              ON DELETE CASCADE
@@ -179,8 +179,8 @@ function createTables($connection){
         CREATE TABLE IF NOT EXISTS Participates (
              UserID INTEGER , 
              EventID  VARCHAR(30),
-             PRIMARY KEY (Userid, EventID),
-             FOREIGN KEY (Userid) REFERENCES Appuser
+             PRIMARY KEY (UserID, EventID),
+             FOREIGN KEY (UserID) REFERENCES AppUser
              ON DELETE CASCADE ON UPDATE CASCADE,
              FOREIGN KEY (EventID) REFERENCES EventDetails
              ON DELETE CASCADE ON UPDATE CASCADE 
@@ -193,7 +193,7 @@ function createTables($connection){
              Points INTEGER,
              Position INTEGER,
              PRIMARY KEY (UserID, LeaderboardCategory),
-             FOREIGN KEY (UserID) REFERENCES Appuser
+             FOREIGN KEY (UserID) REFERENCES AppUser
                  ON DELETE CASCADE,
              FOREIGN KEY (LeaderboardCategory) REFERENCES Leaderboard
                  ON DELETE CASCADE
@@ -222,7 +222,7 @@ function createTables($connection){
              PRIMARY KEY (RecipeID, UserID),
              FOREIGN KEY (RecipeID) REFERENCES Recipe
                  ON DELETE CASCADE,
-             FOREIGN KEY (UserID) REFERENCES Appuser
+             FOREIGN KEY (UserID) REFERENCES AppUser
                  ON DELETE CASCADE
         );
 
@@ -233,7 +233,7 @@ function createTables($connection){
      PRIMARY KEY (ReviewID, UserID, RecipeID),
      FOREIGN KEY (ReviewID) REFERENCES Review
     ON DELETE CASCADE ON UPDATE CASCADE,
-     FOREIGN KEY (UserID) REFERENCES Appuser
+     FOREIGN KEY (UserID) REFERENCES AppUser
     ON DELETE CASCADE ON UPDATE CASCADE,
      FOREIGN KEY (RecipeID) REFERENCES Recipe
     ON DELETE CASCADE ON UPDATE CASCADE
@@ -259,7 +259,8 @@ VALUES
 (200, 75, 30,'https://randomuser.me/api/portraits/men/70.jpg' ,'user2', 'password2'),
 (150, 60, 28,'https://randomuser.me/api/portraits/men/70.jpg' ,'user3', 'password3'),
 (120, 45, 22,'https://randomuser.me/api/portraits/men/70.jpg' ,'user4', 'password4'),
-(80, 35, 27,'https://randomuser.me/api/portraits/men/70.jpg' ,'user5', 'password5')";
+(80, 35, 27,'https://randomuser.me/api/portraits/men/70.jpg' ,'user5', 'password5'),
+(231,23,321,'sda','rrr', 'rrr')";
 
 $insertQuery2 = "INSERT INTO AppUser (Username, Password, UserID)
 VALUES
@@ -267,7 +268,8 @@ VALUES
 ('user2', 'password2', 2),
 ('user3', 'password3', 3),
 ('user4', 'password4', 4),
-('user5', 'password5', 5)";
+('user5', 'password5', 5),
+('rrr', 'rrr', 6)";
 
 
 $insertQuery5 = "INSERT INTO HomeCook (FavouriteCuisine, HobbyistLevel, UserID)
