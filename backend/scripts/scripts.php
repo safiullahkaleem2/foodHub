@@ -126,7 +126,6 @@ function createTables($connection){
              PublishDate DATE,
              Title VARCHAR (20),  
              Description VARCHAR (200),
-             ProfilePicURL VARCHAR (200),
              Culture VARCHAR (20) NOT NULL, 
              Difficulty VARCHAR (20) NOT NULL, 
              Serving INTEGER,
@@ -364,7 +363,7 @@ VALUES
 (4, '2024-04-10', 45, 'Recipe4'),
 (5, '2024-05-05', 120, 'Recipe5')";
 
-$insertQuery18 = "INSERT INTO Video (Name, UploadTime, RecipeID,VideoURL, Duration, Views)
+$insertQuery18 = "INSERT INTO Video (Name, UploadTime, RecipeID, VideoURL, Duration, Views)
 VALUES 
 ('Video1', '2024-01-01', 1, 'https://example.com/video1', 120, '1000'),
 ('Video2', '2024-02-15', 2, 'https://example.com/video1', 90, '800'),
