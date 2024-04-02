@@ -36,6 +36,8 @@
 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=1065&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=962&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1529042410759-befb1204b468?q=80&w=986&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=1010&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=1049&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'];
 
+        var UserList = [];
+
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -43,6 +45,14 @@
         }
         return array;
     }
+
+    fetch('homepage_homecook.php')
+        .then((response) => response.json())
+        .then((data) => {
+            data.users.forEach(user => {
+                UserList.push(user);
+            });
+        })
 
     </script>
     
@@ -104,7 +114,7 @@
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef1" class="mask mask-circle" src=""  alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div class="text-sm font-bold text-center text-primary-500 mb-4">Gordan Ramsey</div>
+                <div class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -367,7 +377,6 @@
     document.getElementById("food7").src = FoodPictures[6];
     document.getElementById("food8").src = FoodPictures[7];
     </script>
-
 
     <!--Leaderboards-->
     <div class="join ml-24">
@@ -702,7 +711,7 @@
     <div class="flex justify-center gap-8">
         <div class="card card-compact w-96 bg-neutral shadow-xl ml-4">
             <figure><img src="https://www.withfire.co.uk/wp-content/uploads/2020/03/With-Fire-Incredible-Street-Food-Catering-Ideas-for-Your-Event.jpg" alt="Shoes" /></figure>
-            <div class="absolute top-40 left-0 p-4">
+            <div class="absolute top-40 left-0 p-4 bg-base-content">
                 <h3 class="text-white text-xl font-semibold">Cooking Basics Workshop</h3>
             </div>
             <div class="card-body">
@@ -720,7 +729,7 @@
 
         <div class="card card-compact w-96 bg-neutral shadow-xl">
             <figure><img src="https://www.teambonding.com/wp-content/uploads/2020/10/Depositphotos_565421122_L-1.jpg" alt="Shoes" /></figure>
-            <div class="absolute top-40 left-0 p-4">
+            <div class="absolute top-40 left-0 bg-neutral p-4">
                 <h3 class="text-white text-xl font-semibold">Industry Networking Mixer</h3>
             </div>
             <div class="card-body">
@@ -738,7 +747,7 @@
 
         <div class="card card-compact w-96 bg-neutral shadow-xl">
             <figure><img src="https://mocandco.com/wp-content/uploads/2017/06/tray_of_food.jpg" alt="Shoes" /></figure>
-            <div class="absolute top-40 left-0 p-4">
+            <div class="absolute top-40 left-0 bg-neutral p-4">
                 <h3 class="text-white text-xl font-semibold">Wine Pairing Masterclass</h3>
             </div>
             <div class="card-body">
@@ -756,7 +765,7 @@
 
         <div class="card card-compact w-96 bg-neutral shadow-xl mr-4">
             <figure><img src="https://www.reventals.com/blog/wp-content/uploads/2019/06/AdobeStock_186295600.jpeg" alt="Shoes" /></figure>
-            <div class="absolute top-40 left-0 p-4">
+            <div class="absolute top-40 left-0 bg-neutral p-4">
                 <h3 class="text-white text-xl font-semibold">Steak Masterclass</h3>
             </div>
             <div class="card-body">
