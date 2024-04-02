@@ -12,7 +12,7 @@
 <body class="bg-base-content p-2.5 flex items-center justify-center h-full">
     <div class="card w-96 bg-neutral text-neutral-content ">
         <div class="card-body items-center text-center">
-            <h2 class="card-title text-white mb-4">Create Recipe</h2>
+            <h2 class="card-title text-white mb-4">Edit Recipe</h2>
             <form>
                 <div class="form-control">
                     <label class="label">
@@ -23,19 +23,24 @@
 
                 <div class="form-control">
                     <label class="label">
+                        <span class="label-text text-white">Recipe description</span>
+                    </label>
+                    <textarea required name="recipe-description" placeholder="Enter recipe description"
+                        class="input input-bordered text-zinc-950 h-32 resize-none"></textarea>
+                </div>
+
+                <div class="form-control">
+                    <label class="label">
                         <span class="label-text text-white">Recipe Video</span>
                     </label>
                     <input type="text" placeholder="Enter link to recipe video" class="input input-bordered">
                 </div>
 
                 <div class="form-control">
-                    <!-- <label class="label">
-                        <span class="label-text text-white">Difficulty Level</span>
-                    </label> -->
                     <label class="label" for="difficulty-level">
                         <span class="label-text text-white">Choose a difficulty level</span>
                     </label>
-                    <select class="input input-bordered" name="difficulty-level" id="difficulty-level">
+                    <select class="input input-bordered text-zinc-950" name="difficulty-level" id="difficulty-level">
                         <option value="expert">Expert</option>
                         <option value="difficult">Difficult</option>
                         <option value="intermediate">Intermediate</option>
@@ -57,6 +62,23 @@
                     <input type="text" placeholder="Enter Category" class="input input-bordered">
                 </div>
 
+                <div class="form-control">
+                    <label class="label" for="rating-level">
+                        <span class="label-text text-white">Choose a rating level</span>
+                    </label>
+                    <select class="input input-bordered text-zinc-950" name="rating-level" id="rating-level">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
 
                 <div class="form-control">
                     <label class="label">
@@ -79,11 +101,11 @@
                     <input type="number" placeholder="Enter estimated cook time" class="input input-bordered">
                 </div>
 
-                <div class="form-control p-2.5">
+                <!-- <div class="form-control p-2.5">
                     <button type="button" id="addIngredient" class="w-auto btn btn-secondary">Add
                         Ingredient</button>
                     <div id="ingredientList" class="mt-4">
-                        <!-- Ingredient list will be populated dynamically -->
+                        <!-- Ingredient list will be populated dynamically
                     </div>
                 </div>
 
@@ -103,7 +125,7 @@
                     <button type="button" id="addEquipment" class="w-auto btn btn-secondary">Add
                         Cooking Equipment</button>
                     <div id="equipmentList" class="mt-4">
-                        <!-- Ingredient list will be populated dynamically -->
+                        <!-- Ingredient list will be populated dynamically
                     </div>
                 </div>
 
@@ -117,7 +139,7 @@
                         equipmentInput.classList.add('p-2.5', 'input', 'input-bordered');
                         equipmentsList.appendChild(equipmentInput);
                     });
-                </script>
+                </script> -->
 
                 <div class="form-control mt-6">
                     <button type="submit" class="btn btn-primary">Save changes</button>
