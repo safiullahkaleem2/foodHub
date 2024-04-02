@@ -1,5 +1,4 @@
 <?php
-  require_once __DIR__ . '/../scripts/databaseconnection.php';
 function generateID($connection) {
     $idExists = true;
     $uniqueID = 0;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register as Home Cook - FoodHub</title>
+    <title>Register as Professional Chef - FoodHub</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -9,44 +9,45 @@
     <div class="card w-96 bg-neutral text-neutral-content shadow-xl">
         <div class="card-body items-center text-center">
             <h2 class="card-title text-white mb-4">Register as Professional Chef</h2>
-            <form>
+            <form method="POST" action="/../backend/src/registerprofessionalchef.php">
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text text-white">Username</span>
                     </label>
-                    <input type="text" placeholder="Username" class="input input-bordered">
+                    <input type="text" placeholder="Username" name="username" class="input input-bordered" required>
                 </div>
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text text-white">Password</span>
                     </label>
-                    <input type="password" placeholder="Password" class="input input-bordered">
+                    <input type="password" placeholder="Password" name="password" class="input input-bordered" required>
                 </div>
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text text-white">Resturant Affiliation</span>
+                        <span class="label-text text-white">Restaurant Affiliation</span>
                     </label>
-                    <input type="text" placeholder="Resturant Affiliation" class="input input-bordered">
+                    <input type="text" placeholder="Restaurant Affiliation" name="restaurantAffiliation" class="input input-bordered">
                 </div>
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text text-white">Resturant Location</span>
+                        <span class="label-text text-white">Restaurant Location</span>
                     </label>
-                    <input type="text" placeholder="Resturant Location" class="input input-bordered">
+                    <input type="text" placeholder="Restaurant Location" name="restaurantLocation" class="input input-bordered">
                 </div>
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text text-white">Certification</span>
                     </label>
-                    <input type="text" placeholder="Certification" class="input input-bordered">
+                    <input type="text" placeholder="Certification" name="certification" class="input input-bordered">
                 </div>
-                <label class="label">
-                    <span class="label-text text-white">Age</span>
-                </label>
-                <input type="number" name="Age" step= 1>
-            </div>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-white">Age</span>
+                    </label>
+                    <input type="number" name="age" step="1" class="input input-bordered" required>
+                </div>
                 <div class="form-control mt-6">
-                    <a href="homepage_professionalcook.html" type="submit" class="btn btn-primary">Register</a>
+                    <button type="submit" class="btn btn-primary">Register</button>
                 </div>
             </form>
         </div>
