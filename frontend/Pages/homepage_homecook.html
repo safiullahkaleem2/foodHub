@@ -81,7 +81,23 @@
         .then(data => {
             Recipes = data; 
             shuffleArray(Recipes);
-           
+            document.getElementById('recipename1').innerHTML = Recipes[0].title;
+            document.getElementById('recipename2').innerHTML = Recipes[1].title;
+            document.getElementById('recipename3').innerHTML = Recipes[2].title;
+            document.getElementById('recipename4').innerHTML = Recipes[3].title;
+            document.getElementById('recipename5').innerHTML = Recipes[4].title;
+            document.getElementById('recipename6').innerHTML = Recipes[5].title;
+            document.getElementById('recipename7').innerHTML = Recipes[6].title;
+            document.getElementById('recipename8').innerHTML = Recipes[7].title;
+
+            document.getElementById('recipedesc1').innerHTML = Recipes[0].description;
+            document.getElementById('recipedesc2').innerHTML = Recipes[1].description;
+            document.getElementById('recipedesc3').innerHTML = Recipes[2].description;
+            document.getElementById('recipedesc4').innerHTML = Recipes[3].description;
+            document.getElementById('recipedesc5').innerHTML = Recipes[4].description;
+            document.getElementById('recipedesc6').innerHTML = Recipes[5].description;
+            document.getElementById('recipedesc7').innerHTML = Recipes[6].description;
+            document.getElementById('recipedesc8').innerHTML = Recipes[7].description;
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -250,8 +266,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Speedy Sapore: Quick Italian Bites</div>
-              <p class="text-white">
+              <div id = "recipename1" class="font-bold text-xl mb-2">Speedy Sapore: Quick Italian Bites</div>
+              <p id = "recipedesc1" class="text-white">
                 Experience the essence of Italy with our Speedy Sapore recipes. From savory focaccia to cheesy arancini, enjoy the taste of Italy's culinary treasures in minutes.
               </p>
             </div>
@@ -269,8 +285,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Italian Quick Baking: Bella Dolci</div>
-              <p class="text-white">
+              <div id = "recipename2" class="font-bold text-xl mb-2">Italian Quick Baking: Bella Dolci</div>
+              <p id = "recipedesc2" class="text-white">
                 Indulge in the art of Italian baking with our Bella Dolci recipes. From classic cannoli to delicate sfogliatelle, experience the sweet side of Italy in minutes.
             </p>
             </div>
@@ -288,8 +304,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Italian Express: Speedy Baking Wonders</div>
-              <p class="text-white">
+              <div id = "recipename3" class="font-bold text-xl mb-2">Italian Express: Speedy Baking Wonders</div>
+              <p id = "recipedesc3" class="text-white">
                 Embark on a culinary journey with our Italian Express recipes. From zesty lemon ricotta cake to heavenly chocolate torte, delight in the flavors of Italy in no time.
               </p>
             </div>
@@ -307,8 +323,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Quick Italian Cravings: Bella Cucina Bakes</div>
-              <p class="text-white">
+              <div id = "recipename4" class="font-bold text-xl mb-2">Quick Italian Cravings: Bella Cucina Bakes</div>
+              <p id = "recipedesc4" class="text-white">
                 Satisfy your cravings with our Bella Cucina Bakes recipes. From pillowy gnocchi pie to rich Nutella-stuffed pastries, indulge in the flavors of Italy's finest bakes without the wait.
               </p>
             </div>
@@ -328,8 +344,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Speedy Sapore: Quick Italian Bites</div>
-              <p class="text-white">
+              <div id = "recipename5" class="font-bold text-xl mb-2">Speedy Sapore: Quick Italian Bites</div>
+              <p id = "recipedesc5" class="text-white">
                 Experience the essence of Italy with our Speedy Sapore recipes. From savory focaccia to cheesy arancini, enjoy the taste of Italy's culinary treasures in minutes.
               </p>
             </div>
@@ -347,8 +363,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Italian Quick Baking: Bella Dolci</div>
-              <p class="text-white">
+              <div id = "recipename6" class="font-bold text-xl mb-2">Italian Quick Baking: Bella Dolci</div>
+              <p id = "recipedesc6" class="text-white">
                 Indulge in the art of Italian baking with our Bella Dolci recipes. From classic cannoli to delicate sfogliatelle, experience the sweet side of Italy in minutes.
             </p>
             </div>
@@ -366,8 +382,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Italian Express: Speedy Baking Wonders</div>
-              <p class="text-white">
+              <div id = "recipename7" class="font-bold text-xl mb-2">Italian Express: Speedy Baking Wonders</div>
+              <p id = "recipedesc7" class="text-white">
                 Embark on a culinary journey with our Italian Express recipes. From zesty lemon ricotta cake to heavenly chocolate torte, delight in the flavors of Italy in no time.
               </p>
             </div>
@@ -385,8 +401,8 @@
             </a>
 
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">Quick Italian Cravings: Bella Cucina Bakes</div>
-              <p class="text-white">
+              <div id = "recipename8" class="font-bold text-xl mb-2">Quick Italian Cravings: Bella Cucina Bakes</div>
+              <p id = "recipedesc8" class="text-white">
                 Satisfy your cravings with our Bella Cucina Bakes recipes. From pillowy gnocchi pie to rich Nutella-stuffed pastries, indulge in the flavors of Italy's finest bakes without the wait.
               </p>
             </div>
