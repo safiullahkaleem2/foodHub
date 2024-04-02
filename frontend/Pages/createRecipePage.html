@@ -26,6 +26,14 @@
 
                 <div class="form-control">
                     <label class="label">
+                        <span class="label-text text-white">Recipe description</span>
+                    </label>
+                    <textarea required name="recipe-description" placeholder="Enter recipe description"
+                        class="input input-bordered text-zinc-950 h-32 resize-none"></textarea>
+                </div>
+
+                <div class="form-control">
+                    <label class="label">
                         <span class="label-text text-white">Recipe Video</span>
                     </label>
                     <input required type="url" name="video-url" placeholder="Enter link to recipe video"
@@ -33,9 +41,6 @@
                 </div>
 
                 <div class="form-control">
-                    <!-- <label class="label">
-                        <span class="label-text text-white">Difficulty Level</span>
-                    </label> -->
                     <label class="label" for="difficulty-level">
                         <span class="label-text text-white">Choose a difficulty level</span>
                     </label>
@@ -63,6 +68,23 @@
                         class="input input-bordered text-zinc-950">
                 </div>
 
+                <div class="form-control">
+                    <label class="label" for="rating-level">
+                        <span class="label-text text-white">Choose a rating level</span>
+                    </label>
+                    <select class="input input-bordered text-zinc-950" name="rating-level" id="rating-level">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
 
                 <div class="form-control">
                     <label class="label">
@@ -88,7 +110,7 @@
                     </div>
                 </div>
 
-                <script>
+                <!-- <script>
                     document.getElementById('addIngredient').addEventListener('click', function () {
                         const ingredientsList = document.getElementById('ingredientList');
                         const ingredientInput = document.createElement('input');
@@ -97,7 +119,36 @@
                         ingredientInput.placeholder = 'Enter ingredient...';
                         // ingredientInput.classList.add('mt-1', 'focus:ring-indigo-500', 'focus:border-indigo-500', 'block', 'w-full', 'shadow-sm', 'sm:text-sm', 'border-gray-300', 'rounded-md', 'mb-2');
                         ingredientInput.classList.add('p-2.5', 'input', 'input-bordered', 'text-zinc-950');
+                        ingredientInput.required = true;
                         ingredientsList.appendChild(ingredientInput);
+                    });
+                </script> -->
+
+                <script>
+                    document.getElementById('addIngredient').addEventListener('click', function () {
+                        const ingredientsList = document.getElementById('ingredientList');
+                        const inputRow = document.createElement('div');
+                        inputRow.classList.add('input-row');
+
+                        // Array of placeholders
+                        const placeholders = ['Enter name', 'Enter allergy'];
+
+                        for (let i = 0; i < 2; i++) { // Loop to create 5 input boxes
+                            const inputContainer = document.createElement('div');
+                            inputContainer.classList.add('input-container');
+
+                            const ingredientInput = document.createElement('input');
+                            ingredientInput.type = 'text';
+                            ingredientInput.name = 'ingredients';
+                            ingredientInput.placeholder = placeholders[i]; // Set placeholder from array
+                            ingredientInput.classList.add('p-2.5', 'input', 'input-bordered', 'text-zinc-950');
+                            ingredientInput.required = true;
+
+                            inputContainer.appendChild(ingredientInput);
+                            inputRow.appendChild(inputContainer);
+                        }
+
+                        ingredientsList.appendChild(inputRow);
                     });
                 </script>
 
@@ -162,6 +213,7 @@
                             equipmentInput.name = 'equipments';
                             equipmentInput.placeholder = placeholders[i]; // Set placeholder from array
                             equipmentInput.classList.add('p-2.5', 'input', 'input-bordered', 'text-zinc-950');
+                            equipmentInput.required = true;
 
                             inputContainer.appendChild(equipmentInput);
                             inputRow.appendChild(inputContainer);
@@ -177,6 +229,11 @@
                 </div>
                 <div class="form-control mt-6">
                     <button type="reset" class="btn btn-primary">Reset form</button>
+                </div>
+
+                <div class="form-control mt-6">
+                    <a href="homepage_homecook.html"><button type="button" class="btn btn-primary">Home
+                            page</button></a>
                 </div>
             </form>
         </div>
