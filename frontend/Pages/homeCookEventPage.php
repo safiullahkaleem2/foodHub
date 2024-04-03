@@ -3,7 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Head content -->
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration - FoodHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-base-content flex items-center justify-center h-screen">
     <?php if ($eventDetails): ?>
