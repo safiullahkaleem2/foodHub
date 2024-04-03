@@ -23,7 +23,7 @@
                 </div>
                 <div class="mb-2">
                     <span class="font-semibold text-white">Location:</span>
-                    <span class="text-white"><?= htmlspecialchars($eventDetails['location']); ?></span>
+                    <span class="text-white"><?= htmlspecialchars($eventLocation['location']); ?></span>
                 </div>
                 <div class="mb-2">
                     <span class="font-semibold text-white">Category:</span>
