@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $stmt->fetch();
 
     if ($user) {
-        if (password_verify($password, $user['password'])) {
+        if ($password == $user['password']) {
             
             $_SESSION['userid'] = $user['userid']; 
             $_SESSION['username'] = $username;

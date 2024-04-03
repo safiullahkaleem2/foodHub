@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -14,7 +13,6 @@ $port = '5432';
 
 try {
     $connection = new PDO("pgsql:host=$host;port=$port;dbname=$dbname;", $user, $password);
-    $_SESSION['connection'] = $connection;
      
 } catch (PDOException $e) {
 

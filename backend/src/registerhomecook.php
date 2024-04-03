@@ -19,12 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
 
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO UserDetails (NumberOfFollowers, NumberOfFollowing, Age, Username, Password) VALUES (0,0,:age,:username, :password)";
         $stmt = $connection->prepare($sql);
         $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $hashedPassword); 
+        $stmt->bindParam(':password', $password); 
         $stmt->bindParam(':age', $age);
         $stmt->execute();
 
@@ -34,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO AppUser (Username, Password, UserID) VALUES (:username, :password, :UserID)";
         $stmt = $connection->prepare($sql);
         $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $hashedPassword); 
+        $stmt->bindParam(':password', $password); 
         $stmt->bindParam(':UserID', $id);
         $stmt->execute();
 

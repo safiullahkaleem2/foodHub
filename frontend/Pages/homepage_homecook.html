@@ -3,7 +3,7 @@
 <head>
 
     <!-- CDN for daisyUI -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -38,71 +38,89 @@
 
         var UserList = [];
         var Recipes = [];
+        var shuffleswitch = 1;
 
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+        function shuffleArray(array) {
+            if (shuffleswitch == 0) {
+                return array;
+            }
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            shuffleswitch--;
+            return array;
         }
-        return array;
-    }
 
-    fetch('/../../backend/src/userdetails.php')
+   async function fetchusers() {
+       var response = await fetch('/../../backend/src/queries/userdetails.php')
+           
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                UserList = await response.json(); 
+
+                shuffleArray(UserList);
+
+                document.getElementById('chefname1').innerHTML = UserList[0].username;
+                document.getElementById('chefname2').innerHTML = UserList[1].username;
+                document.getElementById('chefname3').innerHTML = UserList[2].username;
+                document.getElementById('chefname4').innerHTML = UserList[3].username;
+                document.getElementById('chefname5').innerHTML = UserList[4].username;
+                document.getElementById('chefname6').innerHTML = UserList[5].username;
+                document.getElementById('chefname7').innerHTML = UserList[6].username;
+                document.getElementById('chefname8').innerHTML = UserList[7].username;
+                document.getElementById('chefname9').innerHTML = UserList[8].username;
+                return UserList;
+   }
+
+        fetch('/../../backend/src/queries/recipedetails.php')
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json(); // Parse the JSON response
-        })
-        .then(data => {
-            UserList = data; // Assuming username is the property you want to display
-            shuffleArray(UserList);
-            document.getElementById('chefname1').innerHTML = UserList[0].username;
-            document.getElementById('chefname2').innerHTML = UserList[1].username;
-            document.getElementById('chefname3').innerHTML = UserList[2].username;
-            document.getElementById('chefname4').innerHTML = UserList[3].username;
-            document.getElementById('chefname5').innerHTML = UserList[4].username;
-            document.getElementById('chefname6').innerHTML = UserList[5].username;
-            document.getElementById('chefname7').innerHTML = UserList[6].username;
-            document.getElementById('chefname8').innerHTML = UserList[7].username;
-            document.getElementById('chefname9').innerHTML = UserList[8].username;
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // Parse the JSON response
+            })
+            .then(data => {
+                Recipes = data; 
+                shuffleArray(Recipes);
+                document.getElementById('recipename1').innerHTML = Recipes[0].title;
+                document.getElementById('recipename2').innerHTML = Recipes[1].title;
+                document.getElementById('recipename3').innerHTML = Recipes[2].title;
+                document.getElementById('recipename4').innerHTML = Recipes[3].title;
+                document.getElementById('recipename5').innerHTML = Recipes[4].title;
+                document.getElementById('recipename6').innerHTML = Recipes[5].title;
+                document.getElementById('recipename7').innerHTML = Recipes[6].title;
+                document.getElementById('recipename8').innerHTML = Recipes[7].title;
 
-    fetch('/../../backend/src/recipedetails.php')
-    .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json(); // Parse the JSON response
-        })
-        .then(data => {
-            Recipes = data; 
-            shuffleArray(Recipes);
-            document.getElementById('recipename1').innerHTML = Recipes[0].title;
-            document.getElementById('recipename2').innerHTML = Recipes[1].title;
-            document.getElementById('recipename3').innerHTML = Recipes[2].title;
-            document.getElementById('recipename4').innerHTML = Recipes[3].title;
-            document.getElementById('recipename5').innerHTML = Recipes[4].title;
-            document.getElementById('recipename6').innerHTML = Recipes[5].title;
-            document.getElementById('recipename7').innerHTML = Recipes[6].title;
-            document.getElementById('recipename8').innerHTML = Recipes[7].title;
+                document.getElementById('recipedesc1').innerHTML = Recipes[0].description;
+                document.getElementById('recipedesc2').innerHTML = Recipes[1].description;
+                document.getElementById('recipedesc3').innerHTML = Recipes[2].description;
+                document.getElementById('recipedesc4').innerHTML = Recipes[3].description;
+                document.getElementById('recipedesc5').innerHTML = Recipes[4].description;
+                document.getElementById('recipedesc6').innerHTML = Recipes[5].description;
+                document.getElementById('recipedesc7').innerHTML = Recipes[6].description;
+                document.getElementById('recipedesc8').innerHTML = Recipes[7].description;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
 
-            document.getElementById('recipedesc1').innerHTML = Recipes[0].description;
-            document.getElementById('recipedesc2').innerHTML = Recipes[1].description;
-            document.getElementById('recipedesc3').innerHTML = Recipes[2].description;
-            document.getElementById('recipedesc4').innerHTML = Recipes[3].description;
-            document.getElementById('recipedesc5').innerHTML = Recipes[4].description;
-            document.getElementById('recipedesc6').innerHTML = Recipes[5].description;
-            document.getElementById('recipedesc7').innerHTML = Recipes[6].description;
-            document.getElementById('recipedesc8').innerHTML = Recipes[7].description;
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
+            fetchusers();
+            console.log(fetchusers())
+      
+            function profilediverter(num) {
+                fetchusers().then(response => {
+                    localStorage.setItem("name", response[num].username);
+                    localStorage.setItem("numberoffollowers", response[num].numberoffollowers);
+                    localStorage.setItem("numberoffollowing", response[num].numberoffollowing);
+                    localStorage.setItem("restaurantaffiliation", response[num].restaurantaffiliation);
+                    localStorage.setItem("restaurantlocation", response[num].restaurantlocation);
+                    localStorage.setItem("certification", response[num].certification);
+                    window.location.href = "/frontend/Pages/professionalChefprofilePage.html";
+                })
 
+            };
     </script>
     
     <!--Navigation bar -->
@@ -154,16 +172,16 @@
 </head>
 
 <body class="bg-base-content text-neutral-content">
-
+ 
     <h3 class="text-3xl font-bold text-start text-primary-500 ml-8 mb-4 pt-4">Recommended Chefs</h3>
     <div class="flex justify-center gap-12">
 
         <div class = chef1> 
             <ul>
-                <a href="professionalChefprofilePage.html">
-                    <img id = "chef1" class="mask mask-circle" src=""  alt="Italian Trulli" style="width:150px;height:150;">
-                </a>
-                <div id = "chefname1" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
+                    <a onclick=profilediverter(0)>
+                        <img id = "chef1" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
+                    </a>
+                    <div id = "chefname1" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
             </ul>
         </div> 
 
@@ -257,7 +275,7 @@
     </script>
 
     <!--Recommended Recipes-->
-    <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-8 pt-4">Recommended Recipes</h3>
+   <div class="join"><h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-8 pt-4">Recommended Recipes</h3><button class="btn btn-neutral" onClick="window.location.reload();">Refresh Page</button></div>
 
     <div class="flex gap-8 ml-8 pt-4 bg-base-content"> 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
@@ -758,13 +776,66 @@
         document.getElementById("leaderboard15").src = ProfilePictures[14];
     </script>
 
+
     <!--Events-->
     <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-4">Upcoming Events</h3>
+    <div id = "events" class="flex justify-center gap-8"></div>
+
+    <script>
+
+
+    var eventdata = [];
+    var eventimages = ['https://www.withfire.co.uk/wp-content/uploads/2020/03/With-Fire-Incredible-Street-Food-Catering-Ideas-for-Your-Event.jpg', 'https://www.teambonding.com/wp-content/uploads/2020/10/Depositphotos_565421122_L-1.jpg'
+    ,'https://mocandco.com/wp-content/uploads/2017/06/tray_of_food.jpg', 'https://www.reventals.com/blog/wp-content/uploads/2019/06/AdobeStock_186295600.jpeg'];
+    const events = document.getElementById('events');
+
+        fetch('/../../backend/src/queries/events.php')
+
+             .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); 
+            })
+
+            .then(data => {
+                eventdata = data;
+                shuffleArray(eventdata);
+
+                for (let i = 0; i < 4; i++) {
+                    const event = eventdata[i];
+                    const eventimage = eventimages[i];
+                    const eventHtml = `<div class="card card-compact w-96 bg-neutral shadow-xl ml-4">
+                            <figure><img src="${eventimage}" alt="Shoes" /></figure>
+                            <div class="absolute top-40 left-0 bg-neutral p-4">
+                                <h3 class="text-white text-xl font-semibold">${event.category}</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="join">
+                                    <p>${event.date}</p>
+                                </div>
+                                <p>${event.location}</p>
+
+                         <!-- not event discription -->
+
+                                <div class="card-actions justify-end">
+                                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                                </div>
+                            </div>
+                        </div>`;
+
+                events.innerHTML += eventHtml;
+                }
+            })
+       
+    </script>
+
+    <!-- <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-4">Upcoming Events</h3>
     <div class="flex justify-center gap-8">
         <div class="card card-compact w-96 bg-neutral shadow-xl ml-4">
             <figure><img src="https://www.withfire.co.uk/wp-content/uploads/2020/03/With-Fire-Incredible-Street-Food-Catering-Ideas-for-Your-Event.jpg" alt="Shoes" /></figure>
             <div class="absolute top-40 left-0 p-4 bg-base-content">
-                <h3 class="text-white text-xl font-semibold">Cooking Basics Workshop</h3>
+                <h3 id = "eventtitle1" class="text-white text-xl font-semibold">Cooking Basics Workshop</h3>
             </div>
             <div class="card-body">
                 <div class="join">
@@ -782,7 +853,7 @@
         <div class="card card-compact w-96 bg-neutral shadow-xl">
             <figure><img src="https://www.teambonding.com/wp-content/uploads/2020/10/Depositphotos_565421122_L-1.jpg" alt="Shoes" /></figure>
             <div class="absolute top-40 left-0 bg-neutral p-4">
-                <h3 class="text-white text-xl font-semibold">Industry Networking Mixer</h3>
+                <h3 id = "eventtitle2" class="text-white text-xl font-semibold">Industry Networking Mixer</h3>
             </div>
             <div class="card-body">
                 <div class="join">
@@ -800,7 +871,7 @@
         <div class="card card-compact w-96 bg-neutral shadow-xl">
             <figure><img src="https://mocandco.com/wp-content/uploads/2017/06/tray_of_food.jpg" alt="Shoes" /></figure>
             <div class="absolute top-40 left-0 bg-neutral p-4">
-                <h3 class="text-white text-xl font-semibold">Wine Pairing Masterclass</h3>
+                <h3 id = "eventtitle3" class="text-white text-xl font-semibold">Wine Pairing Masterclass</h3>
             </div>
             <div class="card-body">
                 <div class="join">
@@ -818,7 +889,7 @@
         <div class="card card-compact w-96 bg-neutral shadow-xl mr-4">
             <figure><img src="https://www.reventals.com/blog/wp-content/uploads/2019/06/AdobeStock_186295600.jpeg" alt="Shoes" /></figure>
             <div class="absolute top-40 left-0 bg-neutral p-4">
-                <h3 class="text-white text-xl font-semibold">Steak Masterclass</h3>
+                <h3 id = "eventtitle4" class="text-white text-xl font-semibold">Steak Masterclass</h3>
             </div>
             <div class="card-body">
                 <div class="join">
@@ -832,7 +903,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>  -->
 
 </body>
 </html>
