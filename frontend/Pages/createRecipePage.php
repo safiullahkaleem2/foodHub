@@ -126,19 +126,19 @@ require_once __DIR__ . '\..\..\backend\scripts\databaseconnection.php';
                         <span class="label-text text-white">Ingredients</span>
                     </label>
                     <?php
-                    $equipmentQuery = $connection->prepare("SELECT * 
+                    $ingredientQuery = $connection->prepare("SELECT * 
                             FROM Ingredient");
-                    $equipmentQuery->execute();
-                    $equipments = $equipmentQuery->fetchAll(PDO::FETCH_ASSOC);
+                    $ingredientQuery->execute();
+                    $ingredients = $ingredientQuery->fetchAll(PDO::FETCH_ASSOC);
 
-                    if (count($equipments) > 0) {
-                        foreach ($equipments as $equipment) {
+                    if (count($ingredients) > 0) {
+                        foreach ($ingredients as $ingredient) {
                             ?>
                             <div style="display: flex; align-items: center;">
                                 <input class="input-bordered" type="checkbox" name="ingredientslist[]"
-                                    value="<?= $equipment['name']; ?>" />
+                                    value="<?= $ingredient['name']; ?>" />
                                 <label style="margin-left: 5px;">
-                                    <?= $equipment['name'] . ' (Allergen Info: ' . $equipment['allergeninfo'] . ')'; ?>
+                                    <?= $ingredient['name'] . ' (Allergen Info: ' . $ingredient['allergeninfo'] . ')'; ?>
                                 </label>
                             </div>
                             <?php
