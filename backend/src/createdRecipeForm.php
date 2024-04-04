@@ -1,9 +1,9 @@
 <?php
-
+session_start();
 require_once __DIR__ . '/../scripts/databaseconnection.php';
 require_once __DIR__ . '/../src/idgenerator.php';
 
-session_start();
+// $connection->beginTransaction();
 
 // The global $_POST variable allows you to access the data sent with the POST method by name
 // To access the data sent with the GET method, you can use $_GET
@@ -44,22 +44,20 @@ $statementInsertRecipeDetails->execute();
 
 $recipeID = generateID($connection);
 
-// Prepare the INSERT statement with placeholders
 $insertQueryRecipe = "INSERT INTO Recipe (RecipeID, PublishDate, EstimatedTime, Title)
 VALUES
 (:recipeID, :publishedDate, :estimatedTime, :recipeTitle)";
 
-// Prepare the statement
 $statementInsertRecipe = $connection->prepare($insertQueryRecipe);
 
-// Bind parameters
+
 $statementInsertRecipe->bindParam(':recipeID', $recipeID);
 $statementInsertRecipe->bindParam(':publishedDate', $publishedDate);
 $statementInsertRecipe->bindParam(':estimatedTime', $estimatedTime);
 $statementInsertRecipe->bindParam(':recipeTitle', $recipeTitle);
 
-// Execute the statement
 $statementInsertRecipe->execute();
+
 
 
 $userID = $_SESSION['userid'];
@@ -70,31 +68,51 @@ VALUES
 
 $statementInsertPosts = $connection->prepare($insertPosts);
 
-// Bind parameters
+
 $statementInsertPosts->bindParam(':recipeID', $recipeID);
 $statementInsertPosts->bindParam(':userID', $userID);
 
-// Execute the statement
+
 $statementInsertPosts->execute();
 
 
-$stmt = $connection->prepare("INSERT INTO Utilizes (Name, Price, Category, Quality, RecipeID) 
-VALUES
-(:eqName, :price, :category, :quality, :recipeID)");
+
+$selectStmt = $connection->prepare("SELECT * FROM CookingEquipmentName WHERE name = :name");
 
 
-foreach ($_POST['equipmentList'] as $recipe) {
-  // Split the value into an array using the comma as a delimiter
-  $equipment_details = explode(',', $recipe);
+$insertStmt = $connection->prepare("INSERT INTO Utilizes (Name, Price, Category, Quality, RecipeID) VALUES (:name, :price, :category, :quality, :recipeID)");
 
-  // Bind the values to the placeholders and execute the statement
-  $stmt->bindParam(':eqName', $equipment_details[0]);
-  $stmt->bindParam(':price', $equipment_details[1]);
-  $stmt->bindParam(':category', $equipment_details[2]);
-  $stmt->bindParam(':quality', $equipment_details[3]);
-  $stmt->bindParam(':recipeID', $recipeID);
-  $stmt->execute();
+
+$selectedEquipmentDetails = [];
+foreach ($_POST['equipmentList'] as $equipmentName) {
+    $selectStmt->bindParam(':name', $equipmentName);
+    $selectStmt->execute();
+
+    $equipmentDetails = $selectStmt->fetch(PDO::FETCH_ASSOC);
+    if ($equipmentDetails) {
+        $selectedEquipmentDetails[] = $equipmentDetails;
+    }
 }
 
-header("Location: ../../frontend/Pages/homepage_professionalcook.html");
-exit; // Ensure that subsequent code is not executed
+foreach ($selectedEquipmentDetails as $equipment) {
+  $insertStmt->bindParam(':name', $equipment['name']);
+  $insertStmt->bindParam(':price', $equipment['price']);
+  $insertStmt->bindParam(':category', $equipment['category']);
+  $insertStmt->bindParam(':quality', $equipment['quality']);
+  $insertStmt->bindParam(':recipeID', $recipeID); 
+  $insertStmt->execute();
+}
+
+
+
+$insertStmt = $connection->prepare("INSERT INTO Contains (RecipeID,Name) VALUES (:recipeID,:name)");
+
+
+foreach ($_POST['ingredientslist'] as $ingredient) {
+  $insertStmt->bindParam(':name', $ingredient);
+  $insertStmt->bindParam(':recipeID', $recipeID); 
+  $insertStmt->execute();
+}
+
+echo "<script>alert('recipe sucessfully published'); window.location.href='/frontend/Pages/homepage_professionalcook.html';</script>";
+
