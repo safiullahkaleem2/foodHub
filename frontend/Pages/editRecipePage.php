@@ -1,3 +1,8 @@
+<?php
+require_once __DIR__ . '\..\..\backend\scripts\databaseconnection.php';
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,37 +19,55 @@
         <div class="card-body items-center text-center">
             <h2 class="card-title text-white mb-4">Edit Recipe</h2>
             <form>
+                <?php
+                $editRecipeTitle = $_POST['edit-recipe-title'];
+                $recipeQuery = $connection->prepare("SELECT * 
+                FROM RecipeDetails WHERE Title = :editRecipeTitle");
+                $recipeQuery->bindParam(':editRecipeTitle', $editRecipeTitle);
+                $recipeQuery->execute();
+                
+                $recipe = $recipeQuery->fetchAll(PDO::FETCH_ASSOC);
+                $firstRecipe = $recipe[0];
+                // $recipe = $recipes;
+                $recipeTitle = $firstRecipe['title'];
+                $recipeDescription = $firstRecipe['description'];
+                $recipeCulture = $firstRecipe['culture'];
+                $recipeDifficulty = $firstRecipe['difficulty'];
+                $recipeServing = $firstRecipe['serving'];
+                
+
+                ?>
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text text-white">Recipe title</span>
                     </label>
-                    <input type="text" placeholder="Enter recipe title" class="input input-bordered">
+                    <input class='text-zinc-950 input input-bordered' type="text" class="text-zinc-950 input input-bordered" value="<?= htmlspecialchars($recipeTitle) ?>">
                 </div>
 
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text text-white">Recipe description</span>
                     </label>
-                    <textarea required name="recipe-description" placeholder="Enter recipe description"
-                        class="input input-bordered text-zinc-950 h-32 resize-none"></textarea>
+                    <textarea required name="recipe-description"
+                        class="input input-bordered text-zinc-950 h-32 resize-none"><?= htmlspecialchars($recipeDescription) ?></textarea>
                 </div>
 
-                <div class="form-control">
+                <!-- <div class="form-control">
                     <label class="label">
                         <span class="label-text text-white">Recipe Video</span>
                     </label>
                     <input type="text" placeholder="Enter link to recipe video" class="input input-bordered">
-                </div>
+                </div> -->
 
                 <div class="form-control">
                     <label class="label" for="difficulty-level">
                         <span class="label-text text-white">Choose a difficulty level</span>
                     </label>
                     <select class="input input-bordered text-zinc-950" name="difficulty-level" id="difficulty-level">
-                        <option value="expert">Expert</option>
-                        <option value="difficult">Difficult</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="easy">Beginner</option>
+                        <option value="expert" <?php if ($recipeDifficulty === 'Expert') echo 'selected'; ?> >Expert</option>
+                        <option value="difficult" <?php if ($recipeDifficulty === 'Difficult') echo 'selected'; ?>>Difficult</option>
+                        <option value="intermediate" <?php if ($recipeDifficulty === 'Intermediate') echo 'selected'; ?>>Intermediate</option>
+                        <option value="easy" <?php if ($recipeDifficulty === 'Beginner') echo 'selected'; ?>>Beginner</option>
                     </select>
                 </div>
 
@@ -52,7 +75,7 @@
                     <label class="label">
                         <span class="label-text text-white">Culture</span>
                     </label>
-                    <input type="text" placeholder="Enter culture" class="input input-bordered">
+                    <input type="text" value="<?= htmlspecialchars($recipeCulture) ?>" class="input input-bordered text-zinc-950">
                 </div>
 
                 <div class="form-control">
@@ -84,7 +107,7 @@
                     <label class="label">
                         <span class="label-text text-white">Servings</span>
                     </label>
-                    <input type="number" placeholder="Enter total servings" class="input input-bordered">
+                    <input type="number" value="<?= htmlspecialchars($recipeServing) ?>" class="input input-bordered text-zinc-950">
                 </div>
 
                 <div class="form-control">
@@ -101,45 +124,6 @@
                     <input type="number" placeholder="Enter estimated cook time" class="input input-bordered">
                 </div>
 
-                <!-- <div class="form-control p-2.5">
-                    <button type="button" id="addIngredient" class="w-auto btn btn-secondary">Add
-                        Ingredient</button>
-                    <div id="ingredientList" class="mt-4">
-                        <!-- Ingredient list will be populated dynamically
-                    </div>
-                </div>
-
-                <script>
-                    document.getElementById('addIngredient').addEventListener('click', function () {
-                        const ingredientsList = document.getElementById('ingredientList');
-                        const ingredientInput = document.createElement('input');
-                        ingredientInput.type = 'text';
-                        ingredientInput.placeholder = 'Enter ingredient...';
-                        // ingredientInput.classList.add('mt-1', 'focus:ring-indigo-500', 'focus:border-indigo-500', 'block', 'w-full', 'shadow-sm', 'sm:text-sm', 'border-gray-300', 'rounded-md', 'mb-2');
-                        ingredientInput.classList.add('p-2.5', 'input', 'input-bordered');
-                        ingredientsList.appendChild(ingredientInput);
-                    });
-                </script>
-
-                <div class="form-control p-2.5">
-                    <button type="button" id="addEquipment" class="w-auto btn btn-secondary">Add
-                        Cooking Equipment</button>
-                    <div id="equipmentList" class="mt-4">
-                        <!-- Ingredient list will be populated dynamically
-                    </div>
-                </div>
-
-                <script>
-                    document.getElementById('addEquipment').addEventListener('click', function () {
-                        const equipmentsList = document.getElementById('equipmentList');
-                        const equipmentInput = document.createElement('input');
-                        equipmentInput.type = 'text';
-                        equipmentInput.placeholder = 'Enter equipment...';
-                        // ingredientInput.classList.add('mt-1', 'focus:ring-indigo-500', 'focus:border-indigo-500', 'block', 'w-full', 'shadow-sm', 'sm:text-sm', 'border-gray-300', 'rounded-md', 'mb-2');
-                        equipmentInput.classList.add('p-2.5', 'input', 'input-bordered');
-                        equipmentsList.appendChild(equipmentInput);
-                    });
-                </script> -->
 
                 <div class="form-control mt-6">
                     <button type="submit" class="btn btn-primary">Save changes</button>

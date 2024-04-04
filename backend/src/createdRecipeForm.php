@@ -3,8 +3,8 @@
 require_once __DIR__ . '/../scripts/databaseconnection.php';
 require_once __DIR__ . '/../src/idgenerator.php';
 
-// $connection->beginTransaction();
-var_dump($_SESSION);
+session_start();
+
 // The global $_POST variable allows you to access the data sent with the POST method by name
 // To access the data sent with the GET method, you can use $_GET
 $recipeTitle = $_POST['recipe-title'];
@@ -61,8 +61,6 @@ $statementInsertRecipe->bindParam(':recipeTitle', $recipeTitle);
 // Execute the statement
 $statementInsertRecipe->execute();
 
-// todo: use recipeID and global (session) variable to get userID
-//       and insert the tuple (recipeID, userID) to Posts relationship
 
 $userID = $_SESSION['userid'];
 
@@ -79,31 +77,24 @@ $statementInsertPosts->bindParam(':userID', $userID);
 // Execute the statement
 $statementInsertPosts->execute();
 
-// todo: we are going to use a pre-defined list
-// todo: create a multi-select list showing the ingredients
-// $equipmentlist = $_POST['ingredientslist'];
-// foreach ($equipmentlist as $equipment) {
-//   $query = "INSERT INTO demo (name) VALUES ('$branditems')";
-//   $query_run = mysqli_query($con, $query);
-// }
-
-
-// todo: we are goign to use a pre-defined list.
-// todo: create a multi-select list showing the equipments
 
 $stmt = $connection->prepare("INSERT INTO Utilizes (Name, Price, Category, Quality, RecipeID) 
 VALUES
-(:price, :name, :category, :quality, :recipeID)");
+(:eqName, :price, :category, :quality, :recipeID)");
 
-foreach ($_POST['equipmentList'] as $equipment) {
-  // Assuming $_POST['equipmentList'] contains the selected equipment names
-  // You may need to adjust this depending on how you're handling form submission
+
+foreach ($_POST['equipmentList'] as $recipe) {
+  // Split the value into an array using the comma as a delimiter
+  $equipment_details = explode(',', $recipe);
 
   // Bind the values to the placeholders and execute the statement
-  $stmt->bindParam(':name', $equipment['name']);
-  $stmt->bindParam(':price', $equipment['price']);
-  $stmt->bindParam(':category', $equipment['category']);
-  $stmt->bindParam(':quality', $equipment['quality']);
+  $stmt->bindParam(':eqName', $equipment_details[0]);
+  $stmt->bindParam(':price', $equipment_details[1]);
+  $stmt->bindParam(':category', $equipment_details[2]);
+  $stmt->bindParam(':quality', $equipment_details[3]);
   $stmt->bindParam(':recipeID', $recipeID);
   $stmt->execute();
 }
+
+header("Location: ../../frontend/Pages/homepage_professionalcook.html");
+exit; // Ensure that subsequent code is not executed
