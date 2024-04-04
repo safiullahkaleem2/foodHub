@@ -1,3 +1,13 @@
+<?php
+
+require_once __DIR__ . '/../../backend/src/queries/leaderboard.php';
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+createleaderboards($connection);
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -302,7 +312,7 @@
 
     <!--Leaderboards-->
     <div class="join ml-24">
-        <div class="overflow-x-auto container mx-auto px-4 py-8">
+        <div class="container mx-auto px-4 py-8">
             <h3 class="text-3xl font-bold text-center text-primary-500 mb-4">Global Leaderboard</h3>
             <table class="table-md bg-neutral">
                 <thead>
@@ -324,11 +334,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Jacky Feng</div>
-                                <div class="text-sm opacity-50">Canada</div>
+                                <div class="font-bold"><?php print_r($globalarray[0]['username']); ?></div>
                             </div>
                         </td>
-                        <td>300</td>
+                        <td><?php print_r($globalarray[0]['points']); ?></td>
                     </tr>
                     
 
@@ -342,11 +351,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Mohammed Fakhir</div>
-                                <div class="text-sm opacity-50">United Arab Emirates</div>
+                                <div class="font-bold"><?php print_r($globalarray[1]['username']); ?></div>
                             </div>
                         </td>
-                        <td>200</td>
+                        <td><?php print_r($globalarray[1]['points']); ?></td>
                     </tr>
 
                     <!-- row 2 -->
@@ -359,11 +367,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Safiullah Kaleem</div>
-                                <div class="text-sm opacity-50">Pakistan</div>
+                                <div class="font-bold"><?php print_r($globalarray[2]['username']); ?></div>
                             </div>
                         </td>
-                        <td>100</td>
+                        <td><?php print_r($globalarray[2]['points']); ?></td>
                     </tr>
 
                     <!-- row 4 -->
@@ -376,11 +383,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Seva Lynov</div>
-                                <div class="text-sm opacity-50">Russia</div>
+                                <div class="font-bold"><?php print_r($globalarray[3]['username']); ?></div>
                             </div>
                         </td>
-                        <td>50</td>
+                        <td><?php print_r($globalarray[3]['points']); ?></td>
                     </tr>
 
                     <!-- row 5 -->
@@ -393,11 +399,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Raymond Ng</div>
-                                <div class="text-sm opacity-50">United States</div>
+                                <div class="font-bold"><?php print_r($globalarray[4]['username']); ?></div>
                             </div>
                         </td>
-                        <td>0</td>
+                        <td><?php print_r($globalarray[4]['points']); ?></td>
                     </tr>
 
             </table>
@@ -424,12 +429,12 @@
                                     <img id = "leaderboard6" src="" />
                                 </div>
                             </div>
+
                             <div>
-                                <div class="font-bold">Jacky Feng</div>
-                                <div class="text-sm opacity-50">Canada</div>
+                                <div class="font-bold"><?php print_r($nationalarray[0]['username']); ?></div>
                             </div>
                         </td>
-                        <td>300</td>
+                        <td><?php print_r($nationalarray[0]['points']); ?></td>
                     </tr>
                     
 
@@ -443,11 +448,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Mohammed Fakhir</div>
-                                <div class="text-sm opacity-50">United Arab Emirates</div>
+                            <div class="font-bold"><?php print_r($nationalarray[1]['username']); ?></div>
                             </div>
                         </td>
-                        <td>200</td>
+                        <td><?php print_r($nationalarray[1]['points']); ?></td>
                     </tr>
 
                     <!-- row 2 -->
@@ -460,11 +464,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Safiullah Kaleem</div>
-                                <div class="text-sm opacity-50">Pakistan</div>
+                            <div class="font-bold"><?php print_r($nationalarray[2]['username']); ?></div>
                             </div>
                         </td>
-                        <td>100</td>
+                        <td><?php print_r($nationalarray[2]['points']); ?></td>
                     </tr>
 
                     <!-- row 4 -->
@@ -477,11 +480,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Seva Lynov</div>
-                                <div class="text-sm opacity-50">Russia</div>
+                            <div class="font-bold"><?php print_r($nationalarray[3]['username']); ?></div>
                             </div>
                         </td>
-                        <td>50</td>
+                        <td><?php print_r($nationalarray[3]['points']); ?></td>
                     </tr>
 
                     <!-- row 5 -->
@@ -494,11 +496,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Raymond Ng</div>
-                                <div class="text-sm opacity-50">United States</div>
+                            <div class="font-bold"><?php print_r($nationalarray[4]['username']); ?></div>
                             </div>
                         </td>
-                        <td>0</td>
+                        <td><?php print_r($nationalarray[4]['points']); ?></td>
                     </tr>
 
             </table>
@@ -526,11 +527,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Jacky Feng</div>
-                                <div class="text-sm opacity-50">Canada</div>
+                            <div class="font-bold"><?php print_r($regionalarray[0]['username']); ?></div>
                             </div>
                         </td>
-                        <td>300</td>
+                        <td><?php print_r($regionalarray[0]['points']); ?></td>
                     </tr>
                     
 
@@ -544,11 +544,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Mohammed Fakhir</div>
-                                <div class="text-sm opacity-50">United Arab Emirates</div>
+                            <div class="font-bold"><?php print_r($regionalarray[1]['username']); ?></div>
                             </div>
                         </td>
-                        <td>200</td>
+                        <td><?php print_r($regionalarray[1]['points']); ?></td>
                     </tr>
 
                     <!-- row 2 -->
@@ -561,11 +560,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Safiullah Kaleem</div>
-                                <div class="text-sm opacity-50">Pakistan</div>
+                            <div class="font-bold"><?php print_r($regionalarray[2]['username']); ?></div>
                             </div>
                         </td>
-                        <td>100</td>
+                        <td><?php print_r($regionalarray[2]['points']); ?></td>
                     </tr>
 
                     <!-- row 4 -->
@@ -578,11 +576,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Seva Lynov</div>
-                                <div class="text-sm opacity-50">Russia</div>
+                            <div class="font-bold"><?php print_r($regionalarray[3]['username']); ?></div>
                             </div>
                         </td>
-                        <td>50</td>
+                        <td><?php print_r($regionalarray[3]['points']); ?></td>
                     </tr>
 
                     <!-- row 5 -->
@@ -595,11 +592,10 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold">Raymond Ng</div>
-                                <div class="text-sm opacity-50">United States</div>
+                            <div class="font-bold"><?php print_r($regionalarray[4]['username']); ?></div>
                             </div>
                         </td>
-                        <td>0</td>
+                        <td><?php print_r($regionalarray[4]['points']); ?></td>
                     </tr>
 
             </table>

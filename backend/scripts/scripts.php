@@ -1,6 +1,4 @@
 <?php
-
-
 function createTables($connection){
      $intilizetables = 
     
@@ -53,14 +51,6 @@ function createTables($connection){
          FOREIGN KEY (RestaurantAffiliation, RestaurantLocation) REFERENCES ProfessionalChefSkill
          ON DELETE CASCADE ON UPDATE CASCADE
      );
-     
- 
-     
-     CREATE TABLE IF NOT EXISTS Leaderboard (
-             LeaderboardCategory VARCHAR (30) NOT NULL UNIQUE,
-             Prize VARCHAR (30),
-             PRIMARY KEY (LeaderboardCategory)
-        );
         
        CREATE TABLE IF NOT EXISTS EventLocation (
              Category VARCHAR (30),
@@ -181,6 +171,11 @@ function createTables($connection){
              ON DELETE CASCADE ON UPDATE CASCADE 
         );
 
+        CREATE TABLE IF NOT EXISTS Leaderboard (
+             LeaderboardCategory VARCHAR (30) NOT NULL UNIQUE,
+             Prize VARCHAR (30),
+             PRIMARY KEY (LeaderboardCategory)
+        );
 
         CREATE TABLE IF NOT EXISTS UserRanking (
              UserID INTEGER, 
@@ -329,12 +324,9 @@ VALUES
 
 $insertQuery9 = "INSERT INTO Leaderboard (LeaderboardCategory, Prize)
 VALUES 
-('Monthly Top Chef', 'Exclusive Cooking Set'),
-('Weekly Recipe Contest', 'Cookbook Collection'),
-('Best Home Cook', 'Kitchen Appliance Bundle'),
-('Culinary Innovator', 'Gourmet Dining Experience'),
-('Master Chef', 'Cooking Masterclass Pass')";
-
+('Global', 'Exclusive Cooking Set'),
+('National', 'Cookbook Collection'),
+('Regional', 'Kitchen Appliance Bundle')";
 
 $insertQuery10 = "INSERT INTO EventLocation (Category, EntryFee, Location)
 VALUES 
@@ -490,11 +482,21 @@ VALUES
 
 $insertQuery23 = "INSERT INTO UserRanking (UserID, LeaderboardCategory, Points,Position)
 VALUES 
-(1, 'Monthly Top Chef', 100, 1),
-(2, 'Monthly Top Chef', 90,2),
-(3, 'Monthly Top Chef', 80,3),
-(4, 'Monthly Top Chef', 70,4),
-(5, 'Monthly Top Chef', 60,5)";
+(1, 'Global', 100, 1),
+(2, 'Global', 90,2),
+(3, 'Global', 80,3),
+(4, 'Global', 70,4),
+(5, 'Global', 60,5),
+(6, 'National', 100, 1),
+(7, 'National', 90,2),
+(8, 'National', 80,3),
+(9, 'National', 70,4),
+(10, 'National', 60,5),
+(11, 'Regional', 100, 1),
+(12, 'Regional', 90,2),
+(13, 'Regional', 80,3),
+(14, 'Regional', 70,4),
+(15, 'Regional', 60,5)";
 
 $insertQuery24 = "INSERT INTO Utilizes (Name, Price, Category, Quality, RecipeID)
 VALUES 

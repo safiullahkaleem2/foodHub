@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($isHomeCook) {
                 $_SESSION['userType'] = 'HomeCook';
-                header("Location: /frontend/Pages/homepage_homecook.html");
+                header("Location: /frontend/Pages/homepage_homecook.php");
                 exit();
             } elseif ($isProChef) {
                 $_SESSION['userType'] = 'ProfessionalChef';
