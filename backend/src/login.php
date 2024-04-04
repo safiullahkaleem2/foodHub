@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmtProChef = $connection->prepare("SELECT * FROM ProfessionalChef WHERE UserID = ?");
             $stmtProChef->execute([$user['userid']]);
             $isProChef = $stmtProChef->fetch();
-
+            var_dump($_SESSION['userid']);
             if ($isHomeCook) {
                 $_SESSION['userType'] = 'HomeCook';
                 header("Location: /frontend/Pages/homepage_homecook.html");
