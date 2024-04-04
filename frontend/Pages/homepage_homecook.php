@@ -65,16 +65,15 @@ createprochefs($connection);
 
 <body class=" bg-base-content text-neutral-content">
  
-    <!--TODO-->
     <h3 class="text-3xl font-bold text-start text-primary-500 ml-8 mb-4 pt-4">Recommended Chefs</h3>
     <div class="flex justify-center gap-12">
 
         <div class = chef1> 
             <ul>
-                    <a onclick=profilediverter(0)>
-                        <img id = "chef1" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
-                    </a>
-                    <div id = "chefname1" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[0]['username']); ?></div>
+                <a>
+                    <img id = "chef1" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
+                </a>
+                <div id = "chefname1" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[0]['username']); ?></div>
             </ul>
         </div> 
 
@@ -82,7 +81,7 @@ createprochefs($connection);
             <ul>
                 <a href="professionalChefprofilePage.html">
                 <img id = "chef2" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
-                <div id = "chefname2" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[1]['username']); ?></div>
+                <div id = "chefname2" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[1]['username']); ?></div>
                 </a>
             </ul>
         </div> 
@@ -92,7 +91,7 @@ createprochefs($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef3" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname3" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[2]['username']); ?></div>
+                <div id = "chefname3" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[2]['username']); ?></div>
             </ul>
         </div> 
 
@@ -101,7 +100,7 @@ createprochefs($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef4" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname4" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[3]['username']); ?></div>
+                <div id = "chefname4" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[3]['username']); ?></div>
             </ul>
         </div> 
 
@@ -110,7 +109,7 @@ createprochefs($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef5" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname5" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[4]['username']); ?></div>
+                <div id = "chefname5" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[4]['username']); ?></div>
             </ul>
         </div> 
 
@@ -119,7 +118,7 @@ createprochefs($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef6" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname6" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[5]['username']); ?></div>
+                <div id = "chefname6" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[5]['username']); ?></div>
             </ul>
         </div> 
 
@@ -128,7 +127,7 @@ createprochefs($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef7" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname7" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[6]['username']); ?></div>
+                <div id = "chefname7" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[6]['username']); ?></div>
             </ul>
         </div> 
 
@@ -137,7 +136,7 @@ createprochefs($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef8" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname8" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[7]['username']); ?></div>
+                <div id = "chefname8" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[7]['username']); ?></div>
             </ul>
         </div> 
 
@@ -146,12 +145,11 @@ createprochefs($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef9" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname9" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[8]['username']); ?></div>
+                <div id = "chefname9" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[8]['username']); ?></div>
             </ul>
         </div> 
     </div>
 
-    <!--TODO-->
     <!--Recommended Recipes-->
    <div class="">
         <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-8 pt-4">Recommended Recipes</h3> 
@@ -159,24 +157,34 @@ createprochefs($connection);
         <form method="POST" action="">
             <div class="m-1">
                 <label class="input input-bordered flex items-center gap-2 input-xs bg-base-content">
-                    <input type="text" name="text" class="grow" placeholder="Search" />
+                    <input type="text" name="text" class="grow" placeholder="Name" />
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
                 </label>
             </div>
             <div class="m-1">
                 <label for="difficulty" class="text-sm">Difficulty Level:</label>
                 <select id="difficulty" name="difficulty" class="select select-bordered w-full max-w-xs">
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                    <option value="Expert">Expert</option>
                 </select>
             </div>
             <div class="m-1">
                 <label for="culture" class="text-sm">Culture Type:</label>
                 <select id="culture" name="culture" class="select select-bordered w-full max-w-xs">
-                    <option value="american">American</option>
-                    <option value="italian">Italian</option>
-                    <option value="mexican">Mexican</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="American">American</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Mediterranean">Mediterranean</option>
+                    <option value="Swiss">Swiss</option>
+                    <option value="Indian">Indian</option>
+                    <option value="French">French</option>
+                    <option value="Asian Fusion">Asian Fusion</option>
+                    <option value="Thai">Thai</option>
+                    <option value="Caribbean">Caribbean</option>
+                    <option value="Italian">Italian</option>
                     <!-- Add more culture types as needed -->
                 </select>
             </div>
@@ -191,7 +199,7 @@ createprochefs($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename1" class="font-bold text-xl mb-2"><?php print_r($recipe[0]['title']); ?></div>
+              <div id = "recipename1" class="font-bold text-xl mb-2"><?php echo ucfirst($recipe[0]['title']); ?></div>
               <p id = "recipedesc1" class="text-white">
                 <div style="font-weight: bold;">
                     <?php print_r($recipe[0]['culture']); ?>
@@ -207,7 +215,7 @@ createprochefs($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename2" class="font-bold text-xl mb-2"><?php print_r($recipe[1]['title']); ?></div>
+              <div id = "recipename2" class="font-bold text-xl mb-2"><?php echo ucfirst($recipe[1]['title']); ?></div>
               <p id = "recipedesc2" class="text-white">
               <div style="font-weight: bold;">
                     <?php print_r($recipe[1]['culture']); ?>
@@ -223,7 +231,7 @@ createprochefs($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename3" class="font-bold text-xl mb-2"><?php print_r($recipe[2]['title']); ?></div>
+              <div id = "recipename3" class="font-bold text-xl mb-2"><?php echo ucfirst($recipe[2]['title']); ?></div>
               <p id = "recipedesc3" class="text-white">
               <div style="font-weight: bold;">
                     <?php print_r($recipe[2]['culture']); ?>
@@ -239,7 +247,7 @@ createprochefs($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename4" class="font-bold text-xl mb-2"><?php print_r($recipe[3]['title']); ?></div>
+              <div id = "recipename4" class="font-bold text-xl mb-2"><?php echo ucfirst($recipe[3]['title']); ?></div>
               <p id = "recipedesc4" class="text-white">
               <div style="font-weight: bold;">
                     <?php print_r($recipe[3]['culture']); ?>
@@ -257,7 +265,7 @@ createprochefs($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename5" class="font-bold text-xl mb-2"><?php print_r($recipe[4]['title']); ?></div>
+              <div id = "recipename5" class="font-bold text-xl mb-2"><?php echo ucfirst($recipe[4]['title']); ?></div>
               <p id = "recipedesc5" class="text-white">
               <div style="font-weight: bold;">
                     <?php print_r($recipe[4]['culture']); ?>
@@ -273,7 +281,7 @@ createprochefs($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename6" class="font-bold text-xl mb-2"><?php print_r($recipe[5]['title']); ?></div>
+              <div id = "recipename6" class="font-bold text-xl mb-2"><?php echo ucfirst($recipe[5]['title']); ?></div>
               <p id = "recipedesc6" class="text-white">
               <div style="font-weight: bold;">
                     <?php print_r($recipe[5]['culture']); ?>
@@ -289,7 +297,7 @@ createprochefs($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename7" class="font-bold text-xl mb-2"><?php print_r($recipe[6]['title']); ?></div>
+              <div id = "recipename7" class="font-bold text-xl mb-2"><?php echo ucfirst($recipe[6]['title']); ?></div>
               <p id = "recipedesc7" class="text-white">
               <div style="font-weight: bold;">
                     <?php print_r($recipe[6]['culture']); ?>
@@ -305,7 +313,7 @@ createprochefs($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename8" class="font-bold text-xl mb-2"><?php print_r($recipe[7]['title']); ?></div>
+              <div id = "recipename8" class="font-bold text-xl mb-2"><?php echo ucfirst($recipe[7]['title']); ?></div>
               <p id = "recipedesc8" class="text-white">
               <div style="font-weight: bold;">
                     <?php print_r($recipe[7]['culture']); ?>
@@ -342,7 +350,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold"><?php print_r($globalarray[0]['username']); ?></div>
+                                <div class="font-bold"><?php echo ucfirst($globalarray[0]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($globalarray[0]['points']); ?></td>
@@ -359,7 +367,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold"><?php print_r($globalarray[1]['username']); ?></div>
+                                <div class="font-bold"><?php echo ucfirst($globalarray[1]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($globalarray[1]['points']); ?></td>
@@ -375,7 +383,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold"><?php print_r($globalarray[2]['username']); ?></div>
+                                <div class="font-bold"><?php echo ucfirst($globalarray[2]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($globalarray[2]['points']); ?></td>
@@ -391,7 +399,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold"><?php print_r($globalarray[3]['username']); ?></div>
+                                <div class="font-bold"><?php echo ucfirst($globalarray[3]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($globalarray[3]['points']); ?></td>
@@ -407,7 +415,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                                <div class="font-bold"><?php print_r($globalarray[4]['username']); ?></div>
+                                <div class="font-bold"><?php echo ucfirst($globalarray[4]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($globalarray[4]['points']); ?></td>
@@ -439,7 +447,7 @@ createprochefs($connection);
                             </div>
 
                             <div>
-                                <div class="font-bold"><?php print_r($nationalarray[0]['username']); ?></div>
+                                <div class="font-bold"><?php echo ucfirst($nationalarray[0]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($nationalarray[0]['points']); ?></td>
@@ -456,7 +464,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                            <div class="font-bold"><?php print_r($nationalarray[1]['username']); ?></div>
+                            <div class="font-bold"><?php echo ucfirst($nationalarray[1]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($nationalarray[1]['points']); ?></td>
@@ -472,7 +480,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                            <div class="font-bold"><?php print_r($nationalarray[2]['username']); ?></div>
+                            <div class="font-bold"><?php echo ucfirst($nationalarray[2]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($nationalarray[2]['points']); ?></td>
@@ -488,7 +496,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                            <div class="font-bold"><?php print_r($nationalarray[3]['username']); ?></div>
+                            <div class="font-bold"><?php echo ucfirst($nationalarray[3]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($nationalarray[3]['points']); ?></td>
@@ -504,7 +512,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                            <div class="font-bold"><?php print_r($nationalarray[4]['username']); ?></div>
+                            <div class="font-bold"><?php echo ucfirst($nationalarray[4]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($nationalarray[4]['points']); ?></td>
@@ -535,7 +543,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                            <div class="font-bold"><?php print_r($regionalarray[0]['username']); ?></div>
+                            <div class="font-bold"><?php echo ucfirst($regionalarray[0]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($regionalarray[0]['points']); ?></td>
@@ -552,7 +560,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                            <div class="font-bold"><?php print_r($regionalarray[1]['username']); ?></div>
+                            <div class="font-bold"><?php echo ucfirst($regionalarray[1]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($regionalarray[1]['points']); ?></td>
@@ -568,7 +576,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                            <div class="font-bold"><?php print_r($regionalarray[2]['username']); ?></div>
+                            <div class="font-bold"><?php echo ucfirst($regionalarray[2]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($regionalarray[2]['points']); ?></td>
@@ -584,7 +592,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                            <div class="font-bold"><?php print_r($regionalarray[3]['username']); ?></div>
+                            <div class="font-bold"><?php echo ucfirst($regionalarray[3]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($regionalarray[3]['points']); ?></td>
@@ -600,7 +608,7 @@ createprochefs($connection);
                                 </div>
                             </div>
                             <div>
-                            <div class="font-bold"><?php print_r($regionalarray[4]['username']); ?></div>
+                            <div class="font-bold"><?php echo ucfirst($regionalarray[4]['username']); ?></div>
                             </div>
                         </td>
                         <td><?php print_r($regionalarray[4]['points']); ?></td>
@@ -611,7 +619,6 @@ createprochefs($connection);
         
     </div>
 
-    <!--TODO-->
     <!--Events-->
     <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-4">Upcoming Events</h3>
     <div class="flex justify-center gap-8">
