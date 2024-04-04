@@ -3,7 +3,6 @@ session_start();
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
     require_once __DIR__ . '/../scripts/databaseconnection.php'; 
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
@@ -31,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($isHomeCook) {
                 $_SESSION['userType'] = 'HomeCook';
-                header("Location: /frontend/Pages/homepage_homecook.html");
+                header("Location: /frontend/Pages/homepage_homecook.php");
                 exit();
             } elseif ($isProChef) {
                 $_SESSION['userType'] = 'ProfessionalChef';

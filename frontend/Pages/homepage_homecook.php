@@ -1,11 +1,16 @@
 <?php
 
-require_once __DIR__ . '/../../backend/src/queries/leaderboard.php';
+require_once __DIR__ . '/../../backend/src/queries/queryfunctions.php';
 
+// Error Checking
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-createleaderboards($connection);
 
+// Create Queries
+createleaderboards($connection);
+createevents($connection);
+createrecipe($connection);
+createprochefs($connection);
 ?>
 
 <!DOCTYPE html>
@@ -60,6 +65,7 @@ createleaderboards($connection);
 
 <body class=" bg-base-content text-neutral-content">
  
+    <!--TODO-->
     <h3 class="text-3xl font-bold text-start text-primary-500 ml-8 mb-4 pt-4">Recommended Chefs</h3>
     <div class="flex justify-center gap-12">
 
@@ -68,7 +74,7 @@ createleaderboards($connection);
                     <a onclick=profilediverter(0)>
                         <img id = "chef1" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                     </a>
-                    <div id = "chefname1" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
+                    <div id = "chefname1" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[0]['username']); ?></div>
             </ul>
         </div> 
 
@@ -76,7 +82,7 @@ createleaderboards($connection);
             <ul>
                 <a href="professionalChefprofilePage.html">
                 <img id = "chef2" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
-                <div id = "chefname2" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
+                <div id = "chefname2" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[1]['username']); ?></div>
                 </a>
             </ul>
         </div> 
@@ -86,7 +92,7 @@ createleaderboards($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef3" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname3" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
+                <div id = "chefname3" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[2]['username']); ?></div>
             </ul>
         </div> 
 
@@ -95,7 +101,7 @@ createleaderboards($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef4" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname4" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
+                <div id = "chefname4" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[3]['username']); ?></div>
             </ul>
         </div> 
 
@@ -104,7 +110,7 @@ createleaderboards($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef5" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname5" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
+                <div id = "chefname5" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[4]['username']); ?></div>
             </ul>
         </div> 
 
@@ -113,7 +119,7 @@ createleaderboards($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef6" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname6" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
+                <div id = "chefname6" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[5]['username']); ?></div>
             </ul>
         </div> 
 
@@ -122,7 +128,7 @@ createleaderboards($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef7" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname7" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
+                <div id = "chefname7" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[6]['username']); ?></div>
             </ul>
         </div> 
 
@@ -131,7 +137,7 @@ createleaderboards($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef8" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname8" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
+                <div id = "chefname8" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[7]['username']); ?></div>
             </ul>
         </div> 
 
@@ -140,11 +146,12 @@ createleaderboards($connection);
                 <a href="professionalChefprofilePage.html">
                     <img id = "chef9" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
-                <div id = "chefname9" class="text-sm font-bold text-center text-primary-500 mb-4"></div>
+                <div id = "chefname9" class="text-sm font-bold text-center text-primary-500 mb-4"><?php print_r($prochefs[8]['username']); ?></div>
             </ul>
         </div> 
     </div>
 
+    <!--TODO-->
     <!--Recommended Recipes-->
    <div class="">
         <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-8 pt-4">Recommended Recipes</h3> 
@@ -184,9 +191,12 @@ createleaderboards($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename1" class="font-bold text-xl mb-2">Speedy Sapore: Quick Italian Bites</div>
+              <div id = "recipename1" class="font-bold text-xl mb-2"><?php print_r($recipe[0]['title']); ?></div>
               <p id = "recipedesc1" class="text-white">
-                Experience the essence of Italy with our Speedy Sapore recipes. From savory focaccia to cheesy arancini, enjoy the taste of Italy's culinary treasures in minutes.
+                <div style="font-weight: bold;">
+                    <?php print_r($recipe[0]['culture']); ?>
+                </div>
+              <?php print_r($recipe[0]['description']); ?>
               </p>
             </div>
         </div>
@@ -197,9 +207,12 @@ createleaderboards($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename2" class="font-bold text-xl mb-2">Italian Quick Baking: Bella Dolci</div>
+              <div id = "recipename2" class="font-bold text-xl mb-2"><?php print_r($recipe[1]['title']); ?></div>
               <p id = "recipedesc2" class="text-white">
-                Indulge in the art of Italian baking with our Bella Dolci recipes. From classic cannoli to delicate sfogliatelle, experience the sweet side of Italy in minutes.
+              <div style="font-weight: bold;">
+                    <?php print_r($recipe[1]['culture']); ?>
+                </div>
+              <?php print_r($recipe[1]['description']); ?>
             </p>
             </div>
         </div>
@@ -210,9 +223,12 @@ createleaderboards($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename3" class="font-bold text-xl mb-2">Italian Express: Speedy Baking Wonders</div>
+              <div id = "recipename3" class="font-bold text-xl mb-2"><?php print_r($recipe[2]['title']); ?></div>
               <p id = "recipedesc3" class="text-white">
-                Embark on a culinary journey with our Italian Express recipes. From zesty lemon ricotta cake to heavenly chocolate torte, delight in the flavors of Italy in no time.
+              <div style="font-weight: bold;">
+                    <?php print_r($recipe[2]['culture']); ?>
+                </div>
+              <?php print_r($recipe[2]['description']); ?>
               </p>
             </div>
         </div>
@@ -223,9 +239,12 @@ createleaderboards($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename4" class="font-bold text-xl mb-2">Quick Italian Cravings: Bella Cucina Bakes</div>
+              <div id = "recipename4" class="font-bold text-xl mb-2"><?php print_r($recipe[3]['title']); ?></div>
               <p id = "recipedesc4" class="text-white">
-                Satisfy your cravings with our Bella Cucina Bakes recipes. From pillowy gnocchi pie to rich Nutella-stuffed pastries, indulge in the flavors of Italy's finest bakes without the wait.
+              <div style="font-weight: bold;">
+                    <?php print_r($recipe[3]['culture']); ?>
+                </div>
+              <?php print_r($recipe[3]['description']); ?>
               </p>
             </div>
         </div>
@@ -238,9 +257,12 @@ createleaderboards($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename5" class="font-bold text-xl mb-2">Speedy Sapore: Quick Italian Bites</div>
+              <div id = "recipename5" class="font-bold text-xl mb-2"><?php print_r($recipe[4]['title']); ?></div>
               <p id = "recipedesc5" class="text-white">
-                Experience the essence of Italy with our Speedy Sapore recipes. From savory focaccia to cheesy arancini, enjoy the taste of Italy's culinary treasures in minutes.
+              <div style="font-weight: bold;">
+                    <?php print_r($recipe[4]['culture']); ?>
+                </div>
+              <?php print_r($recipe[4]['description']); ?>
               </p>
             </div>
         </div>
@@ -251,9 +273,12 @@ createleaderboards($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename6" class="font-bold text-xl mb-2">Italian Quick Baking: Bella Dolci</div>
+              <div id = "recipename6" class="font-bold text-xl mb-2"><?php print_r($recipe[5]['title']); ?></div>
               <p id = "recipedesc6" class="text-white">
-                Indulge in the art of Italian baking with our Bella Dolci recipes. From classic cannoli to delicate sfogliatelle, experience the sweet side of Italy in minutes.
+              <div style="font-weight: bold;">
+                    <?php print_r($recipe[5]['culture']); ?>
+                </div>
+              <?php print_r($recipe[5]['description']); ?>
             </p>
             </div>
         </div>
@@ -264,9 +289,12 @@ createleaderboards($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename7" class="font-bold text-xl mb-2">Italian Express: Speedy Baking Wonders</div>
+              <div id = "recipename7" class="font-bold text-xl mb-2"><?php print_r($recipe[6]['title']); ?></div>
               <p id = "recipedesc7" class="text-white">
-                Embark on a culinary journey with our Italian Express recipes. From zesty lemon ricotta cake to heavenly chocolate torte, delight in the flavors of Italy in no time.
+              <div style="font-weight: bold;">
+                    <?php print_r($recipe[6]['culture']); ?>
+                </div>
+              <?php print_r($recipe[6]['description']); ?>
               </p>
             </div>
         </div>
@@ -277,9 +305,13 @@ createleaderboards($connection);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename8" class="font-bold text-xl mb-2">Quick Italian Cravings: Bella Cucina Bakes</div>
+              <div id = "recipename8" class="font-bold text-xl mb-2"><?php print_r($recipe[7]['title']); ?></div>
               <p id = "recipedesc8" class="text-white">
-                Satisfy your cravings with our Bella Cucina Bakes recipes. From pillowy gnocchi pie to rich Nutella-stuffed pastries, indulge in the flavors of Italy's finest bakes without the wait.
+              <div style="font-weight: bold;">
+                    <?php print_r($recipe[7]['culture']); ?>
+                </div>
+              <?php print_r($recipe[7]['description']); ?>
+              </p>
               </p>
             </div>
 
@@ -287,7 +319,7 @@ createleaderboards($connection);
     </div>    
 
     <!--Leaderboards-->
-    <div class="join ml-24">
+    <div class="join ml-4">
         <div class="container mx-auto px-4 py-8">
             <h3 class="text-3xl font-bold text-center text-primary-500 mb-4">Global Leaderboard</h3>
             <table class="table-md bg-neutral">
@@ -579,11 +611,9 @@ createleaderboards($connection);
         
     </div>
 
+    <!--TODO-->
     <!--Events-->
     <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-4">Upcoming Events</h3>
-    <div id = "events" class="flex justify-center gap-8"></div>
-
-    <!-- <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-4">Upcoming Events</h3>
     <div class="flex justify-center gap-8">
         <div class="card card-compact w-96 bg-neutral shadow-xl ml-4">
             <figure><img src="https://www.withfire.co.uk/wp-content/uploads/2020/03/With-Fire-Incredible-Street-Food-Catering-Ideas-for-Your-Event.jpg" alt="Shoes" /></figure>
@@ -656,7 +686,7 @@ createleaderboards($connection);
                 </div>
             </div>
         </div>
-    </div>  -->
+    </div> 
 
     <script src = "homepage_homecook.js"></script>
 

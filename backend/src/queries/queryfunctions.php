@@ -92,3 +92,39 @@ WHERE a.userid = u.userid AND u.leaderboardcategory = 'Regional' AND  u.position
 $queryvar ->execute();
 $regionalarray[4]  = $queryvar ->fetch(PDO::FETCH_ASSOC);
 }
+
+function createprochefs($connection) {
+
+global $prochefs;
+
+$statement = $connection->prepare("SELECT * 
+                                    FROM userdetails u, professionalchef p, appuser a, professionalchefskill p2
+                                    WHERE a.username = u.username 
+                                    AND a.password = u.password 
+                                    AND a.userid = p.userid 
+                                    AND p2.restaurantaffiliation = p.RestaurantAffiliation 
+                                    AND p2.restaurantlocation = p.restaurantlocation");
+$statement->execute();
+$prochefs = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+}
+
+function createevents($connection) {
+
+global $events;  
+    
+$statement = $connection->prepare("SELECT * 
+                                   FROM eventdetails e1, eventlocation e2 
+                                   WHERE e1.category = e2.category AND e1.entryfee = e2.entryfee");
+$statement->execute();
+$events = $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function createrecipe($connection) {
+
+global $recipe;
+
+$statement = $connection->prepare("SELECT * FROM recipedetails");
+$statement->execute();
+$recipe = $statement->fetchAll(PDO::FETCH_ASSOC);
+}
