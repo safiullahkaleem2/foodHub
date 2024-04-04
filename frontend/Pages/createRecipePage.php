@@ -154,19 +154,22 @@ require_once __DIR__ . '\..\..\backend\scripts\databaseconnection.php';
                         <span class="label-text text-white">Cooking Equipment</span>
                     </label>
                     <?php
-                    $equipmentQuery = $connection->prepare("SELECT * 
+                    $recipeQuery = $connection->prepare("SELECT * 
                             FROM CookingEquipmentName");
-                    $equipmentQuery->execute();
-                    $equipments = $equipmentQuery->fetchAll(PDO::FETCH_ASSOC);
+                    $recipeQuery->execute();
+                    $recipe = $recipeQuery->fetchAll(PDO::FETCH_ASSOC);
 
-                    if (count($equipments) > 0) {
-                        foreach ($equipments as $equipment) {
+                    if (count($recipe) > 0) {
+                        foreach ($recipe as $recipe) {
                             ?>
                             <div style="display: flex; align-items: center;">
+                                <!-- <input class="input-bordered" type="checkbox" name="equipmentList[]"
+                                    value="<?= $recipe['name']; ?>" /> -->
                                 <input class="input-bordered" type="checkbox" name="equipmentList[]"
-                                    value="<?= $equipment['name']; ?>" />
+                                    value="<?= $recipe['name'] . ',' . $recipe['price'] . ',' . $recipe['category'] . ',' . $recipe['quality']; ?>" />
+
                                 <label style="margin-left: 5px;">
-                                    <?= ' Name: ' . $equipment['name'] . ', Price: ' . $equipment['price'] . ', Category: ' . $equipment['category'] . ', Quality: ' . $equipment['quality']; ?>    
+                                    <?= ' Name: ' . $recipe['name'] . ', Price: ' . $recipe['price'] . ', Category: ' . $recipe['category'] . ', Quality: ' . $recipe['quality']; ?>
                                 </label>
                             </div>
                             <?php
@@ -177,7 +180,7 @@ require_once __DIR__ . '\..\..\backend\scripts\databaseconnection.php';
                     ?>
                 </div>
 
-                    <div class="form-control mt-6">
+                <div class="form-control mt-6">
                     <button type="submit" class="btn btn-primary">Publish new recipe</button>
                 </div>
                 <div class="form-control mt-6">
