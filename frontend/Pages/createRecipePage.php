@@ -126,10 +126,10 @@ require_once __DIR__ . '\..\..\backend\scripts\databaseconnection.php';
                         <span class="label-text text-white">Ingredients</span>
                     </label>
                     <?php
-                    $recipeQuery = $connection->prepare("SELECT * 
+                    $recipeDetailsQuery = $connection->prepare("SELECT * 
                             FROM Ingredient");
-                    $recipeQuery->execute();
-                    $recipe = $recipeQuery->fetchAll(PDO::FETCH_ASSOC);
+                    $recipeDetailsQuery->execute();
+                    $recipe = $recipeDetailsQuery->fetchAll(PDO::FETCH_ASSOC);
 
                     if (count($recipe) > 0) {
                         foreach ($recipe as $recipe) {
@@ -154,10 +154,10 @@ require_once __DIR__ . '\..\..\backend\scripts\databaseconnection.php';
                         <span class="label-text text-white">Cooking Equipment</span>
                     </label>
                     <?php
-                    $recipeQuery = $connection->prepare("SELECT * 
+                    $recipeDetailsQuery = $connection->prepare("SELECT * 
                             FROM CookingEquipmentName");
-                    $recipeQuery->execute();
-                    $recipe = $recipeQuery->fetchAll(PDO::FETCH_ASSOC);
+                    $recipeDetailsQuery->execute();
+                    $recipe = $recipeDetailsQuery->fetchAll(PDO::FETCH_ASSOC);
 
                     if (count($recipe) > 0) {
                         foreach ($recipe as $recipe) {

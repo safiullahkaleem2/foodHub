@@ -21,27 +21,34 @@ session_start();
             <form>
                 <?php
                 $editRecipeTitle = $_POST['edit-recipe-title'];
-                $recipeQuery = $connection->prepare("SELECT * 
+                $recipeDetailsQuery = $connection->prepare("SELECT * 
                 FROM RecipeDetails WHERE Title = :editRecipeTitle");
-                $recipeQuery->bindParam(':editRecipeTitle', $editRecipeTitle);
-                $recipeQuery->execute();
+                $recipeDetailsQuery->bindParam(':editRecipeTitle', $editRecipeTitle);
+                $recipeDetailsQuery->execute();
                 
-                $recipe = $recipeQuery->fetchAll(PDO::FETCH_ASSOC);
+                $recipe = $recipeDetailsQuery->fetchAll(PDO::FETCH_ASSOC);
                 $firstRecipe = $recipe[0];
-                // $recipe = $recipes;
                 $recipeTitle = $firstRecipe['title'];
                 $recipeDescription = $firstRecipe['description'];
                 $recipeCulture = $firstRecipe['culture'];
                 $recipeDifficulty = $firstRecipe['difficulty'];
                 $recipeServing = $firstRecipe['serving'];
+
+                $recipeQuery = $connection->prepare("SELECT * 
+                FROM Recipe WHERE Title = :editRecipeTitle");
+                $recipeQuery->bindParam(':editRecipeTitle', $editRecipeTitle);
+                $recipeQuery->execute();
                 
+                $recipe = $recipeQuery->fetchAll(PDO::FETCH_ASSOC);
+                $firstRecipe = $recipe[0];
+                $recipeEstimatedTime = $firstRecipe['estimatedtime'];               
 
                 ?>
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text text-white">Recipe title</span>
                     </label>
-                    <input class='text-zinc-950 input input-bordered' type="text" class="text-zinc-950 input input-bordered" value="<?= htmlspecialchars($recipeTitle) ?>">
+                    <input required class='text-zinc-950 input input-bordered' type="text" class="text-zinc-950 input input-bordered" value="<?= htmlspecialchars($recipeTitle) ?>">
                 </div>
 
                 <div class="form-control">
@@ -63,7 +70,7 @@ session_start();
                     <label class="label" for="difficulty-level">
                         <span class="label-text text-white">Choose a difficulty level</span>
                     </label>
-                    <select class="input input-bordered text-zinc-950" name="difficulty-level" id="difficulty-level">
+                    <select required class="input input-bordered text-zinc-950" name="difficulty-level" id="difficulty-level">
                         <option value="expert" <?php if ($recipeDifficulty === 'Expert') echo 'selected'; ?> >Expert</option>
                         <option value="difficult" <?php if ($recipeDifficulty === 'Difficult') echo 'selected'; ?>>Difficult</option>
                         <option value="intermediate" <?php if ($recipeDifficulty === 'Intermediate') echo 'selected'; ?>>Intermediate</option>
@@ -75,21 +82,14 @@ session_start();
                     <label class="label">
                         <span class="label-text text-white">Culture</span>
                     </label>
-                    <input type="text" value="<?= htmlspecialchars($recipeCulture) ?>" class="input input-bordered text-zinc-950">
-                </div>
-
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text text-white">Category</span>
-                    </label>
-                    <input type="text" placeholder="Enter Category" class="input input-bordered">
+                    <input required type="text" value="<?= htmlspecialchars($recipeCulture) ?>" class="input input-bordered text-zinc-950">
                 </div>
 
                 <div class="form-control">
                     <label class="label" for="rating-level">
                         <span class="label-text text-white">Choose a rating level</span>
                     </label>
-                    <select class="input input-bordered text-zinc-950" name="rating-level" id="rating-level">
+                    <select required class="input input-bordered text-zinc-950" name="rating-level" id="rating-level">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -107,23 +107,15 @@ session_start();
                     <label class="label">
                         <span class="label-text text-white">Servings</span>
                     </label>
-                    <input type="number" value="<?= htmlspecialchars($recipeServing) ?>" class="input input-bordered text-zinc-950">
+                    <input required type="number" value="<?= htmlspecialchars($recipeServing) ?>" class="input input-bordered text-zinc-950">
                 </div>
 
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text text-white">Prep time</span>
+                        <span class="label-text text-white">Estimated Time</span>
                     </label>
-                    <input type="number" placeholder="Enter estimated prep time" class="input input-bordered">
+                    <input required type="number" value="<?= htmlspecialchars($recipeEstimatedTime) ?>" class="text-zinc-950 input input-bordered">
                 </div>
-
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text text-white">Cook time</span>
-                    </label>
-                    <input type="number" placeholder="Enter estimated cook time" class="input input-bordered">
-                </div>
-
 
                 <div class="form-control mt-6">
                     <button type="submit" class="btn btn-primary">Save changes</button>

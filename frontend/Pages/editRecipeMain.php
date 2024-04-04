@@ -22,10 +22,10 @@ require_once __DIR__ . '\..\..\backend\scripts\databaseconnection.php';
                 <div class="form-control">
                     <h1 class="text-white">Recipe:</h1>
                     <?php
-                    $recipeQuery = $connection->prepare("SELECT * 
+                    $recipeDetailsQuery = $connection->prepare("SELECT * 
                             FROM RecipeDetails");
-                    $recipeQuery->execute();
-                    $recipe = $recipeQuery->fetchAll(PDO::FETCH_ASSOC);
+                    $recipeDetailsQuery->execute();
+                    $recipe = $recipeDetailsQuery->fetchAll(PDO::FETCH_ASSOC);
 
                     if (count($recipe) > 0) {
                         foreach ($recipe as $recipe) {
