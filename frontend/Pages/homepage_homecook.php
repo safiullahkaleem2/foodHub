@@ -43,28 +43,22 @@ createleaderboards($connection);
             <div class="navbar-center">
                 <a class="btn btn-ghost text-xl" style="pointer-events: none;">FoodHub</a>
                 <img src="https://cdn.dribbble.com/userupload/3998399/file/original-9c55bbf2aa9c9cc167c188fa5bea8217.jpg?resize=752x" class="h-12 mr-6">
-                </div>
+            </div>
 
-            <!--Search Icon-->
-            <div class="navbar-end">
+            <!--Search Bar Recipes-->
+            <!-- <div class="navbar-end">
+            <form method="POST" action="">
                 <label class="input input-bordered flex items-center gap-2 input-xs bg-base-content">
-                    <input type="text" class="grow" placeholder="Search Recipes" />
+                    <input type="text" name="searchusers" class="grow" placeholder="Search Users" />
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
                   </label>
-
-              <!--Notifications-->
-              <button class="btn btn-ghost btn-circle">
-                <div class="indicator">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
-                  <span class="badge badge-xs badge-primary indicator-item"></span>
-                </div>
-              </button>
-            </div>
+            <form>
+            </div> -->
         </div>
     
 </head>
 
-<body class="bg-base-content text-neutral-content">
+<body class=" bg-base-content text-neutral-content">
  
     <h3 class="text-3xl font-bold text-start text-primary-500 ml-8 mb-4 pt-4">Recommended Chefs</h3>
     <div class="flex justify-center gap-12">
@@ -152,7 +146,36 @@ createleaderboards($connection);
     </div>
 
     <!--Recommended Recipes-->
-   <div class="join"><h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-8 pt-4">Recommended Recipes</h3><button class="btn btn-neutral" onClick="window.location.reload();">Refresh Page</button></div>
+   <div class="">
+        <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-8 pt-4">Recommended Recipes</h3> 
+        <div class="dropdown dropdown-end">
+        <form method="POST" action="">
+            <div class="m-1">
+                <label class="input input-bordered flex items-center gap-2 input-xs bg-base-content">
+                    <input type="text" name="text" class="grow" placeholder="Search" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+                </label>
+            </div>
+            <div class="m-1">
+                <label for="difficulty" class="text-sm">Difficulty Level:</label>
+                <select id="difficulty" name="difficulty" class="select select-bordered w-full max-w-xs">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <div class="m-1">
+                <label for="culture" class="text-sm">Culture Type:</label>
+                <select id="culture" name="culture" class="select select-bordered w-full max-w-xs">
+                    <option value="american">American</option>
+                    <option value="italian">Italian</option>
+                    <option value="mexican">Mexican</option>
+                    <!-- Add more culture types as needed -->
+                </select>
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">Search</button>
+        </form>
+    </div>
 
     <div class="flex gap-8 ml-8 pt-4 bg-base-content"> 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
@@ -165,12 +188,6 @@ createleaderboards($connection);
               <p id = "recipedesc1" class="text-white">
                 Experience the essence of Italy with our Speedy Sapore recipes. From savory focaccia to cheesy arancini, enjoy the taste of Italy's culinary treasures in minutes.
               </p>
-            </div>
-
-            <div class="px-6 pt-4 pb-2">
-                <div class="badge badge-lg badge-accent">#Baking</div>
-                <div class="badge badge-lg badge-warning">#Italian</div>
-                <div class="badge badge-lg badge-error">#1 Hour</div>
             </div>
         </div>
 
@@ -185,12 +202,6 @@ createleaderboards($connection);
                 Indulge in the art of Italian baking with our Bella Dolci recipes. From classic cannoli to delicate sfogliatelle, experience the sweet side of Italy in minutes.
             </p>
             </div>
-
-            <div class="px-6 pt-4 pb-2">
-                <div class="badge badge-lg badge-accent">#Baking</div>
-                <div class="badge badge-lg badge-warning">#Italian</div>
-                <div class="badge badge-lg badge-error">#1 Hour</div>
-            </div>
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
@@ -204,12 +215,6 @@ createleaderboards($connection);
                 Embark on a culinary journey with our Italian Express recipes. From zesty lemon ricotta cake to heavenly chocolate torte, delight in the flavors of Italy in no time.
               </p>
             </div>
-
-            <div class="px-6 pt-4 pb-2">
-                <div class="badge badge-lg badge-accent">#Baking</div>
-                <div class="badge badge-lg badge-warning">#Italian</div>
-                <div class="badge badge-lg badge-error">#1 Hour</div>
-            </div>
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
@@ -222,12 +227,6 @@ createleaderboards($connection);
               <p id = "recipedesc4" class="text-white">
                 Satisfy your cravings with our Bella Cucina Bakes recipes. From pillowy gnocchi pie to rich Nutella-stuffed pastries, indulge in the flavors of Italy's finest bakes without the wait.
               </p>
-            </div>
-
-            <div class="px-6 pt-4 pb-2">
-                <div class="badge badge-lg badge-accent">#Baking</div>
-                <div class="badge badge-lg badge-warning">#Italian</div>
-                <div class="badge badge-lg badge-error">#1 Hour</div>
             </div>
         </div>
     </div>    
@@ -244,12 +243,6 @@ createleaderboards($connection);
                 Experience the essence of Italy with our Speedy Sapore recipes. From savory focaccia to cheesy arancini, enjoy the taste of Italy's culinary treasures in minutes.
               </p>
             </div>
-
-            <div class="px-6 pt-4 pb-2">
-                <div class="badge badge-lg badge-accent">#Baking</div>
-                <div class="badge badge-lg badge-warning">#Italian</div>
-                <div class="badge badge-lg badge-error">#1 Hour</div>
-            </div>
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
@@ -263,12 +256,6 @@ createleaderboards($connection);
                 Indulge in the art of Italian baking with our Bella Dolci recipes. From classic cannoli to delicate sfogliatelle, experience the sweet side of Italy in minutes.
             </p>
             </div>
-
-            <div class="px-6 pt-4 pb-2">
-                <div class="badge badge-lg badge-accent">#Baking</div>
-                <div class="badge badge-lg badge-warning">#Italian</div>
-                <div class="badge badge-lg badge-error">#1 Hour</div>
-            </div>
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
@@ -281,12 +268,6 @@ createleaderboards($connection);
               <p id = "recipedesc7" class="text-white">
                 Embark on a culinary journey with our Italian Express recipes. From zesty lemon ricotta cake to heavenly chocolate torte, delight in the flavors of Italy in no time.
               </p>
-            </div>
-
-            <div class="px-6 pt-4 pb-2">
-                <div class="badge badge-lg badge-accent">#Baking</div>
-                <div class="badge badge-lg badge-warning">#Italian</div>
-                <div class="badge badge-lg badge-error">#1 Hour</div>
             </div>
         </div>
 
@@ -302,11 +283,6 @@ createleaderboards($connection);
               </p>
             </div>
 
-            <div class="px-6 pt-4 pb-2">
-                <div class="badge badge-lg badge-accent">#Baking</div>
-                <div class="badge badge-lg badge-warning">#Italian</div>
-                <div class="badge badge-lg badge-error">#1 Hour</div>
-            </div>
         </div>
     </div>    
 
