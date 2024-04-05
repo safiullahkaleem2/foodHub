@@ -12,7 +12,6 @@ createleaderboards($connection);
 createevents($connection);
 createrecipe($connection);
 createprochefs($connection);
-var_dump($recipe2);
 ?>
 
 <!DOCTYPE html>
@@ -67,9 +66,11 @@ var_dump($recipe2);
 
 <body class=" bg-base-content text-neutral-content">
  
+<div class="join">
     <h3 class="text-3xl font-bold text-start text-primary-500 ml-8 mb-4 pt-4">Recommended Chefs</h3>
+    <button onclick="window.location.href = 'filterusers.php'" class="btn btn-sm btn-primary ml-4" style="margin-top: 20px;">User Statistics</button>
+</div>
     <div class="flex justify-center gap-12">
-
         <div class = chef1> 
             <ul>
                 <a>
@@ -153,48 +154,9 @@ var_dump($recipe2);
     </div>
 
     <!--Recommended Recipes-->
-   <div>
-        <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 pt-4">Recommended Recipes</h3> 
-        <div class="dropdown dropdown-end">
-        <form method="POST" action="/../backend/src/recipefilter.php">
-            <div class="m-1 ml-4">
-                <label class="input input-bordered flex items-center gap-2 input-xs bg-neutral">
-                    <input type="text" name="text" class="grow" placeholder="Servings" style="color: white;"/>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
-                </label>
-            </div>
-            <div class="join">
-            <!-- <div class="m-1">
-                <label for="difficulty" class="text-sm">Difficulty Level:</label>
-                <select id="difficulty" name="difficulty" class="select select-bordered w-full max-w-xs" style="color: black;">
-                    <option value="Beginner">Beginner</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="Advanced">Advanced</option>
-                    <option value="Expert">Expert</option>
-                </select>
-            </div> -->
-            <div class="m-1">
-                <label for="culture" class="text-sm">Culture Type:</label>
-                <select id="culture" name="culture" class="select select-bordered w-full max-w-xs" style="color: black;">
-                    <option value="Chinese">Chinese</option>
-                    <option value="American">American</option>
-                    <option value="Japanese">Japanese</option>
-                    <option value="Mexican">Mexican</option>
-                    <option value="Mediterranean">Mediterranean</option>
-                    <option value="Swiss">Swiss</option>
-                    <option value="Indian">Indian</option>
-                    <option value="French">French</option>
-                    <option value="Asian Fusion">Asian Fusion</option>
-                    <option value="Thai">Thai</option>
-                    <option value="Caribbean">Caribbean</option>
-                    <option value="Italian">Italian</option>
-                    <!-- Add more culture types as needed -->
-                </select>
-            </div>
-        </div>
-        <br>
-            <button type="submit" class="btn btn-sm btn-primary">Search</button>
-        </form>
+   <div class="join">
+        <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 pt-4 ml-8">Recommended Recipes</h3> 
+        <button onclick="window.location.href = 'filterecipes.php'" class="btn btn-sm btn-primary ml-4" style="margin-top: 20px;">Filter Recipes</button>
     </div>
 
     <div class="flex gap-8 ml-8 pt-4 bg-base-content"> 
@@ -204,7 +166,7 @@ var_dump($recipe2);
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename1" class="font-bold text-xl mb-2"><?php print_r($recipe2); echo ucfirst($recipe[0]['title']); ?></div>
+              <div id = "recipename1" class="font-bold text-xl mb-2"><?php echo ucfirst($recipe[0]['title']); ?></div>
               <p id = "recipedesc1" class="text-white">
                 <div style="font-weight: bold;">
                     <?php echo $recipe[0]['culture']; ?>
@@ -625,7 +587,12 @@ var_dump($recipe2);
     </div>
 
     <!--Events-->
-    <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-4">Upcoming Events</h3>
+    <div class="join">
+        <h3 class="text-3xl font-bold text-start text-primary-500 ml-8 mb-4 pt-4">Upcoming Events</h3>
+        <form method="POST" action="/../backend/src/eventsfilter.php">
+        <button type="submit" class="btn btn-sm btn-primary ml-4" style="margin-top: 20px;">Hall Of Fame</button>
+        </form>
+    </div>
     <div class="flex justify-center gap-8">
         <div class="card card-compact w-96 bg-neutral shadow-xl ml-4">
             <figure><img src="https://www.withfire.co.uk/wp-content/uploads/2020/03/With-Fire-Incredible-Street-Food-Catering-Ideas-for-Your-Event.jpg" alt="Shoes" /></figure>
@@ -642,7 +609,7 @@ var_dump($recipe2);
                     $<?php echo ucfirst($events[0]['entryfee']); ?>
                 </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.php" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
@@ -662,7 +629,7 @@ var_dump($recipe2);
                     $<?php echo ucfirst($events[1]['entryfee']); ?>
                 </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.php" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
@@ -682,7 +649,7 @@ var_dump($recipe2);
                     $<?php echo ucfirst($events[2]['entryfee']); ?>
                 </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.php" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
@@ -702,7 +669,7 @@ var_dump($recipe2);
                     $<?php echo ucfirst($events[3]['entryfee']); ?>
                 </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.php" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>

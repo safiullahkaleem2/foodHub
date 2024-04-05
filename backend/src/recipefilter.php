@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // After executing your query
         $_SESSION['queryResults'] = $checkStmt->fetchAll(PDO::FETCH_ASSOC);
         
-        header("Location: /frontend/Pages/filter.php");
+        header("Location: /frontend/Pages/filterecipes.php");
         // exit();
         
         // if ($isHomeCook) {
