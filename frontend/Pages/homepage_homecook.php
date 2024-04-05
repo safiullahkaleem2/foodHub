@@ -151,19 +151,20 @@ createprochefs($connection);
     </div>
 
     <!--Recommended Recipes-->
-   <div class="">
-        <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-8 pt-4">Recommended Recipes</h3> 
+   <div>
+        <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 pt-4">Recommended Recipes</h3> 
         <div class="dropdown dropdown-end">
         <form method="POST" action="">
-            <div class="m-1">
-                <label class="input input-bordered flex items-center gap-2 input-xs bg-base-content">
-                    <input type="text" name="text" class="grow" placeholder="Name" />
+            <div class="m-1 ml-4">
+                <label class="input input-bordered flex items-center gap-2 input-xs bg-neutral">
+                    <input type="text" name="text" class="grow" placeholder="Name" style="color: white;"/>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
                 </label>
             </div>
+            <div class="join">
             <div class="m-1">
                 <label for="difficulty" class="text-sm">Difficulty Level:</label>
-                <select id="difficulty" name="difficulty" class="select select-bordered w-full max-w-xs">
+                <select id="difficulty" name="difficulty" class="select select-bordered w-full max-w-xs" style="color: black;">
                     <option value="Beginner">Beginner</option>
                     <option value="Intermediate">Intermediate</option>
                     <option value="Advanced">Advanced</option>
@@ -172,7 +173,7 @@ createprochefs($connection);
             </div>
             <div class="m-1">
                 <label for="culture" class="text-sm">Culture Type:</label>
-                <select id="culture" name="culture" class="select select-bordered w-full max-w-xs">
+                <select id="culture" name="culture" class="select select-bordered w-full max-w-xs" style="color: black;">
                     <option value="Chinese">Chinese</option>
                     <option value="American">American</option>
                     <option value="Japanese">Japanese</option>
@@ -188,6 +189,8 @@ createprochefs($connection);
                     <!-- Add more culture types as needed -->
                 </select>
             </div>
+</div>
+<br>
             <button type="submit" class="btn btn-sm btn-primary">Search</button>
         </form>
     </div>
@@ -625,15 +628,17 @@ createprochefs($connection);
         <div class="card card-compact w-96 bg-neutral shadow-xl ml-4">
             <figure><img src="https://www.withfire.co.uk/wp-content/uploads/2020/03/With-Fire-Incredible-Street-Food-Catering-Ideas-for-Your-Event.jpg" alt="Shoes" /></figure>
             <div class="absolute top-40 left-0 p-4 bg-base-content">
-                <h3 id = "eventtitle1" class="text-white text-xl font-semibold">Cooking Basics Workshop</h3>
+                <h3 id = "eventtitle1" class="text-white text-xl font-semibold"><?php echo ucfirst($events[0]['category']); ?></h3>
             </div>
             <div class="card-body">
                 <div class="join">
-                    <p>Mon, 24 Nov 2024</p>
-                    <div class="self-end">7:00 PM</div>
+                    <?php echo ucfirst($events[0]['date']); ?>
                 </div>
-                <p>Miami, Flordia, US</p>
-                <p>An introductory session covering essential cooking techniques like chopping, sautéing, and baking.</p>
+                <p>
+                    <?php echo ucfirst($events[0]['location']); ?> 
+                    <br>
+                    $<?php echo ucfirst($events[0]['entryfee']); ?>
+                </p>
                 <div class="card-actions justify-end">
                     <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
                 </div>
@@ -643,15 +648,17 @@ createprochefs($connection);
         <div class="card card-compact w-96 bg-neutral shadow-xl">
             <figure><img src="https://www.teambonding.com/wp-content/uploads/2020/10/Depositphotos_565421122_L-1.jpg" alt="Shoes" /></figure>
             <div class="absolute top-40 left-0 bg-neutral p-4">
-                <h3 id = "eventtitle2" class="text-white text-xl font-semibold">Industry Networking Mixer</h3>
+                <h3 id = "eventtitle1" class="text-white text-xl font-semibold"><?php echo ucfirst($events[1]['category']); ?></h3>
             </div>
             <div class="card-body">
                 <div class="join">
-                    <p>Thurs, 2 Mar 2024</p>
-                    <div class="self-end">7:00 PM</div>
+                    <?php echo ucfirst($events[1]['date']); ?>
                 </div>
-                <p>Vancouver, British Columbia, Canada</p>
-                <p>A social gathering for chefs, restaurant owners, and food industry professionals to connect and share ideas.</p>
+                <p>
+                    <?php echo ucfirst($events[1]['location']); ?> 
+                    <br>
+                    $<?php echo ucfirst($events[1]['entryfee']); ?>
+                </p>
                 <div class="card-actions justify-end">
                     <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
                 </div>
@@ -661,15 +668,17 @@ createprochefs($connection);
         <div class="card card-compact w-96 bg-neutral shadow-xl">
             <figure><img src="https://mocandco.com/wp-content/uploads/2017/06/tray_of_food.jpg" alt="Shoes" /></figure>
             <div class="absolute top-40 left-0 bg-neutral p-4">
-                <h3 id = "eventtitle3" class="text-white text-xl font-semibold">Wine Pairing Masterclass</h3>
+                <h3 id = "eventtitle1" class="text-white text-xl font-semibold"><?php echo ucfirst($events[2]['category']); ?></h3>
             </div>
             <div class="card-body">
                 <div class="join">
-                    <p>Fri, 2 June 2025</p>
-                    <div class="self-end">7:00 PM</div>
+                    <?php echo ucfirst($events[2]['date']); ?>
                 </div>
-                <p>Seattle, Washington, US</p>
-                <p>An educational seminar on wine pairing techniques and strategies for enhancing the dining experience.</p>
+                <p>
+                    <?php echo ucfirst($events[2]['location']); ?> 
+                    <br>
+                    $<?php echo ucfirst($events[2]['entryfee']); ?>
+                </p>
                 <div class="card-actions justify-end">
                     <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
                 </div>
@@ -679,15 +688,17 @@ createprochefs($connection);
         <div class="card card-compact w-96 bg-neutral shadow-xl mr-4">
             <figure><img src="https://www.reventals.com/blog/wp-content/uploads/2019/06/AdobeStock_186295600.jpeg" alt="Shoes" /></figure>
             <div class="absolute top-40 left-0 bg-neutral p-4">
-                <h3 id = "eventtitle4" class="text-white text-xl font-semibold">Steak Masterclass</h3>
+                <h3 id = "eventtitle1" class="text-white text-xl font-semibold"><?php echo ucfirst($events[3]['category']); ?></h3>
             </div>
             <div class="card-body">
                 <div class="join">
-                    <p>Fri, 2 June 2025</p>
-                    <div class="self-end">7:00 PM</div>
+                    <?php echo ucfirst($events[3]['date']); ?>
                 </div>
-                <p>Ottawa, Ontario, Canada</p>
-                <p>An educational seminar on wine pairing techniques and strategies for enhancing the dining experience.</p>
+                <p>
+                    <?php echo ucfirst($events[3]['location']); ?> 
+                    <br>
+                    $<?php echo ucfirst($events[3]['entryfee']); ?>
+                </p>
                 <div class="card-actions justify-end">
                     <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
                 </div>

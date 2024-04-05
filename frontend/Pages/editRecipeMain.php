@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '\..\..\backend\scripts\databaseconnection.php';
+require_once __DIR__ . '/../../backend/scripts/databaseconnection.php';
 ?>
 
 <!DOCTYPE html>
