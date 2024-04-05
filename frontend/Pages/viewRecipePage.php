@@ -17,6 +17,17 @@ if ($recipeId) {
     $stmt->execute();
     
     $recipeDetails = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+    $query2 = "SELECT * FROM Video WHERE RecipeID = :recipeId";
+    $stmt = $connection->prepare($query2);
+    
+
+    $stmt->bindParam(':recipeId', $recipeId, PDO::PARAM_INT);
+    
+    $stmt->execute();
+    
+    $videoDetails = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 
@@ -58,7 +69,7 @@ if ($recipeId) {
                 <div class="card-body">
                     <h2 class="card-title">Recipe video</h2>
 
-                    <iframe width="950" height="450" src="https://www.youtube.com/embed/6B5IQ3fJit0"
+                    <iframe width="950" height="450" src= <?= htmlspecialchars($videoDetails['VideoURL']); ?>
                         
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

@@ -1,6 +1,20 @@
 <?php
 require_once __DIR__ . '/../../backend/scripts/databaseconnection.php';
 session_start();
+
+// Assuming you've correctly passed and validated 'edit-recipe-id' to this script
+$editRecipeId = $_POST['edit-recipe-id'] ?? null; // Using null coalescing operator as a fallback
+
+if ($editRecipeId) {
+    $recipeDetailsQuery = $connection->prepare("SELECT RecipeDetails.*, Recipe.EstimatedTime FROM RecipeDetails JOIN Recipe ON Recipe.PublishDate = RecipeDetails.PublishDate AND Recipe.Title = RecipeDetails.Title WHERE Recipe.RecipeID = :recipeId");
+    $recipeDetailsQuery->bindParam(':recipeId', $editRecipeId, PDO::PARAM_INT);
+    $recipeDetailsQuery->execute();
+    $recipeDetails = $recipeDetailsQuery->fetch(PDO::FETCH_ASSOC); // Assuming only one row matches, use fetch()
+
+
+} else {
+    echo "Recipe ID not provided.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,41 +32,15 @@ session_start();
     <div class="card w-96 bg-neutral text-neutral-content ">
         <div class="card-body items-center text-center">
             <h2 class="card-title text-white mb-4">Edit Recipe</h2>
-            <form action="/../../backend/src/queries/updateRecipe.php" method="post">
-                <?php
-                $editRecipeTitle = $_POST['edit-recipe-title'];
-                $recipeDetailsQuery = $connection->prepare("SELECT * 
-                FROM RecipeDetails WHERE Title = :editRecipeTitle");
-                $recipeDetailsQuery->bindParam(':editRecipeTitle', $editRecipeTitle);
-                $recipeDetailsQuery->execute();
-
-                $recipe = $recipeDetailsQuery->fetchAll(PDO::FETCH_ASSOC);
-                $firstRecipe = $recipe[0];
-                $recipeTitle = $firstRecipe['title'];
-                $recipeDescription = $firstRecipe['description'];
-                $recipeCulture = $firstRecipe['culture'];
-                $recipeDifficulty = $firstRecipe['difficulty'];
-                $recipeServing = $firstRecipe['serving'];
-                global $editRecipePublishDate;
-                $editRecipePublishDate = $firstRecipe['publishdate'];
-
-                $recipeQuery = $connection->prepare("SELECT * 
-                FROM Recipe WHERE Title = :editRecipeTitle");
-                $recipeQuery->bindParam(':editRecipeTitle', $editRecipeTitle);
-                $recipeQuery->execute();
-
-                $recipe = $recipeQuery->fetchAll(PDO::FETCH_ASSOC);
-                $firstRecipe = $recipe[0];
-                $recipeEstimatedTime = $firstRecipe['estimatedtime'];
-
-                ?>
+            <form action="" method="post">
+                
 
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text text-white">Recipe description</span>
                     </label>
                     <textarea required name="edit-recipe-description"
-                        class="input input-bordered text-zinc-950 h-32 resize-none"><?= htmlspecialchars($recipeDescription) ?></textarea>
+                        class="input input-bordered text-zinc-950 h-32 resize-none"><?= htmlspecialchars($recipeDetails['title']); ?></textarea>
                 </div>
 
                 <div class="form-control">
@@ -120,8 +108,7 @@ session_start();
                         class="text-zinc-950 input input-bordered">
                 </div>
                 <?
-                error_reporting(E_ALL);
-                ini_set('display_errors', 1);
+
                 ?>
                 <div class="form-control mt-6">
                     <button type="submit" class="btn btn-primary">Save changes</button>

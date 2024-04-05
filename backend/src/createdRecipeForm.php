@@ -10,7 +10,7 @@ $recipeTitle = $_POST['recipe-title'];
 $recipeDescription = $_POST['recipe-description'];
 
 $videoDuration = $_POST['video-duration'];
-$videoName = $_POST['video-name'];
+$name = $_POST['video-name'];
 $difficultyLevel = $_POST['difficulty-level'];
 $ratingLevel = $_POST['rating-level'];
 $culture = $_POST['culture'];
@@ -19,6 +19,7 @@ $servings = $_POST['servings'];
 $estimatedTime = $_POST['estimated-time'];
 $videourl = $_POST['video-url'];
 
+$publishedDate = date('Y-m-d H:i:s');
 
 // Prepare the INSERT statement with placeholders
 $insertQueryRecipeDetails = "INSERT INTO RecipeDetails (PublishDate, Title, Description, Culture, Difficulty, Serving)
@@ -119,7 +120,7 @@ $insertQuery18 = $connection->prepare("INSERT INTO Video (Name, UploadTime, Reci
 $uploadTime = date('Y-m-d H:i:s');
 
 
-$insertQuery18->bindParam(':videoName', $name);
+$insertQuery18->bindParam(':name', $name);
 $insertQuery18->bindParam(':uploadTime', $uploadTime);
 $insertQuery18->bindParam(':recipeId', $recipeID);
 $insertQuery18->bindParam(':videoURL', $videourl);
@@ -129,5 +130,5 @@ $insertQuery18->bindParam(':duration', $videoDuration);
 // Execute the query
 $insertQuery18->execute();
 
-echo "<script>alert('recipe sucessfully published'); window.location.href='/frontend/Pages/homepage_professionalcook.html';</script>";
-
+echo "<script>alert('recipe sucessfully published');</script>";
+header("Location: /frontend/Pages/homepage_professionalcook.html");
