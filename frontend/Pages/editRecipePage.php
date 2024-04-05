@@ -11,7 +11,6 @@ if ($editRecipeId) {
     $recipeDetailsQuery->execute();
     $recipeDetails = $recipeDetailsQuery->fetch(PDO::FETCH_ASSOC); // Assuming only one row matches, use fetch()
 
-
 } else {
     echo "Recipe ID not provided.";
 }
