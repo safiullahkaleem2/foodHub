@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../backend/scripts/databaseconnection.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -22,26 +23,37 @@ require_once __DIR__ . '/../../backend/scripts/databaseconnection.php';
                 <div class="form-control">
                     <h1 class="text-white">Recipe:</h1>
                     <?php
-                    $recipeDetailsQuery = $connection->prepare("SELECT * 
-                            FROM RecipeDetails");
-                    $recipeDetailsQuery->execute();
-                    $recipe = $recipeDetailsQuery->fetchAll(PDO::FETCH_ASSOC);
-
-                    if (count($recipe) > 0) {
-                        foreach ($recipe as $recipe) {
-                            ?>
-                            <div style="display: flex; align-items: center;">
-                                <input required class="input-bordered" type="radio" name="edit-recipe-title"
-                                    value="<?= $recipe['title']; ?>">
-
-                                <label style="margin-left: 5px;">
-                                    <?= $recipe['title']; ?>
-                                </label>
-                            </div>
-                            <?php
-                        }
+                    // Ensure you have the user's ID in your session
+                    if (!isset($_SESSION['userid'])) {
+                        echo "Please log in to view your recipes.";
                     } else {
-                        echo "No Record Found";
+                        $userID = $_SESSION['userid'];
+
+                        // Modified query to select only recipes uploaded by the user
+                        $recipeDetailsQuery = $connection->prepare("SELECT * FROM Recipe
+                            JOIN Posts ON Posts.RecipeID = Recipe.RecipeID
+                            WHERE Posts.UserID = :userID");
+                        $recipeDetailsQuery->bindParam(':userID', $userID, PDO::PARAM_INT);
+                        $recipeDetailsQuery->execute();
+                        $recipes = $recipeDetailsQuery->fetchAll(PDO::FETCH_ASSOC);
+
+                        
+                        if (count($recipes) > 0) {
+                            foreach ($recipes as $recipe) {
+                                ?>
+                                <div style="display: flex; align-items: center;">
+                                    <input required class="input-bordered" type="radio" name="edit-recipe-id"
+                                        value="<?= htmlspecialchars($recipe['recipeid']); ?>">
+
+                                    <label style="margin-left: 5px;">
+                                        <?= htmlspecialchars($recipe['title']); ?>
+                                    </label>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "No Record Found";
+                        }
                     }
                     ?>
                 </div>
@@ -51,7 +63,7 @@ require_once __DIR__ . '/../../backend/scripts/databaseconnection.php';
                 </div>
 
                 <div class="form-control mt-6">
-                    <a href="homepage_homecook.html"><button type="button" class="btn btn-primary">Home
+                    <a href="homepage_professionalcook.html"><button type="button" class="btn btn-primary">Home
                             page</button></a>
                 </div>
             </form>
