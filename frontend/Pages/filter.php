@@ -40,6 +40,7 @@ session_start();
                     <option value="Thai">Thai</option>
                     <option value="Caribbean">Caribbean</option>
                     <option value="Italian">Italian</option>
+                    <option value="any">Any</option>
                     
                 </select>
             </div>
