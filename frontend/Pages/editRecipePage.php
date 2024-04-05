@@ -5,16 +5,14 @@ session_start();
 // Assuming you've correctly passed and validated 'edit-recipe-id' to this script
 $editRecipeId = $_POST['edit-recipe-id'] ?? null; // Using null coalescing operator as a fallback
 
-if ($editRecipeId) {
-    $recipeDetailsQuery = $connection->prepare("SELECT RecipeDetails.*, Recipe.EstimatedTime FROM RecipeDetails JOIN Recipe ON Recipe.PublishDate = RecipeDetails.PublishDate AND Recipe.Title = RecipeDetails.Title WHERE Recipe.RecipeID = :recipeId");
+
+    $recipeDetailsQuery = $connection->prepare("SELECT *, Recipe.EstimatedTime FROM RecipeDetails JOIN Recipe ON Recipe.PublishDate = RecipeDetails.PublishDate AND Recipe.Title = RecipeDetails.Title WHERE Recipe.RecipeID = :recipeId");
     $recipeDetailsQuery->bindParam(':recipeId', $editRecipeId, PDO::PARAM_INT);
     $recipeDetailsQuery->execute();
     $recipeDetails = $recipeDetailsQuery->fetch(PDO::FETCH_ASSOC); // Assuming only one row matches, use fetch()
 
 
-} else {
-    echo "Recipe ID not provided.";
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +30,7 @@ if ($editRecipeId) {
     <div class="card w-96 bg-neutral text-neutral-content ">
         <div class="card-body items-center text-center">
             <h2 class="card-title text-white mb-4">Edit Recipe</h2>
-            <form action="" method="post">
+            <form action="/../backend/src/queries/updateRecipe.php" method="post">
                 
 
                 <div class="form-control">
@@ -49,16 +47,16 @@ if ($editRecipeId) {
                     </label>
                     <select required class="input input-bordered text-zinc-950" name="edit-difficulty-level"
                         id="difficulty-level">
-                        <option value="expert" <?php if ($recipeDifficulty === 'Expert')
+                        <option value="expert" <?php if ($recipeDetails['difficulty'] === 'Expert')
                             echo 'selected'; ?>>Expert
                         </option>
-                        <option value="difficult" <?php if ($recipeDifficulty === 'Difficult')
+                        <option value="difficult" <?php if ($recipeDetails['difficulty'] === 'Difficult')
                             echo 'selected'; ?>>
                             Difficult</option>
-                        <option value="intermediate" <?php if ($recipeDifficulty === 'Intermediate')
+                        <option value="intermediate" <?php if ($recipeDetails['difficulty'] === 'Intermediate')
                             echo 'selected'; ?>>
                             Intermediate</option>
-                        <option value="easy" <?php if ($recipeDifficulty === 'Beginner')
+                        <option value="easy" <?php if ($recipeDetails['difficulty'] === 'Beginner')
                             echo 'selected'; ?>>Beginner
                         </option>
                     </select>
@@ -69,7 +67,7 @@ if ($editRecipeId) {
                         <span class="label-text text-white">Culture</span>
                     </label>
                     <input required name="edit-recipe-culture" type="text"
-                        value="<?= htmlspecialchars($recipeCulture) ?>" class="input input-bordered text-zinc-950">
+                        value="<?= htmlspecialchars($recipeDetails['culture']) ?>" class="input input-bordered text-zinc-950">
                 </div>
 
                 <div class="form-control">
@@ -96,7 +94,7 @@ if ($editRecipeId) {
                         <span class="label-text text-white">Servings</span>
                     </label>
                     <input name="edit-recipe-servings" required type="number"
-                        value="<?= htmlspecialchars($recipeServing) ?>" class="input input-bordered text-zinc-950">
+                        value="<?= htmlspecialchars($$recipeDetails['serving']) ?>" class="input input-bordered text-zinc-950">
                 </div>
 
                 <div class="form-control">
@@ -104,7 +102,7 @@ if ($editRecipeId) {
                         <span class="label-text text-white">Estimated Time</span>
                     </label>
                     <input name="edit-estimated-time" required type="number"
-                        value="<?= htmlspecialchars($recipeEstimatedTime) ?>"
+                        value="<?= htmlspecialchars($recipeDetails['estimatedtime']) ?>"
                         class="text-zinc-950 input input-bordered">
                 </div>
                 <?

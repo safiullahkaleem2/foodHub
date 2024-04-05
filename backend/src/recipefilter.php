@@ -5,6 +5,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once __DIR__ . '/../scripts/databaseconnection.php';
     require_once __DIR__ . '/queries/queryfunctions.php';
+    if (isset($_POST['search_button'])) {
 
     $serving = trim($_POST['text']); 
     $culture = $_POST['culture']; 
@@ -17,12 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['show_estimatedtime'] = isset($_POST['show_estimatedtime']) ? 1 : 0;
 
     if ($culture === 'any') {
-        // If culture is "any", prepare a query that does not restrict by culture
+
         $sql = "SELECT * FROM recipedetails r
                 JOIN recipe r2 ON r2.title = r.title AND r2.publishdate = r.publishdate
                 WHERE r.serving >= :serving";
     } else {
-        // If a specific culture is selected, include the culture condition
+
         $sql = "SELECT *
                 FROM recipedetails r, (
                      SELECT culture 
@@ -37,31 +38,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $checkStmt = $connection->prepare($sql);
     
-    // Bind the :serving parameter in both cases
+
     $checkStmt->bindParam(':serving', $serving, PDO::PARAM_INT);
     
-    // Bind the :culture parameter only if it's not "any"
+
     if ($culture !== 'any') {
         $checkStmt->bindParam(':culture', $culture, PDO::PARAM_STR);
     }
     
     $checkStmt->execute();
-        // After executing your query
         $_SESSION['queryResults'] = $checkStmt->fetchAll(PDO::FETCH_ASSOC);
         
         header("Location: /frontend/Pages/filter.php");
-        // exit();
+    }
+
+
+    if (isset($_POST['project_query_button'])) {
+
+        $selectedColumns = [];
+        $columnMap = [
+    '   show_title' => 'r.title',
+        'show_publishdate' => 'r.publishdate',
+        'show_description' => 'r.description',
+        'show_culture' => 'r.culture',
+        'show_difficulty' => 'r.difficulty',
+        'show_serving' => 'r.serving',
+        'show_estimatedtime' => 'r2.estimatedtime',
+        ];
+
+
+        foreach ($columnMap as $checkboxName => $columnName) {
+            if (isset($_POST[$checkboxName]) && $_POST[$checkboxName] == 'true') {
+                $selectedColumns[] = $columnName;
+            }
+        }
+
+        $selectedColumnsString = implode(', ', $selectedColumns);
+
+        $sql = "SELECT $selectedColumnsString FROM RecipeDetails r JOIN Recipe r2 ON r2.title = r.title AND r2.publishdate = r.publishdate";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+
+        $_SESSION['selectionresults'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         
-        // if ($isHomeCook) {
-        //     $_SESSION['userType'] = 'HomeCook';
-        //     header("Location: /frontend/Pages/homepage_homecook.php");
-        //     exit();
-        // } elseif ($isProChef) {
-        //     $_SESSION['userType'] = 'ProfessionalChef';
-        //     header("Location: /frontend/Pages/homepage_professionalcook.html");
-        //     exit();
-        // } else {
-        //     echo "User type not determined.";
-        // }
+        header("Location: /frontend/Pages/filter.php");
+
+
+
+    }
+
 }
 

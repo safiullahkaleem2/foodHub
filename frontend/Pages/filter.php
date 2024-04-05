@@ -45,6 +45,18 @@ session_start();
                 </select>
             </div>
 
+</div>
+
+        </div>
+
+        <br>
+        <button type="submit" name="search_button" class="btn btn-sm btn-primary">Search</button>
+        </form>
+
+        <form method="POST" action="/../backend/src/recipefilter.php">
+ 
+            <div class="join">
+
     <div class="checkboxes">
     <label><input type="checkbox" name="show_title" value="true">Title</label>
     <label><input type="checkbox" name="show_publishdate" value="true">Publish Date</label>
@@ -58,8 +70,9 @@ session_start();
         </div>
 
         <br>
-            <button type="submit" class="btn btn-sm btn-primary">Search</button>
-        </form>
+        <button type="submit" name="project_query_button" class="btn btn-sm btn-primary">Search By fields</button>
+
+    </form>
     </div>
 <?php
 
@@ -72,37 +85,43 @@ if (isset($_SESSION['queryResults'])) {
         echo '<div class="result-item">';
         
 
-        if ($_SESSION['show_title'] == 1) {
+
             echo '<h5>Title: ' . htmlspecialchars($row['title']) . '</h5>';
-        }
-        if ($_SESSION['show_publishdate'] == 1) {
-            echo '<p>Publish Date: ' . htmlspecialchars($row['publishdate']) . '</p>';
-        }
-        if ($_SESSION['show_description'] == 1) {
-            echo '<p>Description: ' . htmlspecialchars($row['description']) . '</p>';
-        }
-        if ($_SESSION['show_culture'] == 1) {
-            echo '<p>Culture: ' . htmlspecialchars($row['culture']) . '</p>';
-        }
-
-        if ($_SESSION['show_difficulty']) {
-            echo '<p>Difficulty: ' . htmlspecialchars($row['difficulty']) . '</p>';
-        }
-        if ($_SESSION['show_serving']) {
-            echo '<p>Serving: ' . htmlspecialchars($row['serving']) . '</p>';
-        }
-
-        if ($_SESSION['show_estimatedtime']) {
-            echo '<p>estimated time: ' . htmlspecialchars($row['estimatedtime']) . '</p>';
-        }
-
         
-        echo '</div>';
+            echo '<p>Publish Date: ' . htmlspecialchars($row['publishdate']) . '</p>';
+            echo '<p>Description: ' . htmlspecialchars($row['description']) . '</p>';
+            echo '<p>Culture: ' . htmlspecialchars($row['culture']) . '</p>';
+
+
+            echo '<p>Difficulty: ' . htmlspecialchars($row['difficulty']) . '</p>';
+            echo '<p>Serving: ' . htmlspecialchars($row['serving']) . '</p>';
+
+            echo '<p>estimated time: ' . htmlspecialchars($row['estimatedtime']) . '</p>';        
+            echo '</div>';
     }
+    
     echo '</div>';
     
     unset($_SESSION['queryResults']); 
 }
+
+
+if (isset($_SESSION['selectionresults'])) {
+    $results = $_SESSION['selectionresults'];
+    
+    echo '<div class="results">';
+
+    foreach ($results as $row) {
+        echo "<div>";
+        foreach ($row as $key => $value) {
+            echo "<p><strong>$key:</strong> $value</p>";
+        }
+        echo "</div>";
+    }
+        
+    unset($_SESSION['selectionresults']); 
+}
+
 
 ?>
 
