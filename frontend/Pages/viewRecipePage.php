@@ -52,6 +52,64 @@ if ($recipeId) {
                 </div>
             </div>
 
+
+
+            <div class="card bg-base-content text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Recipe video</h2>
+
+                    <iframe width="950" height="450" src="https://www.youtube.com/embed/6B5IQ3fJit0"
+                        title="Iss Ramzan ki Dhamaka Recipe Butter chicken Sliders by Cooking with Benazir #ramzanspecial"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+            </div>
+
+
+
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Culture</h2>
+                    <p><?= htmlspecialchars($recipeDetails['culture']); ?></p>
+                </div>
+            </div>
+
+
+
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Servings</h2>
+                    <p><?= htmlspecialchars($recipeDetails['serving']); ?></p>
+                </div>
+            </div>
+
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Prep time</h2>
+                    <p><?= htmlspecialchars($recipeDetails['estimatedtime']); ?></p>
+                </div>
+            </div>
+
+
+
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Ingredients</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                </div>
+            </div>
+
+            <div class="card w-96 bg-primary text-primary-content">
+                <div class="card-body">
+                    <h2 class="card-title">Cooking equipment</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                </div>
+            </div>
+
+
             <div class="form-control mt-6">
                 <a href="homepage_homecook.php"><button type="button" class="btn btn-primary">Home page</button></a>
             </div>
