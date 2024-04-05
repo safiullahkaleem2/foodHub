@@ -1,15 +1,11 @@
 
-var ProfilePictures = [ 'https://randomuser.me/api/portraits/men/5.jpg','https://randomuser.me/api/portraits/men/6.jpg','https://randomuser.me/api/portraits/women/7.jpg','https://randomuser.me/api/portraits/women/8.jpg','https://randomuser.me/api/portraits/women/9.jpg',
-                        'https://randomuser.me/api/portraits/women/10.jpg','https://randomuser.me/api/portraits/women/11.jpg','https://randomuser.me/api/portraits/women/12.jpg','https://randomuser.me/api/portraits/men/7.jpg','https://randomuser.me/api/portraits/men/8.jpg',
-                        'https://randomuser.me/api/portraits/men/9.jpg','https://randomuser.me/api/portraits/men/10.jpg','https://randomuser.me/api/portraits/men/11.jpg','https://randomuser.me/api/portraits/men/12.jpg','https://randomuser.me/api/portraits/women/13.jpg',
-                        'https://randomuser.me/api/portraits/women/14.jpg','https://randomuser.me/api/portraits/women/15.jpg','https://randomuser.me/api/portraits/women/16.jpg','https://randomuser.me/api/portraits/women/17.jpg','https://randomuser.me/api/portraits/women/18.jpg',
-                        'https://randomuser.me/api/portraits/men/13.jpg','https://randomuser.me/api/portraits/men/14.jpg','https://randomuser.me/api/portraits/men/15.jpg','https://randomuser.me/api/portraits/men/16.jpg','https://randomuser.me/api/portraits/men/17.jpg',
-                        'https://randomuser.me/api/portraits/men/18.jpg','https://randomuser.me/api/portraits/women/19.jpg','https://randomuser.me/api/portraits/women/20.jpg','https://randomuser.me/api/portraits/women/21.jpg','https://randomuser.me/api/portraits/women/22.jpg',
-                        'https://randomuser.me/api/portraits/women/23.jpg','https://randomuser.me/api/portraits/women/24.jpg','https://randomuser.me/api/portraits/men/19.jpg','https://randomuser.me/api/portraits/men/20.jpg','https://randomuser.me/api/portraits/men/21.jpg',
-                        'https://randomuser.me/api/portraits/men/22.jpg','https://randomuser.me/api/portraits/men/23.jpg','https://randomuser.me/api/portraits/men/24.jpg', 'https://randomuser.me/api/portraits/women/25.jpg',
-                        'https://randomuser.me/api/portraits/women/26.jpg','https://randomuser.me/api/portraits/women/27.jpg','https://randomuser.me/api/portraits/women/28.jpg','https://randomuser.me/api/portraits/women/29.jpg',
-                        'https://randomuser.me/api/portraits/women/30.jpg','https://randomuser.me/api/portraits/men/25.jpg','https://randomuser.me/api/portraits/men/26.jpg','https://randomuser.me/api/portraits/men/27.jpg',
-                        'https://randomuser.me/api/portraits/men/28.jpg','https://randomuser.me/api/portraits/men/29.jpg','https://randomuser.me/api/portraits/men/30.jpg','https://randomuser.me/api/portraits/women/31.jpg'];
+var ProfilePictures = [
+    '1.png', '2.png', '3.png', '4.png',
+    '5.png', '6.png', '7.png', '8.png',
+    '9.png', '10.png', '11.png', '12.png',
+    '13.png', '14.png', '15.png', '16.png',
+    '17.png'
+];
 
 var FoodPictures = ['https://images.unsplash.com/photo-1565299507177-b0ac66763828?q=80&w=1022&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1432139509613-5c4255815697?q=80&w=985&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1501959915551-4e8d30928317?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1481070555726-e2fe8357725c?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 'https://images.unsplash.com/photo-1481931098730-318b6f776db0?q=80&w=990&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D','https://images.unsplash.com/photo-1484980972926-edee96e0960d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -51,5 +47,4 @@ document.getElementById("chef6").src = ProfilePictures[5];
 document.getElementById("chef7").src = ProfilePictures[6];
 document.getElementById("chef8").src = ProfilePictures[7];
 document.getElementById("chef9").src = ProfilePictures[8];
-
 

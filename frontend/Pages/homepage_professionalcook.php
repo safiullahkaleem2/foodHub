@@ -31,20 +31,22 @@ createprochefs($connection);
                 
                 <!--Photo-->
                 <div class="dropdown">
-                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar online">
+                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar online ring ring-success">
                         <div class="w-10 rounded-full"> 
                             <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"/>
                          </div>    
                     </div>
                     
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 bg-neutral">
-                    <li><a href="homecookprofilePage.html">Profile</a></li>
-                    <li><a href="homeCookEventPage.html">Browse Events</a></li>
+                    <li><a href="professionalChefprofilePage.html">Profile</a></li>
+                    <li><a href="ProfessionalChefEventPage.html">Browse Events</a></li>
+                    <li><a href="./createRecipePage.php">Create Recipes</a></li>
+                    <li><a href="editRecipeMain.php">Edit Recipes</a></li>
                     <li><a href="loginpage.html">Log out</a></li>
                 </ul>
                 </div>
             </div>
-
+            
             <!--Title-->
             <div class="navbar-center">
                 <a class="btn btn-ghost text-xl" style="pointer-events: none;">FoodHub</a>
@@ -612,7 +614,7 @@ createprochefs($connection);
                     $<?php echo ucfirst($events[0]['entryfee']); ?>
                 </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.html" class="btn btn-primary">Create</a>
                 </div>
             </div>
         </div>
@@ -632,7 +634,7 @@ createprochefs($connection);
                     $<?php echo ucfirst($events[1]['entryfee']); ?>
                 </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.html" class="btn btn-primary">Create</a>
                 </div>
             </div>
         </div>
@@ -652,7 +654,7 @@ createprochefs($connection);
                     $<?php echo ucfirst($events[2]['entryfee']); ?>
                 </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.html" class="btn btn-primary">Create</a>
                 </div>
             </div>
         </div>
@@ -672,7 +674,7 @@ createprochefs($connection);
                     $<?php echo ucfirst($events[3]['entryfee']); ?>
                 </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                    <a href="ProfessionalChefEventPage.html" class="btn btn-primary">Create</a>
                 </div>
             </div>
         </div>
