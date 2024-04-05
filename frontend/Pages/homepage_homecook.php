@@ -174,7 +174,6 @@ createprochefs($connection);
                 </div>
                 <?php echo $recipe[0]['description']; ?>
             </p>
-        </div>
     </div>
 </div>
 
