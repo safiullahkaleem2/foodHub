@@ -1,9 +1,11 @@
 <?php
 session_start();
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once __DIR__ . '/../scripts/databaseconnection.php'; 
+
+    global $isHomeCook, $isProChef;
+    
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
@@ -15,9 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($password == $user['password']) {
 
             $_SESSION['userid'] = $user['userid'];
-    
-            
-
             $_SESSION['username'] = $username;
             
             $stmtHomeCook = $connection->prepare("SELECT * FROM HomeCook WHERE UserID = ?");

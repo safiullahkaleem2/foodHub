@@ -17,7 +17,7 @@ $culture = $_POST['culture'];
 $category = $_POST['category'];
 $servings = $_POST['servings'];
 $estimatedTime = $_POST['estimated-time'];
-$publishedDate = date('Y-m-d');
+$videourl = $_POST['video-url'];
 
 
 // Prepare the INSERT statement with placeholders
@@ -112,6 +112,22 @@ foreach ($_POST['ingredientslist'] as $ingredient) {
   $insertStmt->bindParam(':recipeID', $recipeID); 
   $insertStmt->execute();
 }
+
+$insertQuery18 = $connection->prepare("INSERT INTO Video (Name, UploadTime, RecipeID, VideoURL, Duration, Views) VALUES (:name, :uploadTime, :recipeId, :videoURL, :duration, 0)");
+
+
+$uploadTime = date('Y-m-d H:i:s');
+
+
+$insertQuery18->bindParam(':videoName', $name);
+$insertQuery18->bindParam(':uploadTime', $uploadTime);
+$insertQuery18->bindParam(':recipeId', $recipeID);
+$insertQuery18->bindParam(':videoURL', $videourl);
+$insertQuery18->bindParam(':duration', $videoDuration);
+
+
+// Execute the query
+$insertQuery18->execute();
 
 echo "<script>alert('recipe sucessfully published'); window.location.href='/frontend/Pages/homepage_professionalcook.html';</script>";
 
