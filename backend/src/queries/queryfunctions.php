@@ -124,7 +124,17 @@ function createrecipe($connection) {
 
 global $recipe;
 
-$statement = $connection->prepare("SELECT * FROM recipedetails");
-$statement->execute();
-$recipe = $statement->fetchAll(PDO::FETCH_ASSOC);
-}
+
+    $sql = "SELECT Recipe.*, RecipeDetails.*
+            FROM Recipe
+            JOIN RecipeDetails ON Recipe.PublishDate = RecipeDetails.PublishDate AND Recipe.Title = RecipeDetails.Title";
+    
+    $statement = $connection->prepare($sql);
+    $statement->execute();
+    
+    // Fetching all recipes and their details
+    $recipe = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    
+} 
+
