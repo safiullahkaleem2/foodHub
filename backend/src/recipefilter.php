@@ -49,10 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkStmt->execute();
         $_SESSION['queryResults'] = $checkStmt->fetchAll(PDO::FETCH_ASSOC);
         
-<<<<<<< HEAD
         header("Location: /frontend/Pages/filter.php");
     }
-
 
     if (isset($_POST['project_query_button'])) {
 
@@ -82,16 +80,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $_SESSION['selectionresults'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-=======
-        header("Location: /frontend/Pages/filterecipes.php");
-        // exit();
->>>>>>> ba020772818499d573847e1d631621280a6ee7ab
-        
         header("Location: /frontend/Pages/filter.php");
-
 
 
     }
 
 }
-

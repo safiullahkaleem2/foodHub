@@ -588,29 +588,31 @@ createprochefs($connection);
         
     </div>
 
-    <!--TODO-->
     <!--Events-->
+    <div>
     <div class="join">
-        <h3 class="text-3xl font-bold text-start text-primary-500 ml-8 mb-4 pt-4">Upcoming Events</h3>
-        <form method="POST" action="/../backend/src/eventsfilter.php">
-        <button type="submit" class="btn btn-sm btn-primary ml-4" style="margin-top: 20px;">Hall Of Fame</button>
-        </form>
+    <h3 class="text-3xl font-bold text-start text-primary-500 ml-8 mb-4 pt-4">Upcoming Events</h3>
+    <form method="POST" action="/../backend/src/eventsfilter.php">
+    <button type="submit" class="btn btn-sm btn-primary ml-4" style="margin-top: 20px;">Hall Of Fame</button>
+    </form>
     </div>
     <div class="flex justify-center gap-8">
         <div class="card card-compact w-96 bg-neutral shadow-xl ml-4">
             <figure><img src="https://www.withfire.co.uk/wp-content/uploads/2020/03/With-Fire-Incredible-Street-Food-Catering-Ideas-for-Your-Event.jpg" alt="Shoes" /></figure>
             <div class="absolute top-40 left-0 p-4 bg-base-content">
-                <h3 id = "eventtitle1" class="text-white text-xl font-semibold">Cooking Basics Workshop</h3>
+                <h3 id = "eventtitle1" class="text-white text-xl font-semibold"><?php echo ucfirst($events[0]['category']); ?></h3>
             </div>
             <div class="card-body">
                 <div class="join">
-                    <p>Mon, 24 Nov 2024</p>
-                    <div class="self-end">7:00 PM</div>
+                    <?php echo ucfirst($events[0]['date']); ?>
                 </div>
-                <p>Miami, Flordia, US</p>
-                <p>An introductory session covering essential cooking techniques like chopping, sautéing, and baking.</p>
+                <p>
+                    <?php echo ucfirst($events[0]['location']); ?> 
+                    <br>
+                    $<?php echo ucfirst($events[0]['entryfee']); ?>
+                </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.php" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
@@ -618,17 +620,19 @@ createprochefs($connection);
         <div class="card card-compact w-96 bg-neutral shadow-xl">
             <figure><img src="https://www.teambonding.com/wp-content/uploads/2020/10/Depositphotos_565421122_L-1.jpg" alt="Shoes" /></figure>
             <div class="absolute top-40 left-0 bg-neutral p-4">
-                <h3 id = "eventtitle2" class="text-white text-xl font-semibold">Industry Networking Mixer</h3>
+                <h3 id = "eventtitle1" class="text-white text-xl font-semibold"><?php echo ucfirst($events[1]['category']); ?></h3>
             </div>
             <div class="card-body">
                 <div class="join">
-                    <p>Thurs, 2 Mar 2024</p>
-                    <div class="self-end">7:00 PM</div>
+                    <?php echo ucfirst($events[1]['date']); ?>
                 </div>
-                <p>Vancouver, British Columbia, Canada</p>
-                <p>A social gathering for chefs, restaurant owners, and food industry professionals to connect and share ideas.</p>
+                <p>
+                    <?php echo ucfirst($events[1]['location']); ?> 
+                    <br>
+                    $<?php echo ucfirst($events[1]['entryfee']); ?>
+                </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.php" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
@@ -636,17 +640,19 @@ createprochefs($connection);
         <div class="card card-compact w-96 bg-neutral shadow-xl">
             <figure><img src="https://mocandco.com/wp-content/uploads/2017/06/tray_of_food.jpg" alt="Shoes" /></figure>
             <div class="absolute top-40 left-0 bg-neutral p-4">
-                <h3 id = "eventtitle3" class="text-white text-xl font-semibold">Wine Pairing Masterclass</h3>
+                <h3 id = "eventtitle1" class="text-white text-xl font-semibold"><?php echo ucfirst($events[2]['category']); ?></h3>
             </div>
             <div class="card-body">
                 <div class="join">
-                    <p>Fri, 2 June 2025</p>
-                    <div class="self-end">7:00 PM</div>
+                    <?php echo ucfirst($events[2]['date']); ?>
                 </div>
-                <p>Seattle, Washington, US</p>
-                <p>An educational seminar on wine pairing techniques and strategies for enhancing the dining experience.</p>
+                <p>
+                    <?php echo ucfirst($events[2]['location']); ?> 
+                    <br>
+                    $<?php echo ucfirst($events[2]['entryfee']); ?>
+                </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.php" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
@@ -654,17 +660,19 @@ createprochefs($connection);
         <div class="card card-compact w-96 bg-neutral shadow-xl mr-4">
             <figure><img src="https://www.reventals.com/blog/wp-content/uploads/2019/06/AdobeStock_186295600.jpeg" alt="Shoes" /></figure>
             <div class="absolute top-40 left-0 bg-neutral p-4">
-                <h3 id = "eventtitle4" class="text-white text-xl font-semibold">Steak Masterclass</h3>
+                <h3 id = "eventtitle1" class="text-white text-xl font-semibold"><?php echo ucfirst($events[3]['category']); ?></h3>
             </div>
             <div class="card-body">
                 <div class="join">
-                    <p>Fri, 2 June 2025</p>
-                    <div class="self-end">7:00 PM</div>
+                    <?php echo ucfirst($events[3]['date']); ?>
                 </div>
-                <p>Ottawa, Ontario, Canada</p>
-                <p>An educational seminar on wine pairing techniques and strategies for enhancing the dining experience.</p>
+                <p>
+                    <?php echo ucfirst($events[3]['location']); ?> 
+                    <br>
+                    $<?php echo ucfirst($events[3]['entryfee']); ?>
+                </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.php" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>

@@ -9,7 +9,6 @@ require_once('./scripts/databaseconnection.php');
 try {
     dropTables($connection);
     createTables($connection);
-    
     sampleData($connection);
 
     
