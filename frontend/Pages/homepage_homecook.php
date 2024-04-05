@@ -185,24 +185,28 @@ createprochefs($connection);
     </div>
 
     <div class="flex gap-8 ml-8 pt-4 bg-base-content"> 
-        <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
-                <img class="w-full" id = "food1" src="" alt="Sunset in the mountains">
-            </a>
+    
+    
+    <div class="max-w-sm rounded overflow-hidden shadow-xl">
+        <!-- Append the recipeId to the query string of your URL -->
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[0]['recipeid']; ?>">
+            <img class="w-full" id="food1" src="" alt="Sunset in the mountains">
+        </a>
 
-            <div class="px-6 py-4">
-              <div id = "recipename1" class="font-bold text-xl mb-2"><?php print_r($recipe[0]['title']); ?></div>
-              <p id = "recipedesc1" class="text-white">
+        <div class="px-6 py-4">
+            <div id="recipename1" class="font-bold text-xl mb-2"><?php echo $recipe[0]['title']; ?></div>
+            <p id="recipedesc1" class="text-white">
                 <div style="font-weight: bold;">
-                    <?php print_r($recipe[0]['culture']); ?>
+                    <?php echo $recipe[0]['culture']; ?>
                 </div>
-              <?php print_r($recipe[0]['description']); ?>
-              </p>
-            </div>
+                <?php echo $recipe[0]['description']; ?>
+            </p>
         </div>
+    </div>
+</div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[1]['recipeid']; ?>">
                 <img class="w-full" id = "food2" src="" alt="Sunset in the mountains">
             </a>
 
@@ -218,12 +222,13 @@ createprochefs($connection);
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[2]['recipeid']; ?>">
                 <img class="w-full" id = "food3" src="" alt="Sunset in the mountains">
             </a>
 
             <div class="px-6 py-4">
-              <div id = "recipename3" class="font-bold text-xl mb-2"><?php print_r($recipe[2]['title']); ?></div>
+            <div id = "recipename3" class="font-bold text-xl mb-2"><?php print_r($recipe[2]['title']); ?></div>
+            
               <p id = "recipedesc3" class="text-white">
               <div style="font-weight: bold;">
                     <?php print_r($recipe[2]['culture']); ?>
@@ -234,7 +239,7 @@ createprochefs($connection);
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[3]['recipeid']; ?>">
                 <img class="w-full" id = "food4" src="" alt="Sunset in the mountains">
             </a>
 
@@ -252,7 +257,7 @@ createprochefs($connection);
 
     <div class="flex gap-8 ml-8 pt-4 bg-base-content"> 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[4]['recipeid']; ?>">
                 <img class="w-full" id = "food5" src="" alt="Sunset in the mountains">
             </a>
 
@@ -268,7 +273,7 @@ createprochefs($connection);
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[5]['recipeid']; ?>">
                 <img class="w-full" id = "food6" src="" alt="Sunset in the mountains">
             </a>
 
@@ -284,7 +289,7 @@ createprochefs($connection);
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[6]['recipeid']; ?>">
                 <img class="w-full" id = "food7" src="" alt="Sunset in the mountains">
             </a>
 
@@ -300,7 +305,7 @@ createprochefs($connection);
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[7]['recipeid']; ?>">
                 <img class="w-full" id = "food8" src="" alt="Sunset in the mountains">
             </a>
 
