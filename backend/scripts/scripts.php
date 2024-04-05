@@ -441,11 +441,11 @@ VALUES
 
 $insertQuery18 = "INSERT INTO Video (Name, UploadTime, RecipeID, VideoURL, Duration, Views)
 VALUES 
-('Video1', '2024-01-01', 1, 'https://example.com/video1', 120, '1000'),
-('Video2', '2024-02-15', 2, 'https://example.com/video1', 90, '800'),
-('Video3', '2024-03-20', 3, 'https://example.com/video1',150, '1200'),
-('Video4', '2024-04-10', 4, 'https://example.com/video1',60, '500'),
-('Video5', '2024-05-05', 5, 'https://example.com/video1', 180, '1500')";
+('Video1', '2024-01-01', 1, 'https://www.youtube.com/embed/6B5IQ3fJit0', 120, '1000'),
+('Video2', '2024-02-15', 2, 'https://www.youtube.com/embed/6B5IQ3fJit0', 90, '800'),
+('Video3', '2024-03-20', 3, 'https://www.youtube.com/embed/6B5IQ3fJit0',150, '1200'),
+('Video4', '2024-04-10', 4, 'https://www.youtube.com/embed/6B5IQ3fJit0',60, '500'),
+('Video5', '2024-05-05', 5, 'https://www.youtube.com/embed/6B5IQ3fJit0', 180, '1500')";
 
 $insertQuery19 = "INSERT INTO Ingredient (Name, AllergenInfo)
 VALUES 

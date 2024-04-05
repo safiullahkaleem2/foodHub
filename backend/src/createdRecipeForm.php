@@ -3,7 +3,6 @@ session_start();
 require_once __DIR__ . '/../scripts/databaseconnection.php';
 require_once __DIR__ . '/../src/idgenerator.php';
 
-// $connection->beginTransaction();
 
 // The global $_POST variable allows you to access the data sent with the POST method by name
 // To access the data sent with the GET method, you can use $_GET
