@@ -42,4 +42,4 @@ if ($updateQuery->execute()) {
 
 
 echo "<script>alert('recipe sucessfully published'); </script>";
-header("Location: /frontend/Pages/homepage_professionalcook.html");
+header("Location: /frontend/Pages/homepage_professionalcook.php");

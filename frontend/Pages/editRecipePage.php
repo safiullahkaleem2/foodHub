@@ -17,7 +17,7 @@ $editRecipeId = $_POST['edit-recipe-id'] ?? null; // Using null coalescing opera
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class=" bg-base-content text-neutral-content">
 
 <head>
     <meta charset="UTF-8">
