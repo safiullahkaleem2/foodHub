@@ -205,15 +205,16 @@ createprochefs($connection);
               <div id = "recipename1" class="font-bold text-xl mb-2"><?php echo ucfirst($recipe[0]['title']); ?></div>
               <p id = "recipedesc1" class="text-white">
                 <div style="font-weight: bold;">
-                    <?php print_r($recipe[0]['culture']); ?>
+                    <?php echo $recipe[0]['culture']; ?>
                 </div>
-              <?php print_r($recipe[0]['description']); ?>
-              </p>
-            </div>
+                <?php echo $recipe[0]['description']; ?>
+            </p>
         </div>
+    </div>
+</div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[1]['recipeid']; ?>">
                 <img class="w-full" id = "food2" src="" alt="Sunset in the mountains">
             </a>
 
@@ -229,7 +230,7 @@ createprochefs($connection);
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[2]['recipeid']; ?>">
                 <img class="w-full" id = "food3" src="" alt="Sunset in the mountains">
             </a>
 
@@ -245,7 +246,7 @@ createprochefs($connection);
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[3]['recipeid']; ?>">
                 <img class="w-full" id = "food4" src="" alt="Sunset in the mountains">
             </a>
 
@@ -263,7 +264,7 @@ createprochefs($connection);
 
     <div class="flex gap-8 ml-8 pt-4 bg-base-content"> 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[4]['recipeid']; ?>">
                 <img class="w-full" id = "food5" src="" alt="Sunset in the mountains">
             </a>
 
@@ -279,7 +280,7 @@ createprochefs($connection);
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[5]['recipeid']; ?>">
                 <img class="w-full" id = "food6" src="" alt="Sunset in the mountains">
             </a>
 
@@ -295,7 +296,7 @@ createprochefs($connection);
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[6]['recipeid']; ?>">
                 <img class="w-full" id = "food7" src="" alt="Sunset in the mountains">
             </a>
 
@@ -311,7 +312,7 @@ createprochefs($connection);
         </div>
 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[7]['recipeid']; ?>">
                 <img class="w-full" id = "food8" src="" alt="Sunset in the mountains">
             </a>
 
