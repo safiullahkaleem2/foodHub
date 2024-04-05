@@ -6,17 +6,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once __DIR__ . '/../scripts/databaseconnection.php';
     require_once __DIR__ . '/queries/queryfunctions.php';
     if (isset($_POST['search_button'])) {
+    
+        if (isset($_POST['text'])) {
 
     $serving = trim($_POST['text']); 
     $culture = $_POST['culture']; 
-    $_SESSION['show_title'] = isset($_POST['show_title']) ? 1 : 0;
-    $_SESSION['show_publishdate'] = isset($_POST['show_publishdate']) ? 1 : 0;
-    $_SESSION['show_description'] = isset($_POST['show_description']) ? 1 : 0;
-    $_SESSION['show_culture'] = isset($_POST['show_culture']) ? 1 : 0;
-    $_SESSION['show_difficulty'] = isset($_POST['show_difficulty']) ? 1 : 0;
-    $_SESSION['show_serving'] = isset($_POST['show_serving']) ? 1 : 0;
-    $_SESSION['show_estimatedtime'] = isset($_POST['show_estimatedtime']) ? 1 : 0;
-
+    
     if ($culture === 'any') {
 
         $sql = "SELECT * FROM recipedetails r
@@ -49,9 +44,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkStmt->execute();
         $_SESSION['queryResults'] = $checkStmt->fetchAll(PDO::FETCH_ASSOC);
         
-<<<<<<< HEAD
-        header("Location: /frontend/Pages/filter.php");
+        header("Location: /frontend/Pages/filterecipes.php");
     }
+
+}
+
+else{
+    echo "<script>alert('Input a valid serving')";
+    header("Location: /frontend/Pages/filterecipes.php");
+}
 
 
     if (isset($_POST['project_query_button'])) {
@@ -82,12 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $_SESSION['selectionresults'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-=======
-        header("Location: /frontend/Pages/filterecipes.php");
-        // exit();
->>>>>>> ba020772818499d573847e1d631621280a6ee7ab
         
-        header("Location: /frontend/Pages/filter.php");
+        header("Location: /frontend/Pages/filterecipes.php");
 
 
 
