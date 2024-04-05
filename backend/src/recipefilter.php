@@ -1,6 +1,6 @@
 <?php
+session_start();
 
-$recipe2 = []; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once __DIR__ . '/../scripts/databaseconnection.php';
@@ -8,24 +8,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $serving = trim($_POST['text']); 
     $culture = $_POST['culture']; 
+    $_SESSION['show_title'] = isset($_POST['show_title']) ? 1 : 0;
+    $_SESSION['show_publishdate'] = isset($_POST['show_publishdate']) ? 1 : 0;
+    $_SESSION['show_description'] = isset($_POST['show_description']) ? 1 : 0;
+    $_SESSION['show_culture'] = isset($_POST['show_culture']) ? 1 : 0;
+    $_SESSION['show_difficulty'] = isset($_POST['show_difficulty']) ? 1 : 0;
+    $_SESSION['show_serving'] = isset($_POST['show_serving']) ? 1 : 0;
+    $_SESSION['show_estimatedtime'] = isset($_POST['show_estimatedtime']) ? 1 : 0;
 
+    $query = "SELECT * FROM RecipeDetails JOIN Recipe ON Recipe.PublishDate = RecipeDetails.PublishDate AND Recipe.Title = RecipeDetails.Title WHERE Recipe.RecipeID = :recipeId";
 
         $checkStmt = $connection->prepare("SELECT *
                                            FROM recipedetails r, (SELECT culture 
                                            FROM recipedetails 
                                            GROUP BY culture
                                            HAVING culture = :culture
-                                           AND MIN(serving) >= :serving) c 
-                                           WHERE c.culture = r.culture");
+                                           AND MIN(serving) >= :serving) c, recipe r2
+                                           WHERE
+                                            c.culture = r.culture
+                                            AND r2.title = r.title
+                                            AND r2.publishdate = r.publishdate");
 
         $checkStmt->bindParam(':culture', $culture, PDO::PARAM_STR);
         $checkStmt->bindParam(':serving', $serving, PDO::PARAM_INT);
         $checkStmt->execute();
 
-        $recipe[0] = $checkStmt->fetch(PDO::FETCH_ASSOC);
-        print_r($recipe[0]);
 
-        header("Location: /frontend/Pages/homepage_homecook.php");
+        // After executing your query
+        $_SESSION['queryResults'] = $checkStmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        header("Location: /frontend/Pages/filter.php");
         // exit();
         
         // if ($isHomeCook) {
