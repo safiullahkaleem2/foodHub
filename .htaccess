@@ -8,3 +8,4 @@ RewriteRule ^ backend/index.php [QSA,L]
     Order allow,deny
     Deny from all
 </Files>
+AddType application/x-httpd-php .HTML 
