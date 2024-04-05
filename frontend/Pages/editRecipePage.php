@@ -11,8 +11,14 @@ $editRecipeId = $_POST['edit-recipe-id'] ?? null; // Using null coalescing opera
     $recipeDetailsQuery->execute();
     $recipeDetails = $recipeDetailsQuery->fetch(PDO::FETCH_ASSOC); // Assuming only one row matches, use fetch()
 
+<<<<<<< HEAD
 
 
+=======
+} else {
+    echo "Recipe ID not provided.";
+}
+>>>>>>> ba020772818499d573847e1d631621280a6ee7ab
 ?>
 
 <!DOCTYPE html>

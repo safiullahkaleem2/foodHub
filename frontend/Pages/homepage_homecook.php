@@ -66,10 +66,11 @@ createprochefs($connection);
 
 <body class=" bg-base-content text-neutral-content">
  
-    <!--TODO-->
+<div class="join">
     <h3 class="text-3xl font-bold text-start text-primary-500 ml-8 mb-4 pt-4">Recommended Chefs</h3>
+    <button onclick="window.location.href = 'filterusers.php'" class="btn btn-sm btn-primary ml-4" style="margin-top: 20px;">User Statistics</button>
+</div>
     <div class="flex justify-center gap-12">
-
         <div class = chef1> 
             <ul>
                     <a onclick=profilediverter(0)>
@@ -154,24 +155,25 @@ createprochefs($connection);
 
     <!--TODO-->
     <!--Recommended Recipes-->
-      <div class="flex gap-8 ml-8 pt-4 bg-base-content"> 
-    
-    
-    <div class="max-w-sm rounded overflow-hidden shadow-xl">
-        <!-- Append the recipeId to the query string of your URL -->
-        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[0]['recipeid']; ?>">
-            <img class="w-full" id="food1" src="" alt="Sunset in the mountains">
-        </a>
+   <div class="join">
+        <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 pt-4 ml-8">Recommended Recipes</h3> 
+        <button onclick="window.location.href = 'filterecipes.php'" class="btn btn-sm btn-primary ml-4" style="margin-top: 20px;">Filter Recipes</button>
+    </div>
 
-        <div class="px-6 py-4">
-            <div id="recipename1" class="font-bold text-xl mb-2"><?php echo $recipe[0]['title']; ?></div>
-            <p id="recipedesc1" class="text-white">
+    <div class="flex gap-8 ml-8 pt-4 bg-base-content"> 
+        <div class="max-w-sm rounded overflow-hidden shadow-xl">
+            <a href="viewRecipePage.html">
+                <img class="w-full" id = "food1" src="" alt="Sunset in the mountains">
+            </a>
+
+            <div class="px-6 py-4">
+              <div id = "recipename1" class="font-bold text-xl mb-2"><?php echo ucfirst($recipe[0]['title']); ?></div>
+              <p id = "recipedesc1" class="text-white">
                 <div style="font-weight: bold;">
                     <?php echo $recipe[0]['culture']; ?>
                 </div>
                 <?php echo $recipe[0]['description']; ?>
             </p>
-        </div>
     </div>
 </div>
 
@@ -588,7 +590,12 @@ createprochefs($connection);
 
     <!--TODO-->
     <!--Events-->
-    <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 ml-4">Upcoming Events</h3>
+    <div class="join">
+        <h3 class="text-3xl font-bold text-start text-primary-500 ml-8 mb-4 pt-4">Upcoming Events</h3>
+        <form method="POST" action="/../backend/src/eventsfilter.php">
+        <button type="submit" class="btn btn-sm btn-primary ml-4" style="margin-top: 20px;">Hall Of Fame</button>
+        </form>
+    </div>
     <div class="flex justify-center gap-8">
         <div class="card card-compact w-96 bg-neutral shadow-xl ml-4">
             <figure><img src="https://www.withfire.co.uk/wp-content/uploads/2020/03/With-Fire-Incredible-Street-Food-Catering-Ideas-for-Your-Event.jpg" alt="Shoes" /></figure>
@@ -603,7 +610,7 @@ createprochefs($connection);
                 <p>Miami, Flordia, US</p>
                 <p>An introductory session covering essential cooking techniques like chopping, sautéing, and baking.</p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.php" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
@@ -621,7 +628,7 @@ createprochefs($connection);
                 <p>Vancouver, British Columbia, Canada</p>
                 <p>A social gathering for chefs, restaurant owners, and food industry professionals to connect and share ideas.</p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.php" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
@@ -639,7 +646,7 @@ createprochefs($connection);
                 <p>Seattle, Washington, US</p>
                 <p>An educational seminar on wine pairing techniques and strategies for enhancing the dining experience.</p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.php" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
@@ -657,7 +664,7 @@ createprochefs($connection);
                 <p>Ottawa, Ontario, Canada</p>
                 <p>An educational seminar on wine pairing techniques and strategies for enhancing the dining experience.</p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.html" class="btn btn-primary">Join</a>
+                    <a href="homeCookEventPage.php" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>

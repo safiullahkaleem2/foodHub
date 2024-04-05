@@ -1,7 +1,5 @@
 <?php
 
-
-
 function dropTables($connection) {
     $dropTables = "
         DROP TABLE IF EXISTS Reviews CASCADE;
@@ -178,7 +176,6 @@ function createTables($connection){
             ON DELETE CASCADE
             ON UPDATE CASCADE
         );
-
         CREATE TABLE IF NOT EXISTS Video (
              Name VARCHAR (30), 
              UploadTime DATE,
@@ -219,7 +216,6 @@ function createTables($connection){
              ON DELETE CASCADE ON UPDATE CASCADE
         );
         
-
         CREATE TABLE IF NOT EXISTS Participates (
              UserID INTEGER , 
              EventID  VARCHAR(30),
@@ -229,8 +225,6 @@ function createTables($connection){
              FOREIGN KEY (EventID) REFERENCES EventDetails
              ON DELETE CASCADE ON UPDATE CASCADE 
         );
-
-
         CREATE TABLE IF NOT EXISTS UserRanking (
              UserID INTEGER, 
              LeaderboardCategory VARCHAR (30), 
@@ -241,9 +235,7 @@ function createTables($connection){
                  ON DELETE CASCADE ON UPDATE CASCADE,
              FOREIGN KEY (LeaderboardCategory) REFERENCES Leaderboard
                  ON DELETE CASCADE ON UPDATE CASCADE
-
         );
-
         CREATE TABLE IF NOT EXISTS Utilizes (
           Name VARCHAR (30),
           Price INTEGER ,
@@ -269,7 +261,6 @@ function createTables($connection){
              FOREIGN KEY (UserID) REFERENCES AppUser
                  ON DELETE CASCADE ON UPDATE CASCADE
         );
-
         CREATE TABLE IF NOT EXISTS Reviews (
           RecipeID INTEGER,
           ReviewID INTEGER,
@@ -282,8 +273,6 @@ function createTables($connection){
      FOREIGN KEY (RecipeID) REFERENCES Recipe
     ON DELETE CASCADE ON UPDATE CASCADE
           ); 
-
-
         ";
 
 $connection->beginTransaction();
@@ -378,11 +367,9 @@ VALUES
 
 $insertQuery9 = "INSERT INTO Leaderboard (LeaderboardCategory, Prize)
 VALUES 
-('Monthly Top Chef', 'Exclusive Cooking Set'),
-('Weekly Recipe Contest', 'Cookbook Collection'),
-('Best Home Cook', 'Kitchen Appliance Bundle'),
-('Culinary Innovator', 'Gourmet Dining Experience'),
-('Master Chef', 'Cooking Masterclass Pass')";
+('Global', 'Exclusive Cooking Set'),
+('National', 'Cookbook Collection'),
+('Regional', 'Kitchen Appliance Bundle')";
 
 
 $insertQuery10 = "INSERT INTO EventLocation (Category, EntryFee, Location)
@@ -391,7 +378,17 @@ VALUES
 ('Baking Workshop', 30, 'City B'),
 ('Food Festival', 20, 'City C'),
 ('Culinary Tour', 40, 'City D'),
-('Wine Tasting', 60, 'City E')";
+('Wine Tasting', 60, 'City E'),
+('Sushi Making Class', 40, 'City F'),
+('Pizza Workshop', 25, 'City G'),
+('BBQ Cookout', 35, 'City H'),
+('Dessert Masterclass', 45, 'City I'),
+('Vegetarian Cooking Class', 30, 'City J'),
+('Wine and Cheese Pairing', 55, 'City K'),
+('Gourmet Dinner', 70, 'City L'),
+('Street Food Festival', 15, 'City M'),
+('Cocktail Mixology Workshop', 50, 'City N'),
+('Farm-to-Table Experience', 65, 'City O')";
 
 $insertQuery11 = "INSERT INTO EventDetails (Category, EntryFee, EventID, Date)
 VALUES 
@@ -399,7 +396,17 @@ VALUES
 ('Baking Workshop', 30, 'event2', '2024-05-10'),
 ('Food Festival', 20, 'event3', '2024-06-20'),
 ('Culinary Tour', 40, 'event4', '2024-07-05'),
-('Wine Tasting', 60, 'event5', '2024-08-12')";
+('Wine Tasting', 60, 'event5', '2024-08-12'),
+('Sushi Making Class', 40, 'event6', '2024-09-05'),
+('Pizza Workshop', 25, 'event7', '2024-10-10'),
+('BBQ Cookout', 35, 'event8', '2024-11-20'),
+('Dessert Masterclass', 45, 'event9', '2024-12-15'),
+('Vegetarian Cooking Class', 30, 'event10', '2025-01-05'),
+('Wine and Cheese Pairing', 55, 'event11', '2025-02-10'),
+('Gourmet Dinner', 70, 'event12', '2025-03-20'),
+('Street Food Festival', 15, 'event13', '2025-04-15'),
+('Cocktail Mixology Workshop', 50, 'event14', '2025-05-10'),
+('Farm-to-Table Experience', 65, 'event15', '2025-06-20')";
 
 $insertQuery12 = "INSERT INTO ReviewDetails (TimePosted, Comment, Rating)
 VALUES 
@@ -435,57 +442,57 @@ VALUES
 
 $insertQuery16 = "INSERT INTO RecipeDetails (PublishDate, Title, Description, Culture, Difficulty, Serving)
 VALUES 
-('2024-01-01', 'Recipe1', 'Delicious dish with various ingredients.', 'Italian', 'Intermediate', 4),
-('2024-02-15', 'Recipe2', 'Simple and quick recipe for busy days.', 'Mexican', 'Beginner', 2),
-('2024-03-20', 'Recipe3', 'Healthy and flavorful meal with fresh ingredients.', 'Japanese', 'Advanced', 6),
-('2024-04-10', 'Recipe4', 'Classic recipe loved by all.', 'French', 'Intermediate', 4),
-('2024-05-05', 'Recipe5', 'Perfect dessert for any occasion.', 'Indian', 'Expert', 8),
-('2024-06-20', 'Recipe6', 'Savory and aromatic dish with a twist.', 'Chinese', 'Intermediate', 5),
-('2024-07-15', 'Recipe7', 'Light and refreshing salad for summer days.', 'Mediterranean', 'Beginner', 3),
-('2024-08-10', 'Recipe8', 'Hearty soup perfect for chilly evenings.', 'American', 'Intermediate', 6),
-('2024-09-05', 'Recipe9', 'Spicy and flavorful curry recipe.', 'Thai', 'Advanced', 7),
-('2024-10-01', 'Recipe10', 'Decadent chocolate cake for chocolate lovers.', 'Swiss', 'Expert', 10),
-('2024-11-10', 'Recipe11', 'Vegetarian delight packed with nutrients.', 'Indian', 'Intermediate', 4),
-('2024-12-05', 'Recipe12', 'Comfort food for a cozy night in.', 'Italian', 'Beginner', 3),
-('2025-01-20', 'Recipe13', 'Exotic seafood dish with a tropical flair.', 'Caribbean', 'Advanced', 6),
-('2025-02-15', 'Recipe14', 'Refreshing drink perfect for hot summer days.', 'Mexican', 'Beginner', 2),
-('2025-03-10', 'Recipe15', 'Fusion recipe blending flavors from East and West.', 'Asian Fusion', 'Intermediate', 5),
-('2025-04-05', 'Recipe16', 'Rich and creamy pasta dish.', 'Italian', 'Expert', 8),
-('2025-05-01', 'Recipe17', 'Light and healthy wrap for a quick meal.', 'Mediterranean', 'Beginner', 2),
-('2025-06-20', 'Recipe18', 'Grilled dish with smoky flavors.', 'American', 'Intermediate', 4),
-('2025-07-15', 'Recipe19', 'Zesty and tangy dish with a kick.', 'Mexican', 'Advanced', 7),
-('2025-08-10', 'Recipe20', 'Decadent dessert with a surprise element.', 'French', 'Expert', 9)";
+('2024-01-01', 'Spaghetti Carbonara', 'Delicious dish with pasta, eggs, cheese, and pancetta.', 'Italian', 'Intermediate', 4),
+('2024-02-15', 'Guacamole', 'Simple and quick recipe for avocado lovers.', 'Mexican', 'Beginner', 2),
+('2024-03-20', 'Sushi Rolls', 'Healthy and flavorful meal with fresh seafood and vegetables.', 'Japanese', 'Advanced', 6),
+('2024-04-10', 'Coq au Vin', 'Classic French recipe with chicken cooked in wine.', 'French', 'Intermediate', 4),
+('2024-05-05', 'Gulab Jamun', 'Traditional Indian dessert made with milk solids and sugar syrup.', 'Indian', 'Expert', 8),
+('2024-06-20', 'Kung Pao Chicken', 'Savory and spicy Chinese dish with peanuts and vegetables.', 'Chinese', 'Intermediate', 5),
+('2024-07-15', 'Greek Salad', 'Light and refreshing salad with tomatoes, cucumbers, and feta cheese.', 'Mediterranean', 'Beginner', 3),
+('2024-08-10', 'Clam Chowder', 'Hearty soup made with clams, potatoes, and cream.', 'American', 'Intermediate', 6),
+('2024-09-05', 'Thai Green Curry', 'Spicy and flavorful Thai curry with chicken or vegetables.', 'Thai', 'Advanced', 7),
+('2024-10-01', 'Black Forest Cake', 'Decadent chocolate cake with layers of cherries and whipped cream.', 'Swiss', 'Expert', 10),
+('2024-11-10', 'Paneer Tikka Masala', 'Vegetarian Indian dish with marinated paneer in a creamy tomato sauce.', 'Indian', 'Intermediate', 4),
+('2024-12-05', 'Lasagna', 'Classic Italian comfort food with layers of pasta, cheese, and meat sauce.', 'Italian', 'Beginner', 3),
+('2025-01-20', 'Jerk Shrimp', 'Exotic Caribbean dish with spicy jerk seasoning.', 'Caribbean', 'Advanced', 6),
+('2025-02-15', 'Agua Fresca', 'Refreshing Mexican drink made with fruit and water.', 'Mexican', 'Beginner', 2),
+('2025-03-10', 'Sushi Burger', 'Innovative fusion recipe combining sushi and burger elements.', 'Asian Fusion', 'Intermediate', 5),
+('2025-04-05', 'Alfredo Pasta', 'Rich and creamy pasta dish with Parmesan cheese sauce.', 'Italian', 'Expert', 8),
+('2025-05-01', 'Falafel Wrap', 'Light and healthy Mediterranean wrap with falafel and veggies.', 'Mediterranean', 'Beginner', 2),
+('2025-06-20', 'BBQ Ribs', 'Grilled American dish with smoky barbecue flavors.', 'American', 'Intermediate', 4),
+('2025-07-15', 'Chili con Carne', 'Zesty Mexican dish with ground beef, beans, and spices.', 'Mexican', 'Advanced', 7),
+('2025-08-10', 'Crème Brûlée', 'Decadent French dessert with a caramelized sugar topping.', 'French', 'Expert', 9)";
 
 $insertQuery17 = "INSERT INTO Recipe (RecipeID, PublishDate, EstimatedTime, Title)
 VALUES 
-(1, '2024-01-01', 60, 'Recipe1'),
-(2, '2024-02-15', 30, 'Recipe2'),
-(3, '2024-03-20', 90, 'Recipe3'),
-(4, '2024-04-10', 45, 'Recipe4'),
-(5, '2024-05-05', 120, 'Recipe5'),
-(6, '2024-06-20', 75, 'Recipe6'),
-(7, '2024-07-15', 20, 'Recipe7'),
-(8, '2024-08-10', 60, 'Recipe8'),
-(9, '2024-09-05', 90, 'Recipe9'),
-(10, '2024-10-01', 180, 'Recipe10'),
-(11, '2024-11-10', 40, 'Recipe11'),
-(12, '2024-12-05', 30, 'Recipe12'),
-(13, '2025-01-20', 120, 'Recipe13'),
-(14, '2025-02-15', 15, 'Recipe14'),
-(15, '2025-03-10', 60, 'Recipe15'),
-(16, '2025-04-05', 90, 'Recipe16'),
-(17, '2025-05-01', 25, 'Recipe17'),
-(18, '2025-06-20', 45, 'Recipe18'),
-(19, '2025-07-15', 75, 'Recipe19'),
-(20, '2025-08-10', 150, 'Recipe20')";
+(1, '2024-01-01', 60, 'Spaghetti Carbonara'),
+(2, '2024-02-15', 30, 'Guacamole'),
+(3, '2024-03-20', 90, 'Sushi Rolls'),
+(4, '2024-04-10', 45, 'Coq au Vin'),
+(5, '2024-05-05', 120, 'Gulab Jamun'),
+(6, '2024-06-20', 75, 'Kung Pao Chicken'),
+(7, '2024-07-15', 20, 'Greek Salad'),
+(8, '2024-08-10', 60, 'Clam Chowder'),
+(9, '2024-09-05', 90, 'Thai Green Curry'),
+(10, '2024-10-01', 180, 'Black Forest Cake'),
+(11, '2024-11-10', 40, 'Paneer Tikka Masala'),
+(12, '2024-12-05', 30, 'Lasagna'),
+(13, '2025-01-20', 120, 'Jerk Shrimp'),
+(14, '2025-02-15', 15, 'Agua Fresca'),
+(15, '2025-03-10', 60, 'Sushi Burger'),
+(16, '2025-04-05', 90, 'Alfredo Pasta'),
+(17, '2025-05-01', 25, 'Falafel Wrap'),
+(18, '2025-06-20', 45, 'BBQ Ribs'),
+(19, '2025-07-15', 75, 'Chili con Carne'),
+(20, '2025-08-10', 150, 'Crème Brûlée')";
 
 $insertQuery18 = "INSERT INTO Video (Name, UploadTime, RecipeID, VideoURL, Duration, Views)
 VALUES 
-('Video1', '2024-01-01', 1, 'https://www.youtube.com/embed/6B5IQ3fJit0', 120, '1000'),
-('Video2', '2024-02-15', 2, 'https://www.youtube.com/embed/6B5IQ3fJit0', 90, '800'),
-('Video3', '2024-03-20', 3, 'https://www.youtube.com/embed/6B5IQ3fJit0',150, '1200'),
-('Video4', '2024-04-10', 4, 'https://www.youtube.com/embed/6B5IQ3fJit0',60, '500'),
-('Video5', '2024-05-05', 5, 'https://www.youtube.com/embed/6B5IQ3fJit0', 180, '1500')";
+('Video1', '2024-01-01', 1, 'https://example.com/video1', 120, '1000'),
+('Video2', '2024-02-15', 2, 'https://example.com/video1', 90, '800'),
+('Video3', '2024-03-20', 3, 'https://example.com/video1',150, '1200'),
+('Video4', '2024-04-10', 4, 'https://example.com/video1',60, '500'),
+('Video5', '2024-05-05', 5, 'https://example.com/video1', 180, '1500')";
 
 $insertQuery19 = "INSERT INTO Ingredient (Name, AllergenInfo)
 VALUES 
@@ -511,19 +518,73 @@ VALUES
 $insertQuery21 = "INSERT INTO Participates (UserID, EventID)
 VALUES 
 (1, 'event1'),
+(1, 'event2'),
+(1, 'event3'),
+(1, 'event4'),
+(1, 'event5'),
+(1, 'event6'),
+(1, 'event7'),
+(1, 'event8'),
+(1, 'event9'),
+(1, 'event10'),
+(1, 'event11'),
+(1, 'event12'),
+(1, 'event13'),
+(1, 'event14'),
+(1, 'event15'),
+(2, 'event1'),
 (2, 'event2'),
+(2, 'event3'),
+(2, 'event4'),
+(2, 'event5'),
+(2, 'event6'),
+(2, 'event7'),
+(2, 'event8'),
+(2, 'event9'),
+(2, 'event10'),
+(2, 'event11'),
+(2, 'event12'),
+(2, 'event13'),
+(2, 'event14'),
+(2, 'event15'),
+(3, 'event1'),
+(3, 'event2'),
 (3, 'event3'),
+(3, 'event4'),
+(3, 'event5'),
+(3, 'event6'),
+(3, 'event7'),
+(3, 'event8'),
+(3, 'event9'),
+(3, 'event10'),
+(3, 'event11'),
+(3, 'event12'),
+(3, 'event13'),
+(3, 'event14'),
+(3, 'event15'),
+(14, 'event2'),
+(13, 'event3'),
 (4, 'event4'),
 (5, 'event5')";
 
 
 $insertQuery23 = "INSERT INTO UserRanking (UserID, LeaderboardCategory, Points,Position)
 VALUES 
-(1, 'Monthly Top Chef', 100, 1),
-(2, 'Monthly Top Chef', 90,2),
-(3, 'Monthly Top Chef', 80,3),
-(4, 'Monthly Top Chef', 70,4),
-(5, 'Monthly Top Chef', 60,5)";
+(1, 'Global', 100, 1),
+(2, 'Global', 90,2),
+(3, 'Global', 80,3),
+(4, 'Global', 70,4),
+(5, 'Global', 60,5),
+(6, 'National', 100, 1),
+(7, 'National', 90,2),
+(8, 'National', 80,3),
+(9, 'National', 70,4),
+(10, 'National', 60,5),
+(11, 'Regional', 100, 1),
+(12, 'Regional', 90,2),
+(13, 'Regional', 80,3),
+(14, 'Regional', 70,4),
+(15, 'Regional', 60,5)";
 
 $insertQuery24 = "INSERT INTO Utilizes (Name, Price, Category, Quality, RecipeID)
 VALUES 
@@ -559,10 +620,6 @@ echo "<p>Inserted into ProfessionalChefSkill table.</p>\n";
 
 $connection->exec($insertQuery6);
 echo "<p>Inserted into ProfessionalChef table.</p>\n";
-
-
-
-
 
 $connection->exec($insertQuery9);
 echo "<p>Inserted into Leaderboard table.</p>\n";
@@ -617,4 +674,6 @@ $connection->commit();
 echo "<p>All data inserted successfully.</p>\n";
 
 }
-
+     
+     
+     
