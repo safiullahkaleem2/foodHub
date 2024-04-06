@@ -85,8 +85,8 @@ session_start();
         <button type="submit" name="project_query_button" class="btn btn-sm btn-primary">Search By fields</button> -->
 
     </form>
-    <br>
-    <form method="POST" action="/../backend/src/dynamicConditionFilter.php">
+
+    <form method="POST" action="/../backend/src/recipefilter.php">
     <div class="dynamic-conditions">
         <div class="condition" data-id="0">
             <select name="conditions[0][field]" class="select select-bordered">
@@ -169,7 +169,8 @@ if (isset($_SESSION['queryResults'])) {
             echo '<p>Difficulty: ' . htmlspecialchars($row['difficulty']) . '</p>';
             echo '<p>Serving: ' . htmlspecialchars($row['serving']) . '</p>';
 
-            echo '<p>estimated time: ' . htmlspecialchars($row['estimatedtime']) . '</p>';        
+            echo '<p>estimated time: ' . htmlspecialchars($row['estimatedtime']) . '</p>';
+            echo "<a href='viewRecipePage.php?recipeId=" . urlencode($row['recipeid']) . "' class='btn btn-primary'>View Recipe</a>";        
             echo '</div>';
     }
     
