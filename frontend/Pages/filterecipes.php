@@ -3,21 +3,32 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class=" bg-base-content text-neutral-content">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Event Registration - FoodHub</title>
 <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
+
+
+<style>
+    .checkboxes label {
+        margin-left: 5px; /* Adjust the margin as needed */
+    }
+</style>
+
 </head>
 <body>
 
-<div class="">
-<h3 class="text-3xl font-bold text-start text-primary-500 mb-4 pt-4">Recommended Recipes</h3> 
+<div class="ml-4">
+    <div class="flex">
+    <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 pt-4 mr-4 ml-4">Filter Recipes</h3> 
+    <button onclick="window.location.href = 'homepage_homecook.php'" class="btn btn-sm btn-primary" style="margin-top: 20px;">Home</button>
+    </div>
         <div class="dropdown dropdown-end">
         <form method="POST" action="/../backend/src/recipefilter.php">
-            <div class="m-1 ml-4">
+            <div class="m-1">
                 <label class="input input-bordered flex items-center gap-2 input-xs bg-neutral">
                     <input type="text" name="text" class="grow" placeholder="Servings" style="color: white;"/>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
@@ -56,7 +67,8 @@ session_start();
         <form method="POST" action="/../backend/src/recipefilter.php">
  
             <div class="join">
-
+            <button type="submit" name="project_query_button" class="btn btn-sm btn-primary">Search By fields</button>
+            <br>
     <div class="checkboxes">
     <label><input type="checkbox" name="show_title" value="true">Title</label>
     <label><input type="checkbox" name="show_publishdate" value="true">Publish Date</label>
@@ -69,12 +81,17 @@ session_start();
 
         </div>
 
-        <br>
-        <button type="submit" name="project_query_button" class="btn btn-sm btn-primary">Search By fields</button>
+        <!-- <br>
+        <button type="submit" name="project_query_button" class="btn btn-sm btn-primary">Search By fields</button> -->
 
     </form>
+<<<<<<< HEAD
 
     <form method="POST" action="/../backend/src/recipefilter.php">
+=======
+    <br>
+    <form method="POST" action="/../backend/src/dynamicConditionFilter.php">
+>>>>>>> 70b8adbf2c1703126354b4d0b26d51bbf4d89e5f
     <div class="dynamic-conditions">
         <div class="condition" data-id="0">
             <select name="conditions[0][field]" class="select select-bordered">
@@ -93,7 +110,7 @@ session_start();
         </div>
     </div>
     <div>
-        <button type="button" onclick="addCondition()" class="btn btn-secondary">+ Add Condition</button>
+        <button type="button" onclick="addCondition()" class="btn btn-success">+ Add Condition</button>
     </div>
     <div class="mt-2">
         <button type="submit" name="dynamic_condition_search" class="btn btn-primary">Search with Conditions</button>

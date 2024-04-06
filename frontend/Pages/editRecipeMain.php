@@ -4,7 +4,7 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class=" bg-base-content text-neutral-content">
 
 <head>
     <meta charset="UTF-8">
@@ -63,7 +63,7 @@ session_start();
                 </div>
 
                 <div class="form-control mt-6">
-                    <a href="homepage_professionalcook.html"><button type="button" class="btn btn-primary">Home
+                    <a href="homepage_professionalcook.php"><button type="button" class="btn btn-primary">Home
                             page</button></a>
                 </div>
             </form>

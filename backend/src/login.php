@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             } elseif ($isProChef) {
                 $_SESSION['userType'] = 'ProfessionalChef';
-                header("Location: /frontend/Pages/homepage_professionalcook.html");
+                header("Location: /frontend/Pages/homepage_professionalcook.php");
                 exit();
             } else {
                 echo "User type not determined.";

@@ -84,9 +84,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: /frontend/Pages/filterecipes.php");
 
 
-
     }
 
+<<<<<<< HEAD
     if (isset($_POST['dynamic_condition_search'])) {
 
         if (isset($_POST['dynamic_condition_search'])) {
@@ -137,3 +137,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
+=======
+}
+>>>>>>> 70b8adbf2c1703126354b4d0b26d51bbf4d89e5f
