@@ -61,12 +61,11 @@ session_start();
         </div>
 
         <br>
-        <button type="submit" name="search_button" class="btn btn-sm btn-primary">Search</button>
+        <button type="submit" name="search_button" class="btn btn-sm btn-primary" style="color: black;">Search</button>
         </form>
 
         <form method="POST" action="/../backend/src/recipefilter.php">
  
-
     <div class="checkboxes">
     <label><input type="checkbox" name="show_title" value="true">Title</label>
     <label><input type="checkbox" name="show_publishdate" value="true">Publish Date</label>
@@ -78,7 +77,7 @@ session_start();
 </div>
 
 <div class="join">
-            <button type="submit" name="project_query_button" class="btn btn-sm btn-primary">Search By fields</button>
+            <button type="submit" name="project_query_button" class="btn btn-sm btn-primary style="color: black;"">Search By fields</button>
             <br>
 
         </div>
