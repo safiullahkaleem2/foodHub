@@ -602,7 +602,7 @@ createprochefs($connection);
                     $<?php echo ucfirst($events[0]['entryfee']); ?>
                 </p>
                 <div class="card-actions justify-end">
-                    <a href="homeCookEventPage.php?eventid=<?php echo $events[0]['eventid']; ?>" class="btn btn-primary">Join</a>>
+                    <a href="homeCookEventPage.php?eventid=<?php echo $events[0]['eventid']; ?>" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
@@ -622,7 +622,7 @@ createprochefs($connection);
                     $<?php echo ucfirst($events[1]['entryfee']); ?>
                 </p>
                 <div class="card-actions justify-end">
-                <a href="homeCookEventPage.php?eventid=<?php echo $events[1]['eventid']; ?>" class="btn btn-primary">Join</a>>
+                <a href="homeCookEventPage.php?eventid=<?php echo $events[1]['eventid']; ?>" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
@@ -642,7 +642,7 @@ createprochefs($connection);
                     $<?php echo ucfirst($events[2]['entryfee']); ?>
                 </p>
                 <div class="card-actions justify-end">
-                <a href="homeCookEventPage.php?eventid=<?php echo $events[2]['eventid']; ?>" class="btn btn-primary">Join</a>>
+                <a href="homeCookEventPage.php?eventid=<?php echo $events[2]['eventid']; ?>" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
@@ -662,7 +662,7 @@ createprochefs($connection);
                     $<?php echo ucfirst($events[3]['entryfee']); ?>
                 </p>
                 <div class="card-actions justify-end">
-                <a href="homeCookEventPage.php?eventid=<?php echo $events[3]['eventid']; ?>" class="btn btn-primary">Join</a>>
+                <a href="homeCookEventPage.php?eventid=<?php echo $events[3]['eventid']; ?>" class="btn btn-primary">Join</a>
                 </div>
             </div>
         </div>
