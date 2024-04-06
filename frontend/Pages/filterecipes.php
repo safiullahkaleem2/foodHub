@@ -24,7 +24,7 @@ session_start();
 <div class="ml-4">
     <div class="flex">
     <h3 class="text-3xl font-bold text-start text-primary-500 mb-4 pt-4 mr-4 ml-4">Filter Recipes</h3> 
-    <button onclick="window.location.href = 'homepage_homecook.php'" class="btn btn-sm btn-primary" style="margin-top: 20px;">Home</button>
+    <button onclick="redirectToHome()" class="btn btn-sm btn-primary" style="margin-top: 20px;">Home</button>
     </div>
         <div class="dropdown dropdown-end">
         <form method="POST" action="/../backend/src/recipefilter.php">
@@ -200,6 +200,20 @@ if (isset($_SESSION['selectionresults'])) {
 
 
 ?>
+
+<script>
+    function redirectToHome() {
+        <?php
+        if ($_SESSION['userType'] === 'HomeCook') {
+            echo "window.location.href = '/frontend/Pages/homepage_homecook.php';";
+        } elseif ($_SESSION['userType'] === 'ProfessionalChef') {
+            echo "window.location.href = '/frontend/Pages/homepage_professionalcook.php';";
+        } else {
+            echo "console.log('User type not determined.');"; // You can handle this case as needed
+        }
+        ?>
+    }
+</script>
 
 </body>
 </html>

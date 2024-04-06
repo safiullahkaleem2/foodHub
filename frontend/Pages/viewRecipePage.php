@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../../backend/scripts/databaseconnection.php';
 
+session_start();
 
 $recipeId = isset($_GET['recipeId']) ? $_GET['recipeId'] : null;
 
@@ -44,7 +45,7 @@ if ($recipeId) {
     AND u.name = c2.name
     AND u.category = c2.category
     AND u.quality = c2.quality
-    AND u.recipeid = 1850";
+    AND u.recipeid = :recipeId3";
     
     $stmt = $connection->prepare($query4);
     $stmt->bindParam(':recipeId3', $recipeId, PDO::PARAM_INT);
@@ -138,7 +139,6 @@ if ($recipeId) {
                 <div class="card-body">
                     <h2 class="card-title">Cooking equipment</h2>
                     <?php 
-                    echo var_dump($cookequipmentdetails);
                     foreach ($cookequipmentdetails as $row) : ?>
                         <div class="result-item">
                             <p>Name: <?= htmlspecialchars($row['name']); ?></p>
@@ -152,13 +152,26 @@ if ($recipeId) {
             </div>
 
             <div class="form-control mt-6">
-                <a href="homepage_homecook.php">
-                    <button type="button" class="btn btn-primary">Home page</button>
-                </a>
+            <button onclick="redirectToHome()" class="btn btn-sm btn-primary" style="margin-top: 20px;">Home page</button>
             </div>
 
         </div>
     </div>
 </body>
+
+
+<script>
+    function redirectToHome() {
+        <?php
+        if ($_SESSION['userType'] === 'HomeCook') {
+            echo "window.location.href = '/frontend/Pages/homepage_homecook.php';";
+        } elseif ($_SESSION['userType'] === 'ProfessionalChef') {
+            echo "window.location.href = '/frontend/Pages/homepage_professionalcook.php';";
+        } else {
+            echo "console.log('User type not determined.');"; // You can handle this case as needed
+        }
+        ?>
+    }
+</script>
 
 </html>
