@@ -59,8 +59,24 @@ session_start();
                         <button type="button" class="btn btn-primary" onclick="location.href='registerEvent.php?eventid=<?= htmlspecialchars($eventID) ?>'">Register Now</button>
                 
                 </div>
+                <button onclick="redirectToHome()" class="btn btn-sm btn-primary" style="margin-top: 20px;">Home</button>
             </div>
         </div>
+
+<script>
+    function redirectToHome() {
+        <?php
+        if ($_SESSION['userType'] === 'HomeCook') {
+            echo "window.location.href = '/frontend/Pages/homepage_homecook.php';";
+        } elseif ($_SESSION['userType'] === 'ProfessionalChef') {
+            echo "window.location.href = '/frontend/Pages/homepage_professionalcook.php';";
+        } else {
+            echo "console.log('User type not determined.');"; 
+        }
+        ?>
+    }
+</script>
+
     <?php else: ?>
         <div class="text-white">Event details not found.</div>
     <?php endif; ?>
