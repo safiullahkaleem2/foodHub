@@ -74,7 +74,7 @@ createprochefs($connection);
     <div class="flex justify-center gap-12">
         <div class = chef1> 
             <ul>
-                    <a onclick=profilediverter(0)>
+            <a href="professionalChefprofilePage.php?userId=<?php echo $prochefs[0]['userid']; ?>">
                         <img id = "chef1" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                     </a>
                     <div id = "chefname1" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[0]['username']); ?></div>
@@ -83,7 +83,7 @@ createprochefs($connection);
 
         <div class = chef2>
             <ul>
-                <a href="professionalChefprofilePage.html">
+            <a href="professionalChefprofilePage.php?userId=<?php echo $prochefs[1]['userid']; ?>">
                 <img id = "chef2" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 <div id = "chefname2" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[1]['username']); ?></div>
                 </a>
@@ -92,7 +92,7 @@ createprochefs($connection);
 
         <div class = chef3>
             <ul>
-                <a href="professionalChefprofilePage.html">
+            <a href="professionalChefprofilePage.php?userId=<?php echo $prochefs[2]['userid']; ?>">
                     <img id = "chef3" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
                 <div id = "chefname3" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[2]['username']); ?></div>
@@ -101,7 +101,7 @@ createprochefs($connection);
 
         <div class = chef4>
             <ul>
-                <a href="professionalChefprofilePage.html">
+            <a href="professionalChefprofilePage.php?userId=<?php echo $prochefs[3]['userid']; ?>">
                     <img id = "chef4" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
                 <div id = "chefname4" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[3]['username']); ?></div>
@@ -110,7 +110,7 @@ createprochefs($connection);
 
         <div class = chef5>
             <ul>
-                <a href="professionalChefprofilePage.html">
+            <a href="professionalChefprofilePage.php?userId=<?php echo $prochefs[4]['userid']; ?>">
                     <img id = "chef5" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
                 <div id = "chefname5" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[4]['username']); ?></div>
@@ -119,7 +119,7 @@ createprochefs($connection);
 
         <div class = chef6>
             <ul>
-                <a href="professionalChefprofilePage.html">
+            <a href="professionalChefprofilePage.php?userId=<?php echo $prochefs[5]['userid']; ?>">
                     <img id = "chef6" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
                 <div id = "chefname6" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[5]['username']); ?></div>
@@ -128,7 +128,7 @@ createprochefs($connection);
 
         <div class = chef7>
             <ul>
-                <a href="professionalChefprofilePage.html">
+            <a href="professionalChefprofilePage.php?userId=<?php echo $prochefs[6]['userid']; ?>">
                     <img id = "chef7" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
                 <div id = "chefname7" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[6]['username']); ?></div>
@@ -137,7 +137,7 @@ createprochefs($connection);
 
         <div class = chef8>
             <ul>
-                <a href="professionalChefprofilePage.html">
+            <a href="professionalChefprofilePage.php?userId=<?php echo $prochefs[7]['userid']; ?>">
                     <img id = "chef8" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
                 <div id = "chefname8" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[7]['username']); ?></div>
@@ -146,7 +146,7 @@ createprochefs($connection);
 
         <div class = chef9>
             <ul>
-                <a href="professionalChefprofilePage.html">
+            <a href="professionalChefprofilePage.php?userId=<?php echo $prochefs[8]['userid']; ?>">
                     <img id = "chef9" class="mask mask-circle" src="" alt="Italian Trulli" style="width:150px;height:150;">
                 </a>
                 <div id = "chefname9" class="text-sm font-bold text-center text-primary-500 mb-4"><?php echo ucfirst($prochefs[8]['username']); ?></div>
