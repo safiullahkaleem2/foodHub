@@ -90,7 +90,7 @@ session_start();
     <div class="dynamic-conditions">
         <div class="condition" data-id="0">
             <select name="conditions[0][field]" class="select select-bordered">
-            <option value="title">Title</option>
+                <option value="title">Title</option>
                 <option value="publishdate">Publish Date</option>
                 <option value="description">Description</option>
                 <option value="culture">Culture</option>

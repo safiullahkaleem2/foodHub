@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $selectedColumns = [];
         $columnMap = [
-    '   show_title' => 'r.title',
+        'show_title' => 'r.title',
         'show_publishdate' => 'r.publishdate',
         'show_description' => 'r.description',
         'show_culture' => 'r.culture',
