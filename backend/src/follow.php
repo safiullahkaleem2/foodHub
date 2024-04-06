@@ -18,7 +18,7 @@ $followedId = (int) $_SESSION['followid'];
     try {
         $stmt->execute();
 
-        $username = $_SESSION['userid'];
+        $username = $_SESSION['username'];
         // Increase the number of followings for the follower
         $updateFollowing = $connection->prepare("UPDATE userdetails SET numberoffollowing = numberoffollowing + 1 WHERE username = :username");
         $updateFollowing->bindParam(':username', $username);
@@ -26,12 +26,19 @@ $followedId = (int) $_SESSION['followid'];
 
         $updateFollowers = $connection->prepare("UPDATE userdetails
         SET numberoffollowers = numberoffollowers + 1
-        WHERE username IN (SELECT username FROM AppUser WHERE userid = :followedid)");
-        $updateFollowers->bindParam(':followedId', $followedId);
+        WHERE username IN (SELECT username FROM appuser WHERE userid = $followedId)");
         $updateFollowers->execute();
-
         // Success feedback
         $_SESSION['message'] = "Successfully followed.";
+        if ($_SESSION['userType'] === 'HomeCook') {
+            header("Location: /frontend/Pages/homepage_homecook.php");
+            exit();
+        } elseif ($_SESSION['userType'] === 'ProfessionalChef') {
+            header("Location: /frontend/Pages/homepage_professionalcook.php");
+            exit();
+        } else {
+            echo "console.log('User type not determined.');"; // You can handle this case as needed
+        }
     } catch (PDOException $e) {
         // Error feedback
         $_SESSION['message'] = "Follow operation failed: " . $e->getMessage();
@@ -41,5 +48,5 @@ $followedId = (int) $_SESSION['followid'];
 }
 
 
-exit;
-?>
+// exit;
+
