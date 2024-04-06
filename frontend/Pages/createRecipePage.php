@@ -188,7 +188,7 @@ require_once __DIR__ . '/../../backend/scripts/databaseconnection.php';
                 </div>
 
                 <div class="form-control mt-6">
-                    <a href="homepage_professionalcook.html"><button type="button" class="btn btn-primary">Home
+                    <a href="homepage_professionalcook.php"><button type="button" class="btn btn-primary">Home
                             page</button></a>
                 </div>
             </form>

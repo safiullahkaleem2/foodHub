@@ -44,7 +44,7 @@ if ($recipeId) {
     AND u.name = c2.name
     AND u.category = c2.category
     AND u.quality = c2.quality
-    AND u.recipeid = :recipeId3";
+    AND u.recipeid = 1850";
     
     $stmt = $connection->prepare($query4);
     $stmt->bindParam(':recipeId3', $recipeId, PDO::PARAM_INT);
@@ -84,7 +84,7 @@ if ($recipeId) {
                 </div>
             </div>
 
-            
+
             <div class="card bg-primary text-primary-content mb-4">
                 <div class="card-body">
                     <h2 class="card-title"><?= htmlspecialchars($recipeDetails['title']); ?></h2>
@@ -137,7 +137,9 @@ if ($recipeId) {
             <div class="card bg-primary text-primary-content mt-6">
                 <div class="card-body">
                     <h2 class="card-title">Cooking equipment</h2>
-                    <?php foreach ($cookequipmentdetails as $row) : ?>
+                    <?php 
+                    echo var_dump($cookequipmentdetails);
+                    foreach ($cookequipmentdetails as $row) : ?>
                         <div class="result-item">
                             <p>Name: <?= htmlspecialchars($row['name']); ?></p>
                             <p>Category: <?= htmlspecialchars($row['category']); ?></p>

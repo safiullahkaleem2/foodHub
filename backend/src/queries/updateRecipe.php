@@ -47,4 +47,4 @@ $updateRecipeDetails->execute([
     } 
  
 
-?>
+
