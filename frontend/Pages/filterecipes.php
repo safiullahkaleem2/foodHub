@@ -14,7 +14,7 @@ session_start();
 
 <style>
     .checkboxes label {
-        margin-left: 5px; /* Adjust the margin as needed */
+        margin-left: 5px; 
     }
 </style>
 
@@ -30,7 +30,7 @@ session_start();
         <form method="POST" action="/../backend/src/recipefilter.php">
             <div class="m-1">
                 <label class="input input-bordered flex items-center gap-2 input-xs bg-neutral">
-                    <input type="text" name="text" class="grow" placeholder="Servings" style="color: white;"/>
+                    <input type="text" name="text" class="grow" placeholder="Servings" style="color: white;" required/>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
                 </label>
             </div>
@@ -61,7 +61,7 @@ session_start();
         </div>
 
         <br>
-        <button type="submit" name="search_button" class="btn btn-sm btn-primary" style="color: black;">Search</button>
+        <button type="submit" name="search_button" class="btn btn-sm btn-primary" style="color: white;">Search</button>
         </form>
 
         <form method="POST" action="/../backend/src/recipefilter.php">
@@ -77,13 +77,10 @@ session_start();
 </div>
 
 <div class="join">
-            <button type="submit" name="project_query_button" class="btn btn-sm btn-primary style="color: black;"">Search By fields</button>
-            <br>
+    <button type="submit" name="project_query_button" class="btn btn-sm btn-primary" style="color: white;">Search By fields</button>
+    <br>
 
         </div>
-
-        <!-- <br>
-        <button type="submit" name="project_query_button" class="btn btn-sm btn-primary">Search By fields</button> -->
 
     </form>
 
@@ -101,7 +98,7 @@ session_start();
             
             </select>
             <span>=</span>
-            <input type="text" name="conditions[0][value]" placeholder="" class="input input-bordered">
+            <input type="text" name="conditions[0][value]" placeholder="" class="input input-bordered" required>
             
         </div>
     </div>
@@ -209,7 +206,7 @@ if (isset($_SESSION['selectionresults'])) {
         } elseif ($_SESSION['userType'] === 'ProfessionalChef') {
             echo "window.location.href = '/frontend/Pages/homepage_professionalcook.php';";
         } else {
-            echo "console.log('User type not determined.');"; // You can handle this case as needed
+            echo "console.log('User type not determined.');"; 
         }
         ?>
     }

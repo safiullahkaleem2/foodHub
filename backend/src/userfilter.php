@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $age3 = $_POST['age'];
 
  // Find the amount of people for each age group for which the average number of followers of the
- // users who are > 'userinput' is higher than the average number of followers 
+ // users who are > userinput is higher than the average number of followers 
  // of all users across all age groups
     $checkStmt = $connection->prepare("SELECT u.age, COUNT(*)
                                   FROM userdetails u
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['UserQueryResults'] = $checkStmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-    // 'Find the number of users and their age that are equal to or above the user-inputted age';
+    // Find the number of users and their age that are equal to or above the user-inputted age;
     $checkStmt2 = $connection->prepare("SELECT u.age, COUNT(*)
                                   FROM userdetails u
                                   GROUP BY u.age

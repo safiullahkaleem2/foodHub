@@ -25,7 +25,6 @@ session_start();
     $checkStmt->execute();
     $_SESSION['EventsQueryResults'] = $checkStmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // echo json_encode($checkStmt);
     header("Location: /frontend/Pages/filterevents.php");
 
     

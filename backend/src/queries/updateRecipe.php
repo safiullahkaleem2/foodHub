@@ -2,7 +2,6 @@
 session_start();
 require_once __DIR__ . '/../../scripts/databaseconnection.php';
 
-// Check if the form has been submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Collect form data
     $recipeId = $_SESSION['recipeId']; // Ensure you have a hidden input in your form that sends this ID
@@ -33,7 +32,6 @@ $updateRecipeDetails->execute([
     ':recipeId' => $recipeId
 ]);
 
-        // Update Recipe for Estimated Time
         $updateRecipe = $connection->prepare("UPDATE Recipe SET EstimatedTime = :estimatedTime WHERE RecipeID = :recipeId");
         $updateRecipe->execute([
             ':estimatedTime' => $editEstimatedTime,

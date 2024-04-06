@@ -38,7 +38,6 @@ createprochefs($connection);
                     </div>
                     
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 bg-neutral">
-                    <li><a href="homecookprofilePage.html">Profile</a></li>
                     <li><a href="homeCookEventPage.html">Browse Events</a></li>
                     <li><a href="deleteaccount.php">Delete Account</a></li>
                     <li><a href="loginpage.html">Log out</a></li>
@@ -51,16 +50,6 @@ createprochefs($connection);
                 <a class="btn btn-ghost text-xl" style="pointer-events: none;">FoodHub</a>
                 <img src="https://cdn.dribbble.com/userupload/3998399/file/original-9c55bbf2aa9c9cc167c188fa5bea8217.jpg?resize=752x" class="h-12 mr-6">
             </div>
-
-            <!--Search Bar Recipes-->
-            <!-- <div class="navbar-end">
-            <form method="POST" action="">
-                <label class="input input-bordered flex items-center gap-2 input-xs bg-base-content">
-                    <input type="text" name="searchusers" class="grow" placeholder="Search Users" />
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
-                  </label>
-            <form>
-            </div> -->
         </div>
     
 </head>
