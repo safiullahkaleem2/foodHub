@@ -374,21 +374,21 @@ VALUES
 
 $insertQuery10 = "INSERT INTO EventLocation (Category, EntryFee, Location)
 VALUES 
-('Cooking Competition', 50, 'City A'),
-('Baking Workshop', 30, 'City B'),
-('Food Festival', 20, 'City C'),
-('Culinary Tour', 40, 'City D'),
-('Wine Tasting', 60, 'City E'),
-('Sushi Making Class', 40, 'City F'),
-('Pizza Workshop', 25, 'City G'),
-('BBQ Cookout', 35, 'City H'),
-('Dessert Masterclass', 45, 'City I'),
-('Vegetarian Cooking Class', 30, 'City J'),
-('Wine and Cheese Pairing', 55, 'City K'),
-('Gourmet Dinner', 70, 'City L'),
-('Street Food Festival', 15, 'City M'),
-('Cocktail Mixology Workshop', 50, 'City N'),
-('Farm-to-Table Experience', 65, 'City O')";
+('Cooking Competition', 50, 'New York'),
+('Baking Workshop', 30, 'Los Angeles'),
+('Food Festival', 20, 'Chicago'),
+('Culinary Tour', 40, 'San Francisco'),
+('Wine Tasting', 60, 'Napa Valley'),
+('Sushi Making Class', 40, 'Tokyo'),
+('Pizza Workshop', 25, 'Rome'),
+('BBQ Cookout', 35, 'Austin'),
+('Dessert Masterclass', 45, 'Paris'),
+('Vegetarian Cooking Class', 30, 'Seattle'),
+('Wine and Cheese Pairing', 55, 'Bordeaux'),
+('Gourmet Dinner', 70, 'London'),
+('Street Food Festival', 15, 'Bangkok'),
+('Cocktail Mixology Workshop', 50, 'Miami'),
+('Farm-to-Table Experience', 65, 'Amsterdam')";
 
 $insertQuery11 = "INSERT INTO EventDetails (Category, EntryFee, EventID, Date)
 VALUES 
