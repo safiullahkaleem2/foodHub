@@ -36,10 +36,10 @@ session_start();
     </div>
         <button type="submit" class="btn btn-sm btn-primary ml-4 mr-4">Search</button>
     <p class =  "ml-4">
-    <br>
-    <strong>
-    Find out how many people are in each age group where the average number of followers for users older than a specific age 
-    is higher than the average number of followers for all users in every age group. (Find which age group is more popular based on the average number of followers across all age groups) :
+        <br>
+        <strong>
+        Find out how many people are in each age group where the average number of followers for users older than a specific age 
+        is higher than the average number of followers for all users in every age group. (Find which age group is more popular based on the average number of followers across all age groups) :
     </p>
     <br>
     </form>
