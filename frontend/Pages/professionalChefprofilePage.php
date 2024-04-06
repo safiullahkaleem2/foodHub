@@ -15,6 +15,7 @@ session_start();
                                     AND p2.restaurantaffiliation = p.RestaurantAffiliation 
                                     AND p2.restaurantlocation = p.restaurantlocation");
     $stmt->bindParam(':userid', $profileUserId);
+    $_SESSION['followid'] = $profileUserId;
 
     $stmt->execute();
     $userDetails = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -77,11 +78,11 @@ session_start();
 
             <div class="mb-2">
                 <div class="font-bold text-lg text-white">Certification: </div>
-                <span class="text-white"><?= htmlspecialchars($userDetails['cerfication'] ?? 'N/A'); ?></span>
+                <span class="text-white"><?= htmlspecialchars($userDetails['certification'] ?? 'N/A'); ?></span>
             </div>
 
             <div class="form-control mt-6">
-                <form action="" method="post">
+                <form action="/../backend/src/follow.php" method="post">
                     <button type="submit" name="follow" class="btn btn-primary">Follow</button>
                 </form>
             </div>

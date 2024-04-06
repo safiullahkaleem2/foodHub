@@ -75,7 +75,7 @@ if ($recipeId) {
                 <div class="card-body">
                     <h2 class="card-title">Recipe video</h2>
 
-                    <iframe width="950" height="450" src= <?= htmlspecialchars($videoDetails['VideoURL']); ?>
+                    <iframe width="950" height="450" src= <?= htmlspecialchars($videoDetails['videourl']); ?>
                         
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
