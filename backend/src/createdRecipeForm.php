@@ -84,24 +84,30 @@ $insertStmt = $connection->prepare("INSERT INTO Utilizes (Name, Price, Category,
 
 
 $selectedEquipmentDetails = [];
-foreach ($_POST['equipmentList'] as $equipmentName) {
-    $selectStmt->bindParam(':name', $equipmentName);
-    $selectStmt->execute();
 
-    $equipmentDetails = $selectStmt->fetch(PDO::FETCH_ASSOC);
-    if ($equipmentDetails) {
-        $selectedEquipmentDetails[] = $equipmentDetails;
-    }
-}
+  foreach ($_POST['equipmentList'] as $equipmentString) {
+    // Split the string into parts
+    $parts = explode(',', $equipmentString);
 
-foreach ($selectedEquipmentDetails as $equipment) {
-  $insertStmt->bindParam(':name', $equipment['name']);
-  $insertStmt->bindParam(':price', $equipment['price']);
-  $insertStmt->bindParam(':category', $equipment['category']);
-  $insertStmt->bindParam(':quality', $equipment['quality']);
-  $insertStmt->bindParam(':recipeID', $recipeID); 
-  $insertStmt->execute();
-}
+    // Assign parts to variables (make sure the order matches with how you concatenated them)
+    $equipmentname = $parts[0];
+    $equipmentprice = $parts[1];
+    $equipmentcategory = $parts[2];
+    $equipmentquality = $parts[3];
+    $insertStmt = $connection->prepare("INSERT INTO Utilizes (Name, Price, Category, Quality, RecipeID) VALUES (:name, :price, :category, :quality, :recipeID)");
+    $insertStmt->bindParam(':recipeID', $recipeID);
+    $insertStmt->bindParam(':name', $equipmentname);
+    $insertStmt->bindParam(':price', $equipmentprice);
+    $insertStmt->bindParam(':category', $equipmentcategory);
+    $insertStmt->bindParam(':quality', $equipmentquality);
+    
+
+    $insertStmt->execute();
+
+  }
+
+
+
 
 
 
