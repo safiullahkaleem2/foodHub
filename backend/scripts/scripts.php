@@ -502,7 +502,6 @@ VALUES
 ('Butter', 'Dairy'),
 ('Salt', 'None')";
 
-
 $insertQuery20 = "INSERT INTO Follows (UserID1, UserID2)
 VALUES 
 (1, 2),
@@ -602,7 +601,6 @@ VALUES
 (3, 3),
 (4, 4),
 (5, 5)";
-
 
 $insertQuery25 = "INSERT INTO Contains (RecipeID, Name)
 VALUES 
