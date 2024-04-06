@@ -164,7 +164,7 @@ createprochefs($connection);
 
     <div class="flex gap-8 ml-8 pt-4 bg-base-content"> 
         <div class="max-w-sm rounded overflow-hidden shadow-xl">
-            <a href="viewRecipePage.html">
+        <a href="viewRecipePage.php?recipeId=<?php echo $recipe[0]['recipeid']; ?>">
                 <img class="w-full" id = "food1" src="" alt="Sunset in the mountains">
             </a>
 
