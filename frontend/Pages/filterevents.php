@@ -16,7 +16,7 @@ session_start();
     <h1 class="text-5xl font-bold text-primary-500">HALL OF FAME</h1>
     <br>
 </div>
-<h2 class="text-3xl font-bold text-primary-500 mb-4">Users Who Have Participated Every Single Event:</h2>
+<h2 class="text-3xl font-bold text-primary-500 mb-4">Users Who Have In Participated Every Single Event:</h2>
 
 <?php
 

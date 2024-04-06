@@ -9,6 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
+    $_SESSION['user_username'] = trim($_POST['username']);
+    $_SESSION['user_password'] = trim($_POST['password']);
+
     $stmt = $connection->prepare("SELECT * FROM AppUser WHERE username = ?");
     $stmt->execute([$username]);
     $user = $stmt->fetch();
@@ -33,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             } elseif ($isProChef) {
                 $_SESSION['userType'] = 'ProfessionalChef';
-                header("Location: /frontend/Pages/homepage_professionalcook.html");
+                header("Location: /frontend/Pages/homepage_professionalcook.php");
                 exit();
             } else {
                 echo "User type not determined.";
