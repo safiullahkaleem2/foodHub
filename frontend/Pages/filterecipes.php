@@ -61,7 +61,7 @@ session_start();
         </div>
 
         <br>
-        <button type="submit" name="search_button" class="btn btn-sm btn-primary" style="color: black;">Search</button>
+        <button type="submit" name="search_button" class="btn btn-sm btn-primary" style="color: white;">Search</button>
         </form>
 
         <form method="POST" action="/../backend/src/recipefilter.php">
@@ -77,8 +77,8 @@ session_start();
 </div>
 
 <div class="join">
-            <button type="submit" name="project_query_button" class="btn btn-sm btn-primary style="color: black;"">Search By fields</button>
-            <br>
+    <button type="submit" name="project_query_button" class="btn btn-sm btn-primary" style="color: white;">Search By fields</button>
+    <br>
 
         </div>
 
@@ -98,7 +98,7 @@ session_start();
             
             </select>
             <span>=</span>
-            <input type="text" name="conditions[0][value]" placeholder="" class="input input-bordered">
+            <input type="text" name="conditions[0][value]" placeholder="" class="input input-bordered" required>
             
         </div>
     </div>
