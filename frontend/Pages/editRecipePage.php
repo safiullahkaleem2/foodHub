@@ -3,9 +3,9 @@ require_once __DIR__ . '/../../backend/scripts/databaseconnection.php';
 session_start();
 
 // Assuming you've correctly passed and validated 'edit-recipe-id' to this script
-$editRecipeId = $_POST['edit-recipe-id'] ?? null; // Using null coalescing operator as a fallback
+$editRecipeId = $_POST['edit-recipe-id']; // Using null coalescing operator as a fallback
 
-
+    $_SESSION["recipeId"] = $editRecipeId;
     $recipeDetailsQuery = $connection->prepare("SELECT *, Recipe.EstimatedTime FROM RecipeDetails JOIN Recipe ON Recipe.PublishDate = RecipeDetails.PublishDate AND Recipe.Title = RecipeDetails.Title WHERE Recipe.RecipeID = :recipeId");
     $recipeDetailsQuery->bindParam(':recipeId', $editRecipeId, PDO::PARAM_INT);
     $recipeDetailsQuery->execute();
@@ -38,7 +38,9 @@ $editRecipeId = $_POST['edit-recipe-id'] ?? null; // Using null coalescing opera
                     <label class="label">
                         <span class="label-text text-white">Recipe description</span>
                     </label>
+
                     <textarea required name="edit-recipe-description"
+                    
                         class="input input-bordered text-zinc-950 h-32 resize-none"><?= htmlspecialchars($recipeDetails['title']); ?></textarea>
                 </div>
 

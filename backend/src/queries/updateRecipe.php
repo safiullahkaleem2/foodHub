@@ -1,45 +1,50 @@
 <?php
-// session_start();
+session_start();
 require_once __DIR__ . '/../../scripts/databaseconnection.php';
-require_once __DIR__ . '/../idgenerator.php';
 
+// Check if the form has been submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Collect form data
+    $recipeId = $_SESSION['recipeId']; // Ensure you have a hidden input in your form that sends this ID
+    $editRecipeDescription = $_POST['edit-recipe-description'];
+    $editDifficultyLevel = $_POST['edit-difficulty-level'];
+    $editCulture = $_POST['edit-recipe-culture'];
+    $editServings = $_POST['edit-recipe-servings'];
+    $editEstimatedTime = $_POST['edit-estimated-time'];
+    var_dump($_POST);
 
-
-var_dump($_POST);
-$editRecipeTitle = $_POST['edit-recipe-title'];
-echo $editRecipeTitle;
-echo $editRecipePublishDate;
-$editRecipeDescription = $_POST['edit-recipe-description'];
-$editDifficultyLevel = $_POST['edit-difficulty-level'];
-$editRatingLevel = $_POST['edit-rating-level'];
-$editCulture = $_POST['edit-recipe-culture'];
-$editServings = $_POST['edit-recipe-servings'];
-$editEstimatedTime = $_POST['edit-estimated-time'];
-
-// Update the recipeDetails
-
-$updateQuery = $connection->prepare("
+    $updateRecipeDetails = $connection->prepare("
     UPDATE RecipeDetails
-    SET Description = :newDescription,
-        Culture = :newCulture,
-        Difficulty = :newDifficulty,
-        Serving = :newServing
-    WHERE PublishDate = :publishDateValue AND Title = :titleValue
+    SET Description = :description, 
+        Culture = :culture, 
+        Difficulty = :difficulty, 
+        Serving = :serving
+    FROM Recipe 
+    WHERE RecipeDetails.PublishDate = Recipe.PublishDate 
+    AND RecipeDetails.Title = Recipe.Title 
+    AND Recipe.RecipeID = :recipeId
 ");
 
-$updateQuery->bindParam(':newDescription', $editRecipeDescription);
-$updateQuery->bindParam(':newCulture', $editCulture);
-$updateQuery->bindParam(':newDifficulty', $editDifficultyLevel);
-$updateQuery->bindParam(':newServing', $editServings);
-$updateQuery->bindParam(':publishDateValue', $editRecipePublishDate);
-$updateQuery->bindParam(':titleValue', $editRecipeTitle);
+$updateRecipeDetails->execute([
+    ':description' => $editRecipeDescription,
+    ':culture' => $editCulture,
+    ':difficulty' => $editDifficultyLevel,
+    ':serving' => $editServings,
+    ':recipeId' => $recipeId
+]);
 
-if ($updateQuery->execute()) {
-    echo "Recipe details updated successfully.";
-} else {
-    echo "Error updating recipe details.";
-}
+        // Update Recipe for Estimated Time
+        $updateRecipe = $connection->prepare("UPDATE Recipe SET EstimatedTime = :estimatedTime WHERE RecipeID = :recipeId");
+        $updateRecipe->execute([
+            ':estimatedTime' => $editEstimatedTime,
+            ':recipeId' => $recipeId
+        ]);
 
+        // Redirect with a success message
+        $_SESSION['message'] = 'Recipe updated successfully.';
+        header('Location: /frontend/Pages/homepage_professionalcook.php');
+      
+    } 
+ 
 
-echo "<script>alert('recipe sucessfully published'); </script>";
-header("Location: /frontend/Pages/homepage_professionalcook.php");
+?>
