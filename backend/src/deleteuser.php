@@ -25,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $delete->bindParam(':password', $user_password, PDO::PARAM_STR);
     $delete->execute();
 
-    // Redirect after 5 seconds
     header('Refresh: 3; URL=/frontend/Pages/loginpage.html');
     exit;
 }
