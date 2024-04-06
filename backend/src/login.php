@@ -9,6 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
+    $_SESSION['user_username'] = trim($_POST['username']);
+    $_SESSION['user_password'] = trim($_POST['password']);
+
     $stmt = $connection->prepare("SELECT * FROM AppUser WHERE username = ?");
     $stmt->execute([$username]);
     $user = $stmt->fetch();

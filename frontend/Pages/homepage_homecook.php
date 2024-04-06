@@ -40,6 +40,7 @@ createprochefs($connection);
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 bg-neutral">
                     <li><a href="homecookprofilePage.html">Profile</a></li>
                     <li><a href="homeCookEventPage.html">Browse Events</a></li>
+                    <li><a href="deleteaccount.php">Delete Account</a></li>
                     <li><a href="loginpage.html">Log out</a></li>
                 </ul>
                 </div>
