@@ -1,4 +1,27 @@
-<?php include __DIR__ . '/../backend/src/homecookevent.php'; ?>
+<?php
+
+require_once __DIR__ . '/../../backend/scripts/databaseconnection.php';
+$isRegistered = false;
+session_start();
+
+
+        $eventID = $_GET['eventid'];    
+            $stmt = $connection->prepare("SELECT * FROM EventDetails e, eventlocation e1 WHERE EventID = :eventid AND e.category = e1.category AND e.entryfee = e1.entryfee");
+            $stmt->execute(['eventid' => $eventID]);
+            $eventDetails = $stmt->fetch(PDO::FETCH_ASSOC);    
+               
+            $userID = $_SESSION['userid'];
+    
+                $registrationCheckSql = "SELECT COUNT(*) FROM Participates WHERE EventID = :eventid AND UserID = :userid";
+                $registrationCheckStmt = $connection->prepare($registrationCheckSql);
+                $registrationCheckStmt->execute([':eventid' => $eventID, ':userid' => $userID]);
+                
+                if ($registrationCheckStmt->fetchColumn() > 0) {
+                    $isRegistered = true;
+                }
+    
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,16 +37,14 @@
         <div class="card w-96 bg-neutral text-neutral-content shadow-xl">
             <div class="card-body items-center text-center">
                 <h2 class="card-title text-white">Event Details</h2>
-                <div class="mb-4">
-                    <div class="font-bold text-lg text-white"><?= htmlspecialchars($eventDetails['name']); ?></div>
-                </div>
+           
                 <div class="mb-2">
                     <span class="font-semibold text-white">Date:</span>
                     <span class="text-white"><?= htmlspecialchars($eventDetails['date']); ?></span>
                 </div>
                 <div class="mb-2">
                     <span class="font-semibold text-white">Location:</span>
-                    <span class="text-white"><?= htmlspecialchars($eventLocation['location']); ?></span>
+                    <span class="text-white"><?= htmlspecialchars($eventDetails['location']); ?></span>
                 </div>
                 <div class="mb-2">
                     <span class="font-semibold text-white">Category:</span>
@@ -31,14 +52,12 @@
                 </div>
                 <div class="mb-4">
                     <span class="font-semibold text-white">Entry Fee:</span>
-                    <span class="text-white">$<?= htmlspecialchars($eventDetails['entry_fee']); ?></span>
+                    <span class="text-white">$<?= htmlspecialchars($eventDetails['entryfee']); ?></span>
                 </div>
                 <div class="form-control mt-6">
-                    <?php if ($isRegistered): ?>
-                        <button type="button" class="btn btn-secondary" disabled>You have already registered</button>
-                    <?php else: ?>
+                    
                         <button type="button" class="btn btn-primary" onclick="location.href='registerEvent.php?eventid=<?= htmlspecialchars($eventID) ?>'">Register Now</button>
-                    <?php endif; ?>
+                
                 </div>
             </div>
         </div>
