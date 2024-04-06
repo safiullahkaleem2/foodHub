@@ -49,10 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
-else{
-    echo "<script>alert('Input a valid serving')";
-    header("Location: /frontend/Pages/filterecipes.php");
-}
+
 
 
     if (isset($_POST['project_query_button'])) {
@@ -90,5 +87,53 @@ else{
 
     }
 
+    if (isset($_POST['dynamic_condition_search'])) {
+
+        if (isset($_POST['dynamic_condition_search'])) {
+            $conditions = $_POST['conditions'] ?? [];
+            $sqlConditions = [];
+            $params = [];
+        
+
+            foreach ($conditions as $index => $condition) {
+
+                $field = $condition['field'];
+
+                $tableAlias = 'r'; 
+                if (in_array($field, ['publishdate', 'estimatedtime'])) { 
+                    $tableAlias = 'r2';
+                }
+                $fieldWithAlias = "$tableAlias.$field";
+        
+                $value = $condition['value'];
+                $logic = $index > 0 ? $condition['logic'] : ''; 
+        
+                $sqlConditions[] = "$logic $fieldWithAlias = :value$index";
+                $params[":value$index"] = $value;
+            }
+        
+            $sqlConditionStr = implode(' ', $sqlConditions);
+            $sql = "SELECT * FROM RecipeDetails r JOIN Recipe r2 ON r2.title = r.title AND r2.publishdate = r.publishdate WHERE $sqlConditionStr";
+        
+
+                $stmt = $connection->prepare($sql);
+            
+                foreach ($params as $param => $value) {
+                    $stmt->bindValue($param, $value);
+                }
+                $stmt->execute();
+
+                $_SESSION['queryResults'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+                header("Location: /frontend/Pages/filterecipes.php");
+                
+
+            }
+
+    }
+
 }
+
+
+
 

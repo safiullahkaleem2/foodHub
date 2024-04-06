@@ -74,17 +74,21 @@ session_start();
 
     </form>
 
-    <form method="POST" action="/../backend/src/dynamicConditionFilter.php">
+    <form method="POST" action="/../backend/src/recipefilter.php">
     <div class="dynamic-conditions">
         <div class="condition" data-id="0">
             <select name="conditions[0][field]" class="select select-bordered">
+            <option value="title">Title</option>
+                <option value="publishdate">Publish Date</option>
+                <option value="description">Description</option>
                 <option value="culture">Culture</option>
                 <option value="difficulty">Difficulty</option>
                 <option value="serving">Serving</option>
-                <!-- Add other fields as necessary -->
+                <option value="estimatedtime">Estimated Time</option>
+            
             </select>
             <span>=</span>
-            <input type="text" name="conditions[0][value]" placeholder="Value" class="input input-bordered">
+            <input type="text" name="conditions[0][value]" placeholder="" class="input input-bordered">
             
         </div>
     </div>
@@ -104,10 +108,14 @@ function addCondition() {
     const conditionHTML = `
         <div class="condition" data-id="${conditionCount}">
             <select name="conditions[${conditionCount}][field]" class="select select-bordered">
+            <option value="title">Title</option>
+                <option value="publishdate">Publish Date</option>
+                <option value="description">Description</option>
                 <option value="culture">Culture</option>
                 <option value="difficulty">Difficulty</option>
                 <option value="serving">Serving</option>
-                <!-- Add other fields as necessary -->
+                <option value="estimatedtime">Estimated Time</option>
+
             </select>
             <span>=</span>
             <input type="text" name="conditions[${conditionCount}][value]" placeholder="Value" class="input input-bordered">
