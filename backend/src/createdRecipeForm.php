@@ -106,11 +106,6 @@ $selectedEquipmentDetails = [];
 
   }
 
-
-
-
-
-
 $insertStmt = $connection->prepare("INSERT INTO Contains (RecipeID,Name) VALUES (:recipeID,:name)");
 
 
