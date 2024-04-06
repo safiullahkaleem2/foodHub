@@ -18,7 +18,6 @@ session_start();
     $stmt->execute();
     $userDetails = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +89,7 @@ session_start();
         } elseif ($_SESSION['userType'] === 'ProfessionalChef') {
             echo "window.location.href = '/frontend/Pages/homepage_professionalcook.php';";
         } else {
-            echo "console.log('User type not determined.');"; // You can handle this case as needed
+            echo "console.log('User type not determined.');"; 
         }
         ?>
     }

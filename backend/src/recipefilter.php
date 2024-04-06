@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once __DIR__ . '/../scripts/databaseconnection.php';
     require_once __DIR__ . '/queries/queryfunctions.php';
@@ -32,8 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     $checkStmt = $connection->prepare($sql);
-    
-
     $checkStmt->bindParam(':serving', $serving, PDO::PARAM_INT);
     
 
@@ -48,9 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 }
-
-
-
 
     if (isset($_POST['project_query_button'])) {
 
@@ -82,8 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         
         header("Location: /frontend/Pages/filterecipes.php");
-
-
     }
 
     if (isset($_POST['dynamic_condition_search'])) {
@@ -93,7 +85,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sqlConditions = [];
             $params = [];
         
-
             foreach ($conditions as $index => $condition) {
 
                 $field = $condition['field'];
@@ -113,8 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
             $sqlConditionStr = implode(' ', $sqlConditions);
             $sql = "SELECT * FROM RecipeDetails r JOIN Recipe r2 ON r2.title = r.title AND r2.publishdate = r.publishdate WHERE $sqlConditionStr";
-        
-
+    
                 $stmt = $connection->prepare($sql);
             
                 foreach ($params as $param => $value) {

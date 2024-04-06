@@ -11,7 +11,6 @@ try {
     createTables($connection);
     sampleData($connection);
 
-    
     header('Location: /frontend/Pages/loginpage.html');
     exit();
      

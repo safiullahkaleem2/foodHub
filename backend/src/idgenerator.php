@@ -6,7 +6,6 @@ function generateID($connection) {
     while ($idExists) {
         $uniqueID = mt_rand(0, 9999); 
 
-
         $query = "
             SELECT EXISTS (
                 SELECT 1 FROM Review WHERE ReviewID = ?

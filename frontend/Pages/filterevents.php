@@ -27,9 +27,9 @@ if (isset($_SESSION['EventsQueryResults'])) {
     foreach ($userresults as $row) {
         echo '<div class="result-item">';
         echo 'Name: ' . ucfirst(htmlspecialchars($row['username'])) . ', ';
-        echo 'Number Of Following: ' . htmlspecialchars($row['numberoffollowing']). ', '; // Using "\n" for a newline
-        echo 'Number Of Followers: ' . htmlspecialchars($row['numberoffollowers']). ', '; // Using "\n" for a newline
-        echo 'Age: ' . htmlspecialchars($row['age']) . "\n"; // Using "\n" for a newline
+        echo 'Number Of Following: ' . htmlspecialchars($row['numberoffollowing']). ', '; 
+        echo 'Number Of Followers: ' . htmlspecialchars($row['numberoffollowers']). ', '; 
+        echo 'Age: ' . htmlspecialchars($row['age']) . "\n"; 
         echo '</div>';
     }
     echo '</div>';
@@ -50,7 +50,7 @@ if (isset($_SESSION['EventsQueryResults'])) {
         } elseif ($_SESSION['userType'] === 'ProfessionalChef') {
             echo "window.location.href = '/frontend/Pages/homepage_professionalcook.php';";
         } else {
-            echo "console.log('User type not determined.');"; // You can handle this case as needed
+            echo "console.log('User type not determined.');"; 
         }
         ?>
     }

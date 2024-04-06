@@ -27,12 +27,6 @@ session_start();
         </div>
         <div class="join">
 
-        <!-- <div class="m-1 ml-4">
-        <label class="input input-bordered flex items-center gap-2 input-xs bg-neutral">
-                <input type="text" name="numberoffollowers" class="grow" placeholder="Enter number of followers: " style="color: white;"/>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
-            </label>
-        </div> -->
     </div>
         <button type="submit" class="btn btn-sm btn-primary ml-4 mr-4">Search</button>
     <p class =  "ml-4">
@@ -46,13 +40,6 @@ session_start();
    
 
 </div>
-<!-- 
-<style>
-    .result-item {
-        display: inline-block;
-        margin-right: 20px; /* Adjust margin as needed */
-    }
-</style> -->
 
 <?php
 
@@ -63,8 +50,8 @@ if (isset($_SESSION['UserQueryResults'])) {
     foreach ($userresults as $row) {
         echo '<div class="result-item">';
         
-        echo 'Age: ' . htmlspecialchars($row['age']). ', ';// Using "\n" for a newline
-        echo 'Number of People: ' . htmlspecialchars($row['count']) . "\n"; // Using "\n" for a newline
+        echo 'Age: ' . htmlspecialchars($row['age']). ', ';
+        echo 'Number of People: ' . htmlspecialchars($row['count']) . "\n"; 
 
         echo '</div>';
     }

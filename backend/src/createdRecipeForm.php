@@ -3,9 +3,6 @@ session_start();
 require_once __DIR__ . '/../scripts/databaseconnection.php';
 require_once __DIR__ . '/../src/idgenerator.php';
 
-
-// The global $_POST variable allows you to access the data sent with the POST method by name
-// To access the data sent with the GET method, you can use $_GET
 $recipeTitle = $_POST['recipe-title'];
 $recipeDescription = $_POST['recipe-description'];
 
@@ -21,15 +18,12 @@ $videourl = $_POST['video-url'];
 
 $publishedDate = date('Y-m-d H:i:s');
 
-// Prepare the INSERT statement with placeholders
 $insertQueryRecipeDetails = "INSERT INTO RecipeDetails (PublishDate, Title, Description, Culture, Difficulty, Serving)
 VALUES 
 (:publishedDate, :recipeTitle, :recipeDescription, :culture, :difficultyLevel, :servings)";
 
-// Prepare the statement
 $statementInsertRecipeDetails = $connection->prepare($insertQueryRecipeDetails);
 
-// Bind parameters
 $statementInsertRecipeDetails->bindParam(':publishedDate', $publishedDate);
 $statementInsertRecipeDetails->bindParam(':recipeTitle', $recipeTitle);
 $statementInsertRecipeDetails->bindParam(':recipeDescription', $recipeDescription);
@@ -37,10 +31,7 @@ $statementInsertRecipeDetails->bindParam(':culture', $culture);
 $statementInsertRecipeDetails->bindParam(':difficultyLevel', $difficultyLevel);
 $statementInsertRecipeDetails->bindParam(':servings', $servings);
 
-// Execute the statement
 $statementInsertRecipeDetails->execute();
-
-// TODO: use Safi's getID() function to get recipeID
 
 $recipeID = generateID($connection);
 
@@ -58,8 +49,6 @@ $statementInsertRecipe->bindParam(':recipeTitle', $recipeTitle);
 
 $statementInsertRecipe->execute();
 
-
-
 $userID = $_SESSION['userid'];
 
 $insertPosts = "INSERT INTO Posts (RecipeID, UserID)
@@ -68,25 +57,19 @@ VALUES
 
 $statementInsertPosts = $connection->prepare($insertPosts);
 
-
 $statementInsertPosts->bindParam(':recipeID', $recipeID);
 $statementInsertPosts->bindParam(':userID', $userID);
 
-
 $statementInsertPosts->execute();
-
-
 
 $selectStmt = $connection->prepare("SELECT * FROM CookingEquipmentName WHERE name = :name");
 
 
 $insertStmt = $connection->prepare("INSERT INTO Utilizes (Name, Price, Category, Quality, RecipeID) VALUES (:name, :price, :category, :quality, :recipeID)");
 
-
 $selectedEquipmentDetails = [];
 
   foreach ($_POST['equipmentList'] as $equipmentString) {
-    // Split the string into parts
     $parts = explode(',', $equipmentString);
 
     // Assign parts to variables (make sure the order matches with how you concatenated them)
@@ -100,14 +83,11 @@ $selectedEquipmentDetails = [];
     $insertStmt->bindParam(':price', $equipmentprice);
     $insertStmt->bindParam(':category', $equipmentcategory);
     $insertStmt->bindParam(':quality', $equipmentquality);
-    
-
     $insertStmt->execute();
 
   }
 
 $insertStmt = $connection->prepare("INSERT INTO Contains (RecipeID,Name) VALUES (:recipeID,:name)");
-
 
 foreach ($_POST['ingredientslist'] as $ingredient) {
   $insertStmt->bindParam(':name', $ingredient);
@@ -128,7 +108,6 @@ $insertQuery18->bindParam(':videoURL', $videourl);
 $insertQuery18->bindParam(':duration', $videoDuration);
 
 
-// Execute the query
 $insertQuery18->execute();
 
 echo "<script>alert('recipe sucessfully published');</script>";

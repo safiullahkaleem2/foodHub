@@ -14,7 +14,7 @@ session_start();
 
 <style>
     .checkboxes label {
-        margin-left: 5px; /* Adjust the margin as needed */
+        margin-left: 5px; 
     }
 </style>
 
@@ -81,9 +81,6 @@ session_start();
             <br>
 
         </div>
-
-        <!-- <br>
-        <button type="submit" name="project_query_button" class="btn btn-sm btn-primary">Search By fields</button> -->
 
     </form>
 
@@ -209,7 +206,7 @@ if (isset($_SESSION['selectionresults'])) {
         } elseif ($_SESSION['userType'] === 'ProfessionalChef') {
             echo "window.location.href = '/frontend/Pages/homepage_professionalcook.php';";
         } else {
-            echo "console.log('User type not determined.');"; // You can handle this case as needed
+            echo "console.log('User type not determined.');"; 
         }
         ?>
     }

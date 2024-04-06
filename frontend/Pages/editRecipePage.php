@@ -2,8 +2,7 @@
 require_once __DIR__ . '/../../backend/scripts/databaseconnection.php';
 session_start();
 
-// Assuming you've correctly passed and validated 'edit-recipe-id' to this script
-$editRecipeId = $_POST['edit-recipe-id']; // Using null coalescing operator as a fallback
+$editRecipeId = $_POST['edit-recipe-id'];
 
     $_SESSION["recipeId"] = $editRecipeId;
     $recipeDetailsQuery = $connection->prepare("SELECT *, Recipe.EstimatedTime FROM RecipeDetails JOIN Recipe ON Recipe.PublishDate = RecipeDetails.PublishDate AND Recipe.Title = RecipeDetails.Title WHERE Recipe.RecipeID = :recipeId");
@@ -11,9 +10,6 @@ $editRecipeId = $_POST['edit-recipe-id']; // Using null coalescing operator as a
     $recipeDetailsQuery->execute();
     $recipeDetails = $recipeDetailsQuery->fetch(PDO::FETCH_ASSOC); // Assuming only one row matches, use fetch()
 
-// } else {
-//     echo "Recipe ID not provided.";
-// }
 ?>
 
 <!DOCTYPE html>

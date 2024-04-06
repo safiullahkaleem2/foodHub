@@ -21,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
 
-
         $sql = "SELECT COUNT(*) FROM ProfessionalChefSkill WHERE RestaurantAffiliation = :affiliation AND RestaurantLocation = :location AND Certification = :certification";
         $stmt = $connection->prepare($sql);
         $stmt->execute([':affiliation' => $restaurantAffiliation, ':location' => $restaurantLocation, ':certification' => $certification]);
@@ -32,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         } 
 
-
         $sql = "INSERT INTO UserDetails (NumberOfFollowers, NumberOfFollowing, Age, Username, Password) VALUES (0,0,:age,:username, :password)";
         $stmt = $connection->prepare($sql);
         $stmt->bindParam(':username', $username);
@@ -40,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':age', $age);
         $stmt->execute();
 
-       
         $id = generateID($connection);
 
         $sql = "INSERT INTO AppUser (Username, Password, UserID) VALUES (:username, :password, :UserID)";
@@ -49,9 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':password', $password); 
         $stmt->bindParam(':UserID', $id);
         $stmt->execute();
-
-        
-        
 
         $sql ="INSERT INTO ProfessionalChefSkill (RestaurantAffiliation, RestaurantLocation, Certification) VALUES (:RestaurantAffiliation,:RestaurantLocation, :Certification)";
         $stmt = $connection->prepare($sql);
@@ -75,4 +69,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Error: Form was not submitted correctly.";
 }
-?>
+

@@ -2,7 +2,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
-    $password = $_POST['password']; // User's plaintext password
+    $password = $_POST['password']; 
     $favouriteCuisine = $_POST['favouriteCuisine'];
     $age = $_POST['Age'];
 
@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
 
-
         $sql = "INSERT INTO UserDetails (NumberOfFollowers, NumberOfFollowing, Age, Username, Password) VALUES (0,0,:age,:username, :password)";
         $stmt = $connection->prepare($sql);
         $stmt->bindParam(':username', $username);
@@ -27,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':age', $age);
         $stmt->execute();
 
-       
         $id = generateID($connection);
 
         $sql = "INSERT INTO AppUser (Username, Password, UserID) VALUES (:username, :password, :UserID)";
@@ -36,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':password', $password); 
         $stmt->bindParam(':UserID', $id);
         $stmt->execute();
-
 
         $sql = "INSERT INTO HomeCook (FavouriteCuisine, HobbyistLevel, UserID) VALUES (:favouriteCuisine, 'Amateur', :UserID)";
         $stmt = $connection->prepare($sql);
@@ -52,4 +49,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Error: Form was not submitted correctly.";
 }
-?>
+
