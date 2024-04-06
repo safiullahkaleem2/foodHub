@@ -56,7 +56,7 @@ session_start();
                 </div>
                 <div class="form-control mt-6">
                     
-                        <button type="button" class="btn btn-primary" onclick="location.href='registerEvent.php?eventid=<?= htmlspecialchars($eventID) ?>'">Register Now</button>
+                        <button type="button" class="btn btn-primary" onclick="location.href='/../backend/src/event.php?eventid=<?= htmlspecialchars($eventID) ?>'">Register Now</button>
                 
                 </div>
                 <button onclick="redirectToHome()" class="btn btn-sm btn-primary" style="margin-top: 20px;">Home</button>
