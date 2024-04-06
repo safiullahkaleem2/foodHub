@@ -126,7 +126,8 @@ if ($recipeId) {
             <div class="card bg-primary text-primary-content mt-6">
                 <div class="card-body">
                     <h2 class="card-title">Ingredients</h2>
-                    <?php foreach ($ingredientdetails as $row) : ?>
+                    <?php 
+                    foreach ($ingredientdetails as $row) : ?>
                         <div class="result-item">
                             <p>Name: <?= htmlspecialchars($row['name']); ?></p>
                             <p>Allergen Info: <?= htmlspecialchars($row['allergeninfo']); ?></p>

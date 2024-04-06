@@ -2,8 +2,6 @@
 require_once __DIR__ . '/../../backend/scripts/databaseconnection.php';
 session_start();
 
-
-
     $profileUserId = $_GET['userId'];
 
     $stmt = $connection->prepare("SELECT * 
@@ -20,17 +18,8 @@ session_start();
     $stmt->execute();
     $userDetails = $stmt->fetch(PDO::FETCH_ASSOC);
 
- 
-
 
 ?>
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,14 +76,24 @@ session_start();
                 </form>
             </div>
             <div class="form-control mt-6">
-                <a href="homepage_homecook.php">
-                    <button type="button" class="btn btn-primary">Home</button>
-                </a>
+                <button onclick="redirectToHome()" class="btn btn-sm btn-primary" style="margin-top: 20px;">Home</button>
             </div>
         </div>
     </div>
 </body>
 </html>
-
+<script>
+    function redirectToHome() {
+        <?php
+        if ($_SESSION['userType'] === 'HomeCook') {
+            echo "window.location.href = '/frontend/Pages/homepage_homecook.php';";
+        } elseif ($_SESSION['userType'] === 'ProfessionalChef') {
+            echo "window.location.href = '/frontend/Pages/homepage_professionalcook.php';";
+        } else {
+            echo "console.log('User type not determined.');"; // You can handle this case as needed
+        }
+        ?>
+    }
+</script>
 
 </html>

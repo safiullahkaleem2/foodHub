@@ -374,21 +374,21 @@ VALUES
 
 $insertQuery10 = "INSERT INTO EventLocation (Category, EntryFee, Location)
 VALUES 
-('Cooking Competition', 50, 'City A'),
-('Baking Workshop', 30, 'City B'),
-('Food Festival', 20, 'City C'),
-('Culinary Tour', 40, 'City D'),
-('Wine Tasting', 60, 'City E'),
-('Sushi Making Class', 40, 'City F'),
-('Pizza Workshop', 25, 'City G'),
-('BBQ Cookout', 35, 'City H'),
-('Dessert Masterclass', 45, 'City I'),
-('Vegetarian Cooking Class', 30, 'City J'),
-('Wine and Cheese Pairing', 55, 'City K'),
-('Gourmet Dinner', 70, 'City L'),
-('Street Food Festival', 15, 'City M'),
-('Cocktail Mixology Workshop', 50, 'City N'),
-('Farm-to-Table Experience', 65, 'City O')";
+('Cooking Competition', 50, 'New York'),
+('Baking Workshop', 30, 'Los Angeles'),
+('Food Festival', 20, 'Chicago'),
+('Culinary Tour', 40, 'San Francisco'),
+('Wine Tasting', 60, 'Napa Valley'),
+('Sushi Making Class', 40, 'Tokyo'),
+('Pizza Workshop', 25, 'Rome'),
+('BBQ Cookout', 35, 'Austin'),
+('Dessert Masterclass', 45, 'Paris'),
+('Vegetarian Cooking Class', 30, 'Seattle'),
+('Wine and Cheese Pairing', 55, 'Bordeaux'),
+('Gourmet Dinner', 70, 'London'),
+('Street Food Festival', 15, 'Bangkok'),
+('Cocktail Mixology Workshop', 50, 'Miami'),
+('Farm-to-Table Experience', 65, 'Amsterdam')";
 
 $insertQuery11 = "INSERT INTO EventDetails (Category, EntryFee, EventID, Date)
 VALUES 
@@ -488,11 +488,15 @@ VALUES
 
 $insertQuery18 = "INSERT INTO Video (Name, UploadTime, RecipeID, VideoURL, Duration, Views)
 VALUES 
-('Video1', '2024-01-01', 1, 'https://example.com/video1', 120, '1000'),
-('Video2', '2024-02-15', 2, 'https://example.com/video1', 90, '800'),
-('Video3', '2024-03-20', 3, 'https://example.com/video1',150, '1200'),
-('Video4', '2024-04-10', 4, 'https://example.com/video1',60, '500'),
-('Video5', '2024-05-05', 5, 'https://example.com/video1', 180, '1500')";
+('Video1', '2024-01-01', 1, 'https://www.youtube.com/embed/D_2DBLAt57c', 120, '1000'),
+('Video2', '2024-02-15', 2, 'https://www.youtube.com/embed/HoToW7cYna0', 90, '800'),
+('Video3', '2024-03-20', 3, 'https://www.youtube.com/embed/nIoOv6lWYnk',150, '1200'),
+('Video4', '2024-04-10', 4, 'https://www.youtube.com/embed/Pa39m_w1gz8',60, '500'),
+('Video5', '2024-05-05', 5, 'https://www.youtube.com/embed/J3O0ZEJYLFQ', 180, '1500'),
+('Video6', '2024-06-20', 6, 'https://www.youtube.com/embed/Ar3qVJyfSVs', 75, '900'),
+('Video7', '2024-07-15', 7, 'https://www.youtube.com/embed/dDhOpHcAJGo', 20, '300'),
+('Video8', '2024-08-10', 8, 'https://www.youtube.com/embed/FRNcmhvdUGA', 60, '700')";
+
 
 $insertQuery19 = "INSERT INTO Ingredient (Name, AllergenInfo)
 VALUES 
@@ -501,7 +505,6 @@ VALUES
 ('Eggs', 'None'),
 ('Butter', 'Dairy'),
 ('Salt', 'None')";
-
 
 $insertQuery20 = "INSERT INTO Follows (UserID1, UserID2)
 VALUES 
@@ -602,7 +605,6 @@ VALUES
 (3, 3),
 (4, 4),
 (5, 5)";
-
 
 $insertQuery25 = "INSERT INTO Contains (RecipeID, Name)
 VALUES 
