@@ -66,9 +66,7 @@ session_start();
 
         <form method="POST" action="/../backend/src/recipefilter.php">
  
-            <div class="join">
-            <button type="submit" name="project_query_button" class="btn btn-sm btn-primary">Search By fields</button>
-            <br>
+
     <div class="checkboxes">
     <label><input type="checkbox" name="show_title" value="true">Title</label>
     <label><input type="checkbox" name="show_publishdate" value="true">Publish Date</label>
@@ -78,6 +76,10 @@ session_start();
     <label><input type="checkbox" name="show_serving" value="true">Serving</label>
     <label><input type="checkbox" name="show_estimatedtime" value="true">Estimated Time</label>
 </div>
+
+<div class="join">
+            <button type="submit" name="project_query_button" class="btn btn-sm btn-primary">Search By fields</button>
+            <br>
 
         </div>
 
