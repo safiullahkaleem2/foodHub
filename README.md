@@ -31,10 +31,13 @@ composer install
 
 - Environment Configuration: Create a .env file in the root directory and specify the following environment variables to configure the database connection:
 
-DB_HOST=<your_database_host> \\
-DB_NAME=<your_database_name> \\
-DB_USER=<your_database_username> \\
-DB_PASS=<your_database_password> \\
+` DB_HOST=<your_database_host> 
+
+DB_NAME=<your_database_name> 
+
+DB_USER=<your_database_username> 
+
+DB_PASS=<your_database_password> `
 
 Replace the placeholders with your actual PostgreSQL database details.
 
