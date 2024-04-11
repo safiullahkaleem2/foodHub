@@ -2,6 +2,10 @@
 
 This project is aimed at developing a community-focused cooking recipe platform. It is designed to cater to a wide range of users, from home cooks looking for meal inspiration to professional chefs interested in sharing their signature recipes. The platform also introduces a competitive element by hosting events where users can earn points, making the cooking experience more engaging and interactive. Additionally, it offers tailored search functionalities to accommodate users with specific dietary requirements.
 
+### Demo
+
+Watch : https://www.youtube.com/watch?v=EcOM9gWqOks
+
 ### Key Features:
 
 - Access to a wide range of recipes from professional chefs.
